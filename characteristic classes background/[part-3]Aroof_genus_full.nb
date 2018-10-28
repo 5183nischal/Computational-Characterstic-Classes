@@ -1,0 +1,4572 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    164105,       4564]
+NotebookOptionsPosition[    154965,       4278]
+NotebookOutlinePosition[    155476,       4298]
+CellTagsIndexPosition[    155433,       4295]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["A roof genus", "Section",
+ CellChangeTimes->{{3.6960004705305147`*^9, 3.696000476612527*^9}, {
+  3.696759327309004*^9, 3.69675933563148*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Original formula", "Subsubsection",
+ CellChangeTimes->{{3.6960005555787077`*^9, 3.696000562991727*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"genus", "[", 
+   RowBox[{"Q_", ",", "n_Integer"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"z", ",", "x"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"SymmetricReduction", "[", 
+       RowBox[{
+        RowBox[{"SeriesCoefficient", "[", 
+         RowBox[{
+          RowBox[{"Product", "[", 
+           RowBox[{
+            RowBox[{"ComposeSeries", "[", 
+             RowBox[{
+              RowBox[{"Series", "[", 
+               RowBox[{
+                RowBox[{"Q", "[", "z", "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"z", ",", "0", ",", "n"}], "}"}]}], "]"}], ",", 
+              RowBox[{"Series", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"x", "[", "i", "]"}], "z"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"z", ",", "0", ",", "n"}], "}"}]}], "]"}]}], "]"}], 
+            ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", "n"}], 
+         "]"}], ",", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"x", "[", "i", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Subscript", "[", 
+           RowBox[{"c", ",", "i"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "//", "FactorTerms"}]}], 
+   "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.6959968165099087`*^9, 3.6959968379689636`*^9}, {
+   3.6959969108805704`*^9, 3.6959969112705708`*^9}, {3.695997088613986*^9, 
+   3.695997088943987*^9}, {3.6959972050720167`*^9, 3.695997218077046*^9}, {
+   3.6959972572121353`*^9, 3.6959973385553403`*^9}, {3.6959976822541485`*^9, 
+   3.695997725575242*^9}, {3.6959978393886724`*^9, 3.6959978710047398`*^9}, {
+   3.6959979666905837`*^9, 3.6959980090466714`*^9}, {3.6959980796778245`*^9, 
+   3.6959980896038446`*^9}, {3.695998138548946*^9, 3.6959981647660065`*^9}, {
+   3.695998230881141*^9, 3.6959982330461473`*^9}, {3.695998518506335*^9, 
+   3.695998593348488*^9}, {3.695998665160157*^9, 3.6959986676551623`*^9}, {
+   3.6959987514046125`*^9, 3.695998763525667*^9}, {3.6959988217200575`*^9, 
+   3.695998826869066*^9}, {3.695999033666692*^9, 3.6959990653837624`*^9}, {
+   3.6959991728580112`*^9, 3.6959991753920155`*^9}, {3.6959994382770376`*^9, 
+   3.6959994401050425`*^9}, {3.6959995523004217`*^9, 
+   3.6959995529584227`*^9}, {3.695999703326096*^9, 3.6959997864563265`*^9}, {
+   3.695999841431918*^9, 3.695999908226119*^9}, {3.695999939715227*^9, 
+   3.6959999851003375`*^9}, {3.6960000699285307`*^9, 3.6960001021746054`*^9}, 
+   3.696000163566749*^9, {3.696000279918066*^9, 3.6960002812940683`*^9}, {
+   3.6967583837820373`*^9, 3.6967583961127424`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"genusSimp", "[", 
+   RowBox[{"Q_", ",", "n_Integer"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"z", ",", "x"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"SymmetricReduction", "[", 
+      RowBox[{
+       RowBox[{"SeriesCoefficient", "[", 
+        RowBox[{
+         RowBox[{"Product", "[", 
+          RowBox[{
+           RowBox[{"ComposeSeries", "[", 
+            RowBox[{
+             RowBox[{"Series", "[", 
+              RowBox[{
+               RowBox[{"Q", "[", "z", "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"z", ",", "0", ",", "n"}], "}"}]}], "]"}], ",", 
+             RowBox[{"Series", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"x", "[", "i", "]"}], "z"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"z", ",", "0", ",", "n"}], "}"}]}], "]"}]}], "]"}], 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", "n"}], 
+        "]"}], ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"x", "[", "i", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "i"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.6959968165099087`*^9, 3.6959968379689636`*^9}, {
+   3.6959969108805704`*^9, 3.6959969112705708`*^9}, {3.695997088613986*^9, 
+   3.695997088943987*^9}, {3.6959972050720167`*^9, 3.695997218077046*^9}, {
+   3.6959972572121353`*^9, 3.6959973385553403`*^9}, {3.6959976822541485`*^9, 
+   3.695997725575242*^9}, {3.6959978393886724`*^9, 3.6959978710047398`*^9}, {
+   3.6959979666905837`*^9, 3.6959980090466714`*^9}, {3.6959980796778245`*^9, 
+   3.6959980896038446`*^9}, {3.695998138548946*^9, 3.6959981647660065`*^9}, {
+   3.695998230881141*^9, 3.6959982330461473`*^9}, {3.695998518506335*^9, 
+   3.695998593348488*^9}, {3.695998665160157*^9, 3.6959986676551623`*^9}, {
+   3.6959987514046125`*^9, 3.695998763525667*^9}, {3.6959988217200575`*^9, 
+   3.695998826869066*^9}, {3.695999033666692*^9, 3.6959990653837624`*^9}, {
+   3.6959991728580112`*^9, 3.6959991753920155`*^9}, {3.6959994382770376`*^9, 
+   3.6959994401050425`*^9}, {3.6959995523004217`*^9, 
+   3.6959995529584227`*^9}, {3.695999703326096*^9, 3.6959997864563265`*^9}, {
+   3.695999841431918*^9, 3.695999908226119*^9}, {3.695999939715227*^9, 
+   3.6959999851003375`*^9}, {3.6960000699285307`*^9, 3.6960001021746054`*^9}, 
+   3.696000163566749*^9, {3.696000279918066*^9, 3.6960002812940683`*^9}, {
+   3.6967583837820373`*^9, 3.6967583961127424`*^9}, {3.7021007897185974`*^9, 
+   3.7021007961101108`*^9}, {3.702100846503738*^9, 3.7021008539298754`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Formula that allows to set m first characteristic classes to 0\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.696000572495751*^9, 3.6960006261508627`*^9}, {
+  3.69675813503581*^9, 3.6967581370229235`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"genusSimplified", "[", 
+    RowBox[{"Q_", ",", "n_Integer", ",", " ", "m_Integer"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"z", ",", "x"}], "}"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"SymmetricReduction", "[", 
+        RowBox[{
+         RowBox[{"SeriesCoefficient", "[", 
+          RowBox[{
+           RowBox[{"Product", "[", 
+            RowBox[{
+             RowBox[{"ComposeSeries", "[", 
+              RowBox[{
+               RowBox[{"Series", "[", 
+                RowBox[{
+                 RowBox[{"Q", "[", "z", "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"z", ",", "0", ",", "n"}], "}"}]}], "]"}], ",", 
+               RowBox[{"Series", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"x", "[", "i", "]"}], "z"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"z", ",", "0", ",", "n"}], "}"}]}], "]"}]}], "]"}], 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", "n"}], 
+          "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"x", "[", "i", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"i", "<", 
+              RowBox[{"m", "+", "1"}]}], ",", " ", "0", ",", " ", 
+             RowBox[{"Subscript", "[", 
+              RowBox[{"c", ",", "i"}], "]"}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "//", "FactorTerms"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.6960001316736755`*^9, 3.6960001606017437`*^9}, {
+   3.696000501395583*^9, 3.696000514605613*^9}, {3.6960006387288947`*^9, 
+   3.6960006391258965`*^9}, {3.696000740124133*^9, 3.696000740324133*^9}, {
+   3.696054440395963*^9, 3.6960544924160357`*^9}, {3.696054541806105*^9, 
+   3.6960545418761053`*^9}, {3.696757729623622*^9, 3.6967577837667184`*^9}, {
+   3.696757870768695*^9, 3.696757936672464*^9}, 3.696758028360708*^9, {
+   3.696758068445001*^9, 3.6967580689430294`*^9}, {3.696758344275778*^9, 
+   3.6967583935965986`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["Formula that allows to specify indexes of characteristic class \
+that are 0\n\t", "Subsubsection"],
+ StyleBox["L - list of indexes of characteristic classes that equal 0", "Text"]
+}], "Subsubsection",
+ CellChangeTimes->{
+  3.69675810549012*^9, {3.696758144151331*^9, 3.6967581458384275`*^9}, {
+   3.696758213140277*^9, 3.6967582854874153`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"genusSimplifiedExceptions", "[", 
+   RowBox[{"Q_", ",", "n_Integer", ",", " ", "L_List"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"z", ",", "x"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"SymmetricReduction", "[", 
+       RowBox[{
+        RowBox[{"SeriesCoefficient", "[", 
+         RowBox[{
+          RowBox[{"Product", "[", 
+           RowBox[{
+            RowBox[{"ComposeSeries", "[", 
+             RowBox[{
+              RowBox[{"Series", "[", 
+               RowBox[{
+                RowBox[{"Q", "[", "z", "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"z", ",", "0", ",", "n"}], "}"}]}], "]"}], ",", 
+              RowBox[{"Series", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"x", "[", "i", "]"}], "z"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"z", ",", "0", ",", "n"}], "}"}]}], "]"}]}], "]"}], 
+            ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", "n"}], 
+         "]"}], ",", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"x", "[", "i", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"MemberQ", "[", 
+             RowBox[{"L", ",", "i"}], "]"}], ",", " ", "0", ",", " ", 
+            RowBox[{"Subscript", "[", 
+             RowBox[{"c", ",", "i"}], "]"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "//", "FactorTerms"}]}], 
+   "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.696758072422229*^9, {3.6967583629668465`*^9, 3.6967583903394127`*^9}, {
+   3.697315277536235*^9, 3.697315279858239*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Modified formula for complexification", "Subsubsection",
+ CellChangeTimes->{{3.6960005555787077`*^9, 3.696000562991727*^9}, {
+  3.697235871371297*^9, 3.6972358795643125`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"genusComplexification", "[", 
+   RowBox[{"Q_", ",", "n_Integer"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"z", ",", "x"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"SymmetricReduction", "[", 
+       RowBox[{
+        RowBox[{"SeriesCoefficient", "[", 
+         RowBox[{
+          RowBox[{"Product", "[", 
+           RowBox[{
+            RowBox[{"ComposeSeries", "[", 
+             RowBox[{
+              RowBox[{"Series", "[", 
+               RowBox[{
+                RowBox[{"Q", "[", "z", "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"z", ",", "0", ",", "n"}], "}"}]}], "]"}], ",", 
+              RowBox[{"Series", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"x", "[", "i", "]"}], "z"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"z", ",", "0", ",", "n"}], "}"}]}], "]"}]}], "]"}], 
+            ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", "n"}], 
+         "]"}], ",", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"x", "[", "i", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"-", "1"}], ")"}], "^", "i"}], "*", 
+           RowBox[{"Subscript", "[", 
+            RowBox[{"c", ",", 
+             RowBox[{"2", "*", "i"}]}], "]"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "//", "FactorTerms"}]}], 
+   "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.6959968165099087`*^9, 3.6959968379689636`*^9}, {
+   3.6959969108805704`*^9, 3.6959969112705708`*^9}, {3.695997088613986*^9, 
+   3.695997088943987*^9}, {3.6959972050720167`*^9, 3.695997218077046*^9}, {
+   3.6959972572121353`*^9, 3.6959973385553403`*^9}, {3.6959976822541485`*^9, 
+   3.695997725575242*^9}, {3.6959978393886724`*^9, 3.6959978710047398`*^9}, {
+   3.6959979666905837`*^9, 3.6959980090466714`*^9}, {3.6959980796778245`*^9, 
+   3.6959980896038446`*^9}, {3.695998138548946*^9, 3.6959981647660065`*^9}, {
+   3.695998230881141*^9, 3.6959982330461473`*^9}, {3.695998518506335*^9, 
+   3.695998593348488*^9}, {3.695998665160157*^9, 3.6959986676551623`*^9}, {
+   3.6959987514046125`*^9, 3.695998763525667*^9}, {3.6959988217200575`*^9, 
+   3.695998826869066*^9}, {3.695999033666692*^9, 3.6959990653837624`*^9}, {
+   3.6959991728580112`*^9, 3.6959991753920155`*^9}, {3.6959994382770376`*^9, 
+   3.6959994401050425`*^9}, {3.6959995523004217`*^9, 
+   3.6959995529584227`*^9}, {3.695999703326096*^9, 3.6959997864563265`*^9}, {
+   3.695999841431918*^9, 3.695999908226119*^9}, {3.695999939715227*^9, 
+   3.6959999851003375`*^9}, {3.6960000699285307`*^9, 3.6960001021746054`*^9}, 
+   3.696000163566749*^9, {3.696000279918066*^9, 3.6960002812940683`*^9}, {
+   3.6967583837820373`*^9, 3.6967583961127424`*^9}, {3.6972352586461196`*^9, 
+   3.697235297941206*^9}, {3.6972354270904593`*^9, 3.6972354272304597`*^9}, {
+   3.697235895697344*^9, 3.697235908668374*^9}}],
+
+Cell["", "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A roof genus", "Subsubsection",
+ CellChangeTimes->{{3.6967593686593695`*^9, 3.696759371891554*^9}}],
+
+Cell["Reproduces McTague and Hopkins", "Text",
+ CellChangeTimes->{{3.7008338859355593`*^9, 3.7008338963803787`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "0"}], ",", 
+   RowBox[{"i", "<", "10"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"A", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genus", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i"}], "]"}], "/.", 
+      "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6967593536345096`*^9, 3.6967593608909245`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "0"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "1"}],
+  SequenceForm[
+   Subscript[$CellContext`A, 0], " = ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967601749394855`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "1"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "1"], "24"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 1], " = ", Rational[-1, 24] 
+   Subscript[$CellContext`p, 1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967601749484863`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "2"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"7", " ", 
+      SubsuperscriptBox["p", "1", "2"]}], "-", 
+     RowBox[{"4", " ", 
+      SubscriptBox["p", "2"]}]}], "5760"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 2], " = ", 
+   Rational[1, 5760] (7 Subscript[$CellContext`p, 1]^2 - 4 
+    Subscript[$CellContext`p, 2])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760174963487*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "3"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "31"}], " ", 
+      SubsuperscriptBox["p", "1", "3"]}], "+", 
+     RowBox[{"44", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "2"]}], "-", 
+     RowBox[{"16", " ", 
+      SubscriptBox["p", "3"]}]}], "967680"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 3], " = ", 
+   Rational[1, 967680] ((-31) Subscript[$CellContext`p, 1]^3 + 
+    44 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2] - 16 
+    Subscript[$CellContext`p, 3])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967601749994893`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"381", " ", 
+      SubsuperscriptBox["p", "1", "4"]}], "-", 
+     RowBox[{"904", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "2"]}], "+", 
+     RowBox[{"208", " ", 
+      SubsuperscriptBox["p", "2", "2"]}], "+", 
+     RowBox[{"512", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "3"]}], "-", 
+     RowBox[{"192", " ", 
+      SubscriptBox["p", "4"]}]}], "464486400"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 4], " = ", 
+   Rational[1, 464486400] (
+    381 Subscript[$CellContext`p, 1]^4 - (904 Subscript[$CellContext`p, 1]^2) 
+    Subscript[$CellContext`p, 2] + 
+    208 Subscript[$CellContext`p, 2]^2 + (512 Subscript[$CellContext`p, 1]) 
+     Subscript[$CellContext`p, 3] - 192 Subscript[$CellContext`p, 4])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.69676017501549*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "2555"}], " ", 
+      SubsuperscriptBox["p", "1", "5"]}], "+", 
+     RowBox[{"8584", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "2"]}], "-", 
+     RowBox[{"4976", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubsuperscriptBox["p", "2", "2"]}], "-", 
+     RowBox[{"5856", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "3"]}], "+", 
+     RowBox[{"2688", " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "3"]}], "+", 
+     RowBox[{"3392", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"1280", " ", 
+      SubscriptBox["p", "5"]}]}], "122624409600"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 5], " = ", 
+   Rational[1, 122624409600] ((-2555) 
+     Subscript[$CellContext`p, 1]^5 + (8584 Subscript[$CellContext`p, 1]^3) 
+     Subscript[$CellContext`p, 2] - (4976 Subscript[$CellContext`p, 1]) 
+    Subscript[$CellContext`p, 2]^2 - (5856 Subscript[$CellContext`p, 1]^2) 
+    Subscript[$CellContext`p, 3] + (2688 Subscript[$CellContext`p, 2]) 
+     Subscript[$CellContext`p, 3] + (3392 Subscript[$CellContext`p, 1]) 
+     Subscript[$CellContext`p, 4] - 1280 Subscript[$CellContext`p, 5])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760175118496*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"1414477", " ", 
+      SubsuperscriptBox["p", "1", "6"]}], "-", 
+     RowBox[{"6161812", " ", 
+      SubsuperscriptBox["p", "1", "4"], " ", 
+      SubscriptBox["p", "2"]}], "+", 
+     RowBox[{"6099760", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubsuperscriptBox["p", "2", "2"]}], "-", 
+     RowBox[{"769728", " ", 
+      SubsuperscriptBox["p", "2", "3"]}], "+", 
+     RowBox[{"4636288", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "3"]}], "-", 
+     RowBox[{"5362176", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "3"]}], "+", 
+     RowBox[{"719872", " ", 
+      SubsuperscriptBox["p", "3", "2"]}], "-", 
+     RowBox[{"3217728", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "4"]}], "+", 
+     RowBox[{"1476352", " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "4"]}], "+", 
+     RowBox[{"1872384", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"707584", " ", 
+      SubscriptBox["p", "6"]}]}], "2678117105664000"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 6], " = ", 
+   Rational[1, 2678117105664000] (1414477 Subscript[$CellContext`p, 1]^6 - 
+    6161812 Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 2] + 
+    6099760 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 2]^2 - 
+    769728 Subscript[$CellContext`p, 2]^3 + 
+    4636288 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 3] - 
+    5362176 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2] 
+    Subscript[$CellContext`p, 3] + 719872 Subscript[$CellContext`p, 3]^2 - 
+    3217728 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 4] + 
+    1476352 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 4] + 
+    1872384 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 5] - 
+    707584 Subscript[$CellContext`p, 6])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760175325508*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "64274810535936000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "860055"}], " ", 
+       SubsuperscriptBox["p", "1", "7"]}], "+", 
+      RowBox[{"4605908", " ", 
+       SubsuperscriptBox["p", "1", "5"], " ", 
+       SubscriptBox["p", "2"]}], "-", 
+      RowBox[{"6595920", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubsuperscriptBox["p", "2", "2"]}], "+", 
+      RowBox[{"2141632", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubsuperscriptBox["p", "2", "3"]}], "-", 
+      RowBox[{"3675888", " ", 
+       SubsuperscriptBox["p", "1", "4"], " ", 
+       SubscriptBox["p", "3"]}], "+", 
+      RowBox[{"7263104", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "3"]}], "-", 
+      RowBox[{"1371904", " ", 
+       SubsuperscriptBox["p", "2", "2"], " ", 
+       SubscriptBox["p", "3"]}], "-", 
+      RowBox[{"1589248", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubsuperscriptBox["p", "3", "2"]}], "+", 
+      RowBox[{"2804160", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"3241728", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "4"]}], "+", 
+      RowBox[{"869376", " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"1953024", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"896000", " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"1137664", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "6"]}], "-", 
+      RowBox[{"430080", " ", 
+       SubscriptBox["p", "7"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 7], " = ", 
+   Rational[1, 64274810535936000] ((-860055) Subscript[$CellContext`p, 1]^7 + 
+    4605908 Subscript[$CellContext`p, 1]^5 Subscript[$CellContext`p, 2] - 
+    6595920 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 2]^2 + 
+    2141632 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2]^3 - 
+    3675888 Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 3] + 
+    7263104 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 2] 
+     Subscript[$CellContext`p, 3] - 1371904 Subscript[$CellContext`p, 2]^2 
+    Subscript[$CellContext`p, 3] - 1589248 Subscript[$CellContext`p, 1] 
+    Subscript[$CellContext`p, 3]^2 + 
+    2804160 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 4] - 
+    3241728 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2] 
+    Subscript[$CellContext`p, 4] + 
+    869376 Subscript[$CellContext`p, 3] Subscript[$CellContext`p, 4] - 
+    1953024 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 5] + 
+    896000 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 5] + 
+    1137664 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 6] - 
+    430080 Subscript[$CellContext`p, 7])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967601761635556`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "1048964907946475520000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"355554717", " ", 
+       SubsuperscriptBox["p", "1", "8"]}], "-", 
+      RowBox[{"2259600336", " ", 
+       SubsuperscriptBox["p", "1", "6"], " ", 
+       SubscriptBox["p", "2"]}], "+", 
+      RowBox[{"4275360992", " ", 
+       SubsuperscriptBox["p", "1", "4"], " ", 
+       SubsuperscriptBox["p", "2", "2"]}], "-", 
+      RowBox[{"2418330880", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubsuperscriptBox["p", "2", "3"]}], "+", 
+      RowBox[{"193445120", " ", 
+       SubsuperscriptBox["p", "2", "4"]}], "+", 
+      RowBox[{"1874862592", " ", 
+       SubsuperscriptBox["p", "1", "5"], " ", 
+       SubscriptBox["p", "3"]}], "-", 
+      RowBox[{"5361225728", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "3"]}], "+", 
+      RowBox[{"2606571520", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubsuperscriptBox["p", "2", "2"], " ", 
+       SubscriptBox["p", "3"]}], "+", 
+      RowBox[{"1471168512", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubsuperscriptBox["p", "3", "2"]}], "-", 
+      RowBox[{"554631168", " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubsuperscriptBox["p", "3", "2"]}], "-", 
+      RowBox[{"1513483392", " ", 
+       SubsuperscriptBox["p", "1", "4"], " ", 
+       SubscriptBox["p", "4"]}], "+", 
+      RowBox[{"2989286400", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"564414464", " ", 
+       SubsuperscriptBox["p", "2", "2"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"1307017216", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "4"]}], "+", 
+      RowBox[{"178507776", " ", 
+       SubsuperscriptBox["p", "4", "2"]}], "+", 
+      RowBox[{"1157818368", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubscriptBox["p", "5"]}], "-", 
+      RowBox[{"1338351616", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"358825984", " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "5"]}], "-", 
+      RowBox[{"807047168", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "6"]}], "+", 
+      RowBox[{"370245632", " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "6"]}], "+", 
+      RowBox[{"470237184", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "7"]}], "-", 
+      RowBox[{"177782784", " ", 
+       SubscriptBox["p", "8"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 8], " = ", 
+   Rational[1, 1048964907946475520000] (
+    355554717 Subscript[$CellContext`p, 1]^8 - 2259600336 
+    Subscript[$CellContext`p, 1]^6 Subscript[$CellContext`p, 2] + 
+    4275360992 Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 2]^2 - 
+    2418330880 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 2]^3 + 
+    193445120 Subscript[$CellContext`p, 2]^4 + 
+    1874862592 Subscript[$CellContext`p, 1]^5 Subscript[$CellContext`p, 3] - 
+    5361225728 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 2] 
+    Subscript[$CellContext`p, 3] + 
+    2606571520 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2]^2 
+     Subscript[$CellContext`p, 3] + 
+    1471168512 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 3]^2 - 
+    554631168 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 3]^2 - 
+    1513483392 Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 4] + 
+    2989286400 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 2] 
+     Subscript[$CellContext`p, 4] - 564414464 Subscript[$CellContext`p, 2]^2 
+    Subscript[$CellContext`p, 4] - 1307017216 Subscript[$CellContext`p, 1] 
+    Subscript[$CellContext`p, 3] Subscript[$CellContext`p, 4] + 
+    178507776 Subscript[$CellContext`p, 4]^2 + 
+    1157818368 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 5] - 
+    1338351616 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2] 
+    Subscript[$CellContext`p, 5] + 
+    358825984 Subscript[$CellContext`p, 3] Subscript[$CellContext`p, 5] - 
+    807047168 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 6] + 
+    370245632 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 6] + 
+    470237184 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 7] - 
+    177782784 Subscript[$CellContext`p, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967601817148733`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "3348295986165149859840000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "28748457785"}], " ", 
+       SubsuperscriptBox["p", "1", "9"]}], "+", 
+      RowBox[{"211447342704", " ", 
+       SubsuperscriptBox["p", "1", "7"], " ", 
+       SubscriptBox["p", "2"]}], "-", 
+      RowBox[{"499635280608", " ", 
+       SubsuperscriptBox["p", "1", "5"], " ", 
+       SubsuperscriptBox["p", "2", "2"]}], "+", 
+      RowBox[{"416000027392", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubsuperscriptBox["p", "2", "3"]}], "-", 
+      RowBox[{"87224115456", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubsuperscriptBox["p", "2", "4"]}], "-", 
+      RowBox[{"180333993024", " ", 
+       SubsuperscriptBox["p", "1", "6"], " ", 
+       SubscriptBox["p", "3"]}], "+", 
+      RowBox[{"681553308928", " ", 
+       SubsuperscriptBox["p", "1", "4"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "3"]}], "-", 
+      RowBox[{"577465613312", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubsuperscriptBox["p", "2", "2"], " ", 
+       SubscriptBox["p", "3"]}], "+", 
+      RowBox[{"61495914496", " ", 
+       SubsuperscriptBox["p", "2", "3"], " ", 
+       SubscriptBox["p", "3"]}], "-", 
+      RowBox[{"213159260160", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubsuperscriptBox["p", "3", "2"]}], "+", 
+      RowBox[{"206922301440", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubsuperscriptBox["p", "3", "2"]}], "-", 
+      RowBox[{"14627569664", " ", 
+       SubsuperscriptBox["p", "3", "3"]}], "+", 
+      RowBox[{"151093924480", " ", 
+       SubsuperscriptBox["p", "1", "5"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"431920466944", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "4"]}], "+", 
+      RowBox[{"209924868096", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubsuperscriptBox["p", "2", "2"], " ", 
+       SubscriptBox["p", "4"]}], "+", 
+      RowBox[{"236890066944", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"89273647104", " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"52563120128", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubsuperscriptBox["p", "4", "2"]}], "-", 
+      RowBox[{"122255864320", " ", 
+       SubsuperscriptBox["p", "1", "4"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"241446506496", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "5"]}], "-", 
+      RowBox[{"45584097280", " ", 
+       SubsuperscriptBox["p", "2", "2"], " ", 
+       SubscriptBox["p", "5"]}], "-", 
+      RowBox[{"105546956800", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"28821585920", " ", 
+       SubscriptBox["p", "4"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"93587107840", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubscriptBox["p", "6"]}], "-", 
+      RowBox[{"108177096704", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "6"]}], "+", 
+      RowBox[{"29001515008", " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "6"]}], "-", 
+      RowBox[{"65246953472", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "7"]}], "+", 
+      RowBox[{"29932912640", " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "7"]}], "+", 
+      RowBox[{"38019448832", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "8"]}], "-", 
+      RowBox[{"14374338560", " ", 
+       SubscriptBox["p", "9"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 9], " = ", 
+   Rational[1, 3348295986165149859840000] ((-28748457785) 
+     Subscript[$CellContext`p, 1]^9 + (211447342704 
+      Subscript[$CellContext`p, 1]^7) Subscript[$CellContext`p, 2] - (
+     499635280608 Subscript[$CellContext`p, 1]^5) 
+    Subscript[$CellContext`p, 2]^2 + (416000027392 
+      Subscript[$CellContext`p, 1]^3) Subscript[$CellContext`p, 2]^3 - (
+     87224115456 Subscript[$CellContext`p, 1]) 
+    Subscript[$CellContext`p, 2]^4 - (180333993024 
+     Subscript[$CellContext`p, 1]^6) 
+    Subscript[$CellContext`p, 
+      3] + ((681553308928 Subscript[$CellContext`p, 1]^4) 
+      Subscript[$CellContext`p, 2]) 
+     Subscript[$CellContext`p, 3] - ((577465613312 
+      Subscript[$CellContext`p, 1]^2) Subscript[$CellContext`p, 2]^2) 
+    Subscript[$CellContext`p, 3] + (61495914496 
+      Subscript[$CellContext`p, 2]^3) Subscript[$CellContext`p, 3] - (
+     213159260160 Subscript[$CellContext`p, 1]^3) 
+    Subscript[$CellContext`p, 3]^2 + ((206922301440 
+       Subscript[$CellContext`p, 1]) Subscript[$CellContext`p, 2]) 
+     Subscript[$CellContext`p, 3]^2 - 14627569664 
+    Subscript[$CellContext`p, 3]^3 + (151093924480 
+      Subscript[$CellContext`p, 1]^5) 
+     Subscript[$CellContext`p, 4] - ((431920466944 
+      Subscript[$CellContext`p, 1]^3) Subscript[$CellContext`p, 2]) 
+    Subscript[$CellContext`p, 
+      4] + ((209924868096 Subscript[$CellContext`p, 1]) 
+      Subscript[$CellContext`p, 2]^2) 
+     Subscript[$CellContext`p, 4] + ((236890066944 
+       Subscript[$CellContext`p, 1]^2) Subscript[$CellContext`p, 3]) 
+     Subscript[$CellContext`p, 4] - ((89273647104 
+      Subscript[$CellContext`p, 2]) Subscript[$CellContext`p, 3]) 
+    Subscript[$CellContext`p, 4] - (52563120128 Subscript[$CellContext`p, 1]) 
+    Subscript[$CellContext`p, 4]^2 - (122255864320 
+     Subscript[$CellContext`p, 1]^4) 
+    Subscript[$CellContext`p, 
+      5] + ((241446506496 Subscript[$CellContext`p, 1]^2) 
+      Subscript[$CellContext`p, 2]) Subscript[$CellContext`p, 5] - (
+     45584097280 Subscript[$CellContext`p, 2]^2) 
+    Subscript[$CellContext`p, 5] - ((105546956800 
+      Subscript[$CellContext`p, 1]) Subscript[$CellContext`p, 3]) 
+    Subscript[$CellContext`p, 5] + (28821585920 Subscript[$CellContext`p, 4]) 
+     Subscript[$CellContext`p, 5] + (93587107840 
+      Subscript[$CellContext`p, 1]^3) 
+     Subscript[$CellContext`p, 6] - ((108177096704 
+      Subscript[$CellContext`p, 1]) Subscript[$CellContext`p, 2]) 
+    Subscript[$CellContext`p, 6] + (29001515008 Subscript[$CellContext`p, 3]) 
+     Subscript[$CellContext`p, 6] - (65246953472 
+     Subscript[$CellContext`p, 1]^2) 
+    Subscript[$CellContext`p, 7] + (29932912640 Subscript[$CellContext`p, 2]) 
+     Subscript[$CellContext`p, 7] + (38019448832 Subscript[$CellContext`p, 1])
+       Subscript[$CellContext`p, 8] - 14374338560 
+    Subscript[$CellContext`p, 9])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967602171489*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A genus - String manifolds (p1 = 0)", "Subsubsection",
+ CellChangeTimes->{{3.6960027693600636`*^9, 3.6960028061701546`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "0"}], ",", 
+   RowBox[{"i", "<", "11"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"As", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusSimplified", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i", ",", " ", 
+        "1"}], "]"}], "/.", "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6960028101401653`*^9, 3.6960028301682105`*^9}, {
+  3.69675842492039*^9, 3.696758425231408*^9}, {3.6967630027782288`*^9, 
+  3.696763003061245*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "0"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "1"}],
+  SequenceForm[
+   Subscript[$CellContext`As, 0], " = ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696002988474659*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "1"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "0"}],
+  SequenceForm[
+   Subscript[$CellContext`As, 1], " = ", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696002988474659*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "2"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "2"], "1440"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 2], " = ", Rational[-1, 1440] 
+   Subscript[$CellContext`p, 2]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6960029884846587`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "3"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "3"], "60480"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 3], " = ", Rational[-1, 60480] 
+   Subscript[$CellContext`p, 3]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6960029884946585`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"13", " ", 
+      SubsuperscriptBox["p", "2", "2"]}], "-", 
+     RowBox[{"12", " ", 
+      SubscriptBox["p", "4"]}]}], "29030400"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 4], " = ", 
+   Rational[1, 29030400] (13 Subscript[$CellContext`p, 2]^2 - 12 
+    Subscript[$CellContext`p, 4])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6960029885046587`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"21", " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "3"]}], "-", 
+     RowBox[{"10", " ", 
+      SubscriptBox["p", "5"]}]}], "958003200"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 5], " = ", 
+   Rational[1, 958003200] ((21 Subscript[$CellContext`p, 2]) 
+     Subscript[$CellContext`p, 3] - 10 Subscript[$CellContext`p, 5])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6960029885446587`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "12027"}], " ", 
+      SubsuperscriptBox["p", "2", "3"]}], "+", 
+     RowBox[{"11248", " ", 
+      SubsuperscriptBox["p", "3", "2"]}], "+", 
+     RowBox[{"23068", " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"11056", " ", 
+      SubscriptBox["p", "6"]}]}], "41845579776000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 6], " = ", 
+   Rational[1, 41845579776000] ((-12027) Subscript[$CellContext`p, 2]^3 + 
+    11248 Subscript[$CellContext`p, 3]^2 + (23068 
+      Subscript[$CellContext`p, 2]) Subscript[$CellContext`p, 4] - 11056 
+    Subscript[$CellContext`p, 6])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6960029886546593`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "5359"}], " ", 
+      SubsuperscriptBox["p", "2", "2"], " ", 
+      SubscriptBox["p", "3"]}], "+", 
+     RowBox[{"3396", " ", 
+      SubscriptBox["p", "3"], " ", 
+      SubscriptBox["p", "4"]}], "+", 
+     RowBox[{"3500", " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"1680", " ", 
+      SubscriptBox["p", "7"]}]}], "251073478656000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 7], " = ", 
+   Rational[1, 251073478656000] (((-5359) Subscript[$CellContext`p, 2]^2) 
+     Subscript[$CellContext`p, 3] + (3396 Subscript[$CellContext`p, 3]) 
+     Subscript[$CellContext`p, 4] + (3500 Subscript[$CellContext`p, 2]) 
+     Subscript[$CellContext`p, 5] - 1680 Subscript[$CellContext`p, 7])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.69600298909466*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"755645", " ", 
+        SubsuperscriptBox["p", "2", "4"]}], "-", 
+       RowBox[{"2166528", " ", 
+        SubscriptBox["p", "2"], " ", 
+        SubsuperscriptBox["p", "3", "2"]}], "-", 
+       RowBox[{"2204744", " ", 
+        SubsuperscriptBox["p", "2", "2"], " ", 
+        SubscriptBox["p", "4"]}], "+", 
+       RowBox[{"697296", " ", 
+        SubsuperscriptBox["p", "4", "2"]}], "+", 
+       RowBox[{"1401664", " ", 
+        SubscriptBox["p", "3"], " ", 
+        SubscriptBox["p", "5"]}], "+", 
+       RowBox[{"1446272", " ", 
+        SubscriptBox["p", "2"], " ", 
+        SubscriptBox["p", "6"]}], "-", 
+       RowBox[{"694464", " ", 
+        SubscriptBox["p", "8"]}]}], ")"}], "/", "4097519171665920000"}], 
+    ")"}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 8], " = ", 
+   Rational[1, 4097519171665920000] (
+    755645 Subscript[$CellContext`p, 2]^4 - (2166528 
+     Subscript[$CellContext`p, 2]) 
+    Subscript[$CellContext`p, 3]^2 - (2204744 Subscript[$CellContext`p, 2]^2) 
+    Subscript[$CellContext`p, 4] + 
+    697296 Subscript[$CellContext`p, 4]^2 + (1401664 
+      Subscript[$CellContext`p, 3]) 
+     Subscript[$CellContext`p, 5] + (1446272 Subscript[$CellContext`p, 2]) 
+     Subscript[$CellContext`p, 6] - 694464 Subscript[$CellContext`p, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696002992676667*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "817455074747351040000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"15013651", " ", 
+       SubsuperscriptBox["p", "2", "3"], " ", 
+       SubscriptBox["p", "3"]}], "-", 
+      RowBox[{"3571184", " ", 
+       SubsuperscriptBox["p", "3", "3"]}], "-", 
+      RowBox[{"21795324", " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"11128930", " ", 
+       SubsuperscriptBox["p", "2", "2"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"7036520", " ", 
+       SubscriptBox["p", "4"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"7080448", " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "6"]}], "+", 
+      RowBox[{"7307840", " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "7"]}], "-", 
+      RowBox[{"3509360", " ", 
+       SubscriptBox["p", "9"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 9], " = ", 
+   Rational[1, 
+     817455074747351040000] ((15013651 Subscript[$CellContext`p, 2]^3) 
+     Subscript[$CellContext`p, 3] - 3571184 
+    Subscript[$CellContext`p, 3]^3 - ((21795324 Subscript[$CellContext`p, 2]) 
+     Subscript[$CellContext`p, 3]) 
+    Subscript[$CellContext`p, 4] - (11128930 Subscript[$CellContext`p, 2]^2) 
+    Subscript[$CellContext`p, 5] + (7036520 Subscript[$CellContext`p, 4]) 
+     Subscript[$CellContext`p, 5] + (7080448 Subscript[$CellContext`p, 3]) 
+     Subscript[$CellContext`p, 6] + (7307840 Subscript[$CellContext`p, 2]) 
+     Subscript[$CellContext`p, 7] - 3509360 Subscript[$CellContext`p, 9])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.69600301478573*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A genus - Fivebrane manifolds (p1=p2 =0)", "Subsubsection",
+ CellChangeTimes->{{3.696002856702278*^9, 3.6960028692323155`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "3"}], ",", 
+   RowBox[{"i", "<", "10"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"Af", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusSimplified", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i", ",", " ", 
+        "2"}], "]"}], "/.", "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6960028790093355`*^9, 3.6960028955333877`*^9}, {
+  3.696004090419737*^9, 3.6960040908887377`*^9}, {3.6967584289146185`*^9, 
+  3.696758429232637*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["Af", "3"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "3"], "60480"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`Af, 3], " = ", Rational[-1, 60480] 
+   Subscript[$CellContext`p, 3]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.69600301484573*^9, 3.696004092524743*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["Af", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "4"], "2419200"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`Af, 4], " = ", Rational[-1, 2419200] 
+   Subscript[$CellContext`p, 4]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.69600301484573*^9, 3.6960040925947437`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["Af", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "5"], "95800320"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`Af, 5], " = ", Rational[-1, 95800320] 
+   Subscript[$CellContext`p, 5]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.69600301484573*^9, 3.6960040926147437`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["Af", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"703", " ", 
+      SubsuperscriptBox["p", "3", "2"]}], "-", 
+     RowBox[{"691", " ", 
+      SubscriptBox["p", "6"]}]}], "2615348736000"]}],
+  SequenceForm[
+   Subscript[$CellContext`Af, 6], " = ", 
+   Rational[1, 2615348736000] (703 Subscript[$CellContext`p, 3]^2 - 691 
+    Subscript[$CellContext`p, 6])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.69600301484573*^9, 3.6960040927447433`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["Af", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"283", " ", 
+      SubscriptBox["p", "3"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"140", " ", 
+      SubscriptBox["p", "7"]}]}], "20922789888000"]}],
+  SequenceForm[
+   Subscript[$CellContext`Af, 7], " = ", 
+   Rational[1, 20922789888000] ((283 Subscript[$CellContext`p, 3]) 
+     Subscript[$CellContext`p, 4] - 140 Subscript[$CellContext`p, 7])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.69600301484573*^9, 3.696004093260747*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["Af", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"43581", " ", 
+      SubsuperscriptBox["p", "4", "2"]}], "+", 
+     RowBox[{"87604", " ", 
+      SubscriptBox["p", "3"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"43404", " ", 
+      SubscriptBox["p", "8"]}]}], "256094948229120000"]}],
+  SequenceForm[
+   Subscript[$CellContext`Af, 8], " = ", 
+   Rational[1, 256094948229120000] (
+    43581 Subscript[$CellContext`p, 4]^2 + (87604 
+      Subscript[$CellContext`p, 3]) Subscript[$CellContext`p, 5] - 43404 
+    Subscript[$CellContext`p, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.69600301484573*^9, 3.696004095889757*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["Af", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "446398"}], " ", 
+      SubsuperscriptBox["p", "3", "3"]}], "+", 
+     RowBox[{"879565", " ", 
+      SubscriptBox["p", "4"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"885056", " ", 
+      SubscriptBox["p", "3"], " ", 
+      SubscriptBox["p", "6"]}], "-", 
+     RowBox[{"438670", " ", 
+      SubscriptBox["p", "9"]}]}], "102181884343418880000"]}],
+  SequenceForm[
+   Subscript[$CellContext`Af, 9], " = ", 
+   Rational[1, 102181884343418880000] ((-446398) 
+     Subscript[$CellContext`p, 3]^3 + (879565 Subscript[$CellContext`p, 4]) 
+     Subscript[$CellContext`p, 5] + (885056 Subscript[$CellContext`p, 3]) 
+     Subscript[$CellContext`p, 6] - 438670 Subscript[$CellContext`p, 9])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.69600301484573*^9, 3.6960041169868603`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A genus - Ninebrane manifolds (p1=p2 = p3=0)", "Subsubsection",
+ CellChangeTimes->{{3.6960028471942563`*^9, 3.6960028505002623`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "4"}], ",", 
+   RowBox[{"i", "<", "10"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"An", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusSimplified", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i", ",", " ", 
+        "3"}], "]"}], "/.", "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.696002890297371*^9, 3.696002898892394*^9}, {
+  3.6960040975467615`*^9, 3.696004097796762*^9}, {3.6967584326808343`*^9, 
+  3.6967584329818516`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "4"], "2419200"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 4], " = ", Rational[-1, 2419200] 
+   Subscript[$CellContext`p, 4]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6960030410447874`*^9, 3.6960041170868607`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "5"], "95800320"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 5], " = ", Rational[-1, 95800320] 
+   Subscript[$CellContext`p, 5]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6960030410447874`*^9, 3.6960041171168604`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"691", " ", 
+      SubscriptBox["p", "6"]}], "2615348736000"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 6], " = ", Rational[-691, 2615348736000] 
+   Subscript[$CellContext`p, 6]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6960030410447874`*^9, 3.6960041172068605`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "7"], "149448499200"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 7], " = ", Rational[-1, 149448499200] 
+   Subscript[$CellContext`p, 7]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6960030410447874`*^9, 3.6960041177168612`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"14527", " ", 
+      SubsuperscriptBox["p", "4", "2"]}], "-", 
+     RowBox[{"14468", " ", 
+      SubscriptBox["p", "8"]}]}], "85364982743040000"]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 8], " = ", 
+   Rational[1, 85364982743040000] (14527 Subscript[$CellContext`p, 4]^2 - 
+    14468 Subscript[$CellContext`p, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6960030410447874`*^9, 3.6960041207589035`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"175913", " ", 
+      SubscriptBox["p", "4"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"87734", " ", 
+      SubscriptBox["p", "9"]}]}], "20436376868683776000"]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 9], " = ", 
+   Rational[1, 20436376868683776000] ((175913 Subscript[$CellContext`p, 4]) 
+     Subscript[$CellContext`p, 5] - 87734 Subscript[$CellContext`p, 9])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6960030410447874`*^9, 3.6960041380519896`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+A genus simplification (p1=p2=p3=p4=0) - even higher than Ninebrane\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.6967598708470926`*^9, 3.6967598807966614`*^9}, {
+  3.7008339190426197`*^9, 3.700833928315437*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "4"}], ",", 
+   RowBox[{"i", "<", "10"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"An", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusSimplified", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i", ",", " ", 
+        "4"}], "]"}], "/.", "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6967598923353214`*^9, 3.696759894136425*^9}, {
+  3.697315228745144*^9, 3.697315259092208*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "0"}],
+  SequenceForm[
+   Subscript[$CellContext`An, 4], " = ", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.696760217264907*^9, {3.697315237474157*^9, 3.6973152452561703`*^9}, 
+   3.6973152872872515`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "5"], "95800320"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 5], " = ", Rational[-1, 95800320] 
+   Subscript[$CellContext`p, 5]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.696760217264907*^9, {3.697315237474157*^9, 3.6973152452561703`*^9}, 
+   3.6973152873272514`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"691", " ", 
+      SubscriptBox["p", "6"]}], "2615348736000"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 6], " = ", Rational[-691, 2615348736000] 
+   Subscript[$CellContext`p, 6]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.696760217264907*^9, {3.697315237474157*^9, 3.6973152452561703`*^9}, 
+   3.6973152874272513`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "7"], "149448499200"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 7], " = ", Rational[-1, 149448499200] 
+   Subscript[$CellContext`p, 7]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.696760217264907*^9, {3.697315237474157*^9, 3.6973152452561703`*^9}, 
+   3.697315287927252*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"3617", " ", 
+      SubscriptBox["p", "8"]}], "21341245685760000"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 8], " = ", Rational[-3617, 21341245685760000] 
+   Subscript[$CellContext`p, 8]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.696760217264907*^9, {3.697315237474157*^9, 3.6973152452561703`*^9}, 
+   3.6973152909532576`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"43867", " ", 
+      SubscriptBox["p", "9"]}], "10218188434341888000"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 9], " = ", 
+   Rational[-43867, 10218188434341888000] Subscript[$CellContext`p, 9]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.696760217264907*^9, {3.697315237474157*^9, 3.6973152452561703`*^9}, 
+   3.697315310798292*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "10"}], ",", 
+   RowBox[{"i", "<", "11"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"An", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusSimplified", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i", ",", " ", 
+        "4"}], "]"}], "/.", "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.696763116705745*^9, 3.6967631255422506`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["An", "10"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"524354", " ", 
+      SubsuperscriptBox["p", "5", "2"]}], "-", 
+     RowBox[{"523833", " ", 
+      SubscriptBox["p", "10"]}]}], "4817145976189747200000"]}],
+  SequenceForm[
+   Subscript[$CellContext`An, 10], " = ", 
+   Rational[1, 4817145976189747200000] (524354 Subscript[$CellContext`p, 5]^2 - 
+    523833 Subscript[$CellContext`p, 10])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967633953056803`*^9}]
+}, {2}]],
+
+Cell["", "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A genus - simplification (p1 = p3=0)", "Subsubsection",
+ CellChangeTimes->{{3.6967594074175863`*^9, 3.6967594167651205`*^9}, {
+  3.696759854907181*^9, 3.696759856451269*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "0"}], ",", 
+   RowBox[{"i", "<", "10"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"As", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusSimplifiedExceptions", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}]}], "]"}], "/.", "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.696759440399472*^9, 3.6967594594205604`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "0"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "1"}],
+  SequenceForm[
+   Subscript[$CellContext`As, 0], " = ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760256786167*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "1"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "0"}],
+  SequenceForm[
+   Subscript[$CellContext`As, 1], " = ", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760256814169*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "2"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "2"], "1440"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 2], " = ", Rational[-1, 1440] 
+   Subscript[$CellContext`p, 2]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760256826169*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "3"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "0"}],
+  SequenceForm[
+   Subscript[$CellContext`As, 3], " = ", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.69676025683917*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"13", " ", 
+      SubsuperscriptBox["p", "2", "2"]}], "-", 
+     RowBox[{"12", " ", 
+      SubscriptBox["p", "4"]}]}], "29030400"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 4], " = ", 
+   Rational[1, 29030400] (13 Subscript[$CellContext`p, 2]^2 - 12 
+    Subscript[$CellContext`p, 4])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760256871172*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "5"], "95800320"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 5], " = ", Rational[-1, 95800320] 
+   Subscript[$CellContext`p, 5]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760256976178*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "12027"}], " ", 
+      SubsuperscriptBox["p", "2", "3"]}], "+", 
+     RowBox[{"23068", " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"11056", " ", 
+      SubscriptBox["p", "6"]}]}], "41845579776000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 6], " = ", 
+   Rational[1, 41845579776000] ((-12027) Subscript[$CellContext`p, 2]^3 + 
+    23068 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 4] - 11056 
+    Subscript[$CellContext`p, 6])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967602571211863`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"25", " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"12", " ", 
+      SubscriptBox["p", "7"]}]}], "1793381990400"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 7], " = ", 
+   Rational[1, 1793381990400] (
+    25 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 5] - 12 
+    Subscript[$CellContext`p, 7])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967602579432335`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"755645", " ", 
+      SubsuperscriptBox["p", "2", "4"]}], "-", 
+     RowBox[{"2204744", " ", 
+      SubsuperscriptBox["p", "2", "2"], " ", 
+      SubscriptBox["p", "4"]}], "+", 
+     RowBox[{"697296", " ", 
+      SubsuperscriptBox["p", "4", "2"]}], "+", 
+     RowBox[{"1446272", " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "6"]}], "-", 
+     RowBox[{"694464", " ", 
+      SubscriptBox["p", "8"]}]}], "4097519171665920000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 8], " = ", 
+   Rational[1, 4097519171665920000] (755645 Subscript[$CellContext`p, 2]^4 - 
+    2204744 Subscript[$CellContext`p, 2]^2 Subscript[$CellContext`p, 4] + 
+    697296 Subscript[$CellContext`p, 4]^2 + 
+    1446272 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 6] - 
+    694464 Subscript[$CellContext`p, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760262794511*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "1112893"}], " ", 
+      SubsuperscriptBox["p", "2", "2"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"703652", " ", 
+      SubscriptBox["p", "4"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"730784", " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "7"]}], "-", 
+     RowBox[{"350936", " ", 
+      SubscriptBox["p", "9"]}]}], "81745507474735104000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 9], " = ", 
+   Rational[1, 81745507474735104000] ((-1112893) 
+     Subscript[$CellContext`p, 2]^2 Subscript[$CellContext`p, 5] + 
+    703652 Subscript[$CellContext`p, 4] Subscript[$CellContext`p, 5] + 
+    730784 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 7] - 350936 
+    Subscript[$CellContext`p, 9])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760296337429*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A genus - simplification (p2 = p3=0)", "Subsubsection",
+ CellChangeTimes->{{3.6967594241045403`*^9, 3.696759431667973*^9}, {
+  3.696759858374379*^9, 3.696759860274488*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "0"}], ",", 
+   RowBox[{"i", "<", "10"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"As", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusSimplifiedExceptions", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3"}], "}"}]}], "]"}], "/.", "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6967594695291386`*^9, 3.6967594763695297`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "0"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "1"}],
+  SequenceForm[
+   Subscript[$CellContext`As, 0], " = ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967602964974384`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "1"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "1"], "24"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 1], " = ", Rational[-1, 24] 
+   Subscript[$CellContext`p, 1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760296508439*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "2"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{"7", " ", 
+     SubsuperscriptBox["p", "1", "2"]}], "5760"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 2], " = ", Rational[7, 5760] 
+   Subscript[$CellContext`p, 1]^2],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967602965194397`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "3"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"31", " ", 
+      SubsuperscriptBox["p", "1", "3"]}], "967680"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 3], " = ", Rational[-31, 967680] 
+   Subscript[$CellContext`p, 1]^3],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967602965284405`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"127", " ", 
+      SubsuperscriptBox["p", "1", "4"]}], "-", 
+     RowBox[{"64", " ", 
+      SubscriptBox["p", "4"]}]}], "154828800"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 4], " = ", 
+   Rational[1, 154828800] (127 Subscript[$CellContext`p, 1]^4 - 64 
+    Subscript[$CellContext`p, 4])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760296564442*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "2555"}], " ", 
+      SubsuperscriptBox["p", "1", "5"]}], "+", 
+     RowBox[{"3392", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"1280", " ", 
+      SubscriptBox["p", "5"]}]}], "122624409600"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 5], " = ", 
+   Rational[1, 122624409600] ((-2555) Subscript[$CellContext`p, 1]^5 + 
+    3392 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 4] - 1280 
+    Subscript[$CellContext`p, 5])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967602966084447`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"1414477", " ", 
+      SubsuperscriptBox["p", "1", "6"]}], "-", 
+     RowBox[{"3217728", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "4"]}], "+", 
+     RowBox[{"1872384", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"707584", " ", 
+      SubscriptBox["p", "6"]}]}], "2678117105664000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 6], " = ", 
+   Rational[1, 2678117105664000] (1414477 Subscript[$CellContext`p, 1]^6 - 
+    3217728 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 4] + 
+    1872384 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 5] - 
+    707584 Subscript[$CellContext`p, 6])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760296774454*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "860055"}], " ", 
+      SubsuperscriptBox["p", "1", "7"]}], "+", 
+     RowBox[{"2804160", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"1953024", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"1137664", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "6"]}], "-", 
+     RowBox[{"430080", " ", 
+      SubscriptBox["p", "7"]}]}], "64274810535936000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 7], " = ", 
+   Rational[1, 64274810535936000] ((-860055) Subscript[$CellContext`p, 1]^7 + 
+    2804160 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 4] - 
+    1953024 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 5] + 
+    1137664 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 6] - 
+    430080 Subscript[$CellContext`p, 7])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967602975464983`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"355554717", " ", 
+      SubsuperscriptBox["p", "1", "8"]}], "-", 
+     RowBox[{"1513483392", " ", 
+      SubsuperscriptBox["p", "1", "4"], " ", 
+      SubscriptBox["p", "4"]}], "+", 
+     RowBox[{"178507776", " ", 
+      SubsuperscriptBox["p", "4", "2"]}], "+", 
+     RowBox[{"1157818368", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"807047168", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "6"]}], "+", 
+     RowBox[{"470237184", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "7"]}], "-", 
+     RowBox[{"177782784", " ", 
+      SubscriptBox["p", "8"]}]}], "1048964907946475520000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 8], " = ", 
+   Rational[1, 1048964907946475520000] (
+    355554717 Subscript[$CellContext`p, 1]^8 - 1513483392 
+    Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 4] + 
+    178507776 Subscript[$CellContext`p, 4]^2 + 
+    1157818368 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 5] - 
+    807047168 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 6] + 
+    470237184 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 7] - 
+    177782784 Subscript[$CellContext`p, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967603023457727`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "28748457785"}], " ", 
+      SubsuperscriptBox["p", "1", "9"]}], "+", 
+     RowBox[{"151093924480", " ", 
+      SubsuperscriptBox["p", "1", "5"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"52563120128", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubsuperscriptBox["p", "4", "2"]}], "-", 
+     RowBox[{"122255864320", " ", 
+      SubsuperscriptBox["p", "1", "4"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"28821585920", " ", 
+      SubscriptBox["p", "4"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"93587107840", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "6"]}], "-", 
+     RowBox[{"65246953472", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "7"]}], "+", 
+     RowBox[{"38019448832", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "8"]}], "-", 
+     RowBox[{"14374338560", " ", 
+      SubscriptBox["p", "9"]}]}], "3348295986165149859840000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 9], " = ", 
+   Rational[1, 3348295986165149859840000] ((-28748457785) 
+     Subscript[$CellContext`p, 1]^9 + 
+    151093924480 Subscript[$CellContext`p, 1]^5 Subscript[$CellContext`p, 4] - 
+    52563120128 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 4]^2 - 
+    122255864320 Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 5] + 
+    28821585920 Subscript[$CellContext`p, 4] Subscript[$CellContext`p, 5] + 
+    93587107840 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 6] - 
+    65246953472 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 7] + 
+    38019448832 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 8] - 
+    14374338560 Subscript[$CellContext`p, 9])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760337451781*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A genus - simplification (p2=p4=0)", "Subsubsection",
+ CellChangeTimes->{{3.6967614979841595`*^9, 3.6967614998572664`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "0"}], ",", 
+   RowBox[{"i", "<", "10"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"As", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusSimplifiedExceptions", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"2", ",", "4"}], "}"}]}], "]"}], "/.", "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6967615099268427`*^9, 3.696761512215974*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "0"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "1"}],
+  SequenceForm[
+   Subscript[$CellContext`As, 0], " = ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762154936735*^9, 3.696762870132642*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "1"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "1"], "24"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 1], " = ", Rational[-1, 24] 
+   Subscript[$CellContext`p, 1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762154936735*^9, 3.696762870140642*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "2"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{"7", " ", 
+     SubsuperscriptBox["p", "1", "2"]}], "5760"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 2], " = ", Rational[7, 5760] 
+   Subscript[$CellContext`p, 1]^2],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762154936735*^9, 3.6967628701976457`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "3"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "31"}], " ", 
+      SubsuperscriptBox["p", "1", "3"]}], "-", 
+     RowBox[{"16", " ", 
+      SubscriptBox["p", "3"]}]}], "967680"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 3], " = ", 
+   Rational[1, 967680] ((-31) Subscript[$CellContext`p, 1]^3 - 16 
+    Subscript[$CellContext`p, 3])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762154936735*^9, 3.696762870211646*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"381", " ", 
+      SubsuperscriptBox["p", "1", "4"]}], "+", 
+     RowBox[{"512", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "3"]}]}], "464486400"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 4], " = ", 
+   Rational[1, 464486400] (381 Subscript[$CellContext`p, 1]^4 + 
+    512 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 3])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762154936735*^9, 3.696762870223647*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "2555"}], " ", 
+      SubsuperscriptBox["p", "1", "5"]}], "-", 
+     RowBox[{"5856", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "3"]}], "-", 
+     RowBox[{"1280", " ", 
+      SubscriptBox["p", "5"]}]}], "122624409600"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 5], " = ", 
+   Rational[1, 122624409600] ((-2555) Subscript[$CellContext`p, 1]^5 - 5856 
+    Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 3] - 1280 
+    Subscript[$CellContext`p, 5])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762154936735*^9, 3.6967628702816505`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"1414477", " ", 
+      SubsuperscriptBox["p", "1", "6"]}], "+", 
+     RowBox[{"4636288", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "3"]}], "+", 
+     RowBox[{"719872", " ", 
+      SubsuperscriptBox["p", "3", "2"]}], "+", 
+     RowBox[{"1872384", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"707584", " ", 
+      SubscriptBox["p", "6"]}]}], "2678117105664000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 6], " = ", 
+   Rational[1, 2678117105664000] (1414477 Subscript[$CellContext`p, 1]^6 + 
+    4636288 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 3] + 
+    719872 Subscript[$CellContext`p, 3]^2 + 
+    1872384 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 5] - 
+    707584 Subscript[$CellContext`p, 6])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762154936735*^9, 3.696762870415658*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "860055"}], " ", 
+      SubsuperscriptBox["p", "1", "7"]}], "-", 
+     RowBox[{"3675888", " ", 
+      SubsuperscriptBox["p", "1", "4"], " ", 
+      SubscriptBox["p", "3"]}], "-", 
+     RowBox[{"1589248", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubsuperscriptBox["p", "3", "2"]}], "-", 
+     RowBox[{"1953024", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"1137664", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "6"]}], "-", 
+     RowBox[{"430080", " ", 
+      SubscriptBox["p", "7"]}]}], "64274810535936000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 7], " = ", 
+   Rational[1, 64274810535936000] ((-860055) Subscript[$CellContext`p, 1]^7 - 
+    3675888 Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 3] - 
+    1589248 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 3]^2 - 
+    1953024 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 5] + 
+    1137664 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 6] - 
+    430080 Subscript[$CellContext`p, 7])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762154936735*^9, 3.6967628712427053`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"355554717", " ", 
+      SubsuperscriptBox["p", "1", "8"]}], "+", 
+     RowBox[{"1874862592", " ", 
+      SubsuperscriptBox["p", "1", "5"], " ", 
+      SubscriptBox["p", "3"]}], "+", 
+     RowBox[{"1471168512", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubsuperscriptBox["p", "3", "2"]}], "+", 
+     RowBox[{"1157818368", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"358825984", " ", 
+      SubscriptBox["p", "3"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"807047168", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "6"]}], "+", 
+     RowBox[{"470237184", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "7"]}], "-", 
+     RowBox[{"177782784", " ", 
+      SubscriptBox["p", "8"]}]}], "1048964907946475520000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 8], " = ", 
+   Rational[1, 1048964907946475520000] (
+    355554717 Subscript[$CellContext`p, 1]^8 + 
+    1874862592 Subscript[$CellContext`p, 1]^5 Subscript[$CellContext`p, 3] + 
+    1471168512 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 3]^2 + 
+    1157818368 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 5] + 
+    358825984 Subscript[$CellContext`p, 3] Subscript[$CellContext`p, 5] - 
+    807047168 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 6] + 
+    470237184 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 7] - 
+    177782784 Subscript[$CellContext`p, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762154936735*^9, 3.696762876610012*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "3348295986165149859840000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "28748457785"}], " ", 
+       SubsuperscriptBox["p", "1", "9"]}], "-", 
+      RowBox[{"180333993024", " ", 
+       SubsuperscriptBox["p", "1", "6"], " ", 
+       SubscriptBox["p", "3"]}], "-", 
+      RowBox[{"213159260160", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubsuperscriptBox["p", "3", "2"]}], "-", 
+      RowBox[{"14627569664", " ", 
+       SubsuperscriptBox["p", "3", "3"]}], "-", 
+      RowBox[{"122255864320", " ", 
+       SubsuperscriptBox["p", "1", "4"], " ", 
+       SubscriptBox["p", "5"]}], "-", 
+      RowBox[{"105546956800", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"93587107840", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubscriptBox["p", "6"]}], "+", 
+      RowBox[{"29001515008", " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "6"]}], "-", 
+      RowBox[{"65246953472", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "7"]}], "+", 
+      RowBox[{"38019448832", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "8"]}], "-", 
+      RowBox[{"14374338560", " ", 
+       SubscriptBox["p", "9"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 9], " = ", 
+   Rational[1, 3348295986165149859840000] ((-28748457785) 
+     Subscript[$CellContext`p, 1]^9 - 180333993024 
+    Subscript[$CellContext`p, 1]^6 Subscript[$CellContext`p, 3] - 
+    213159260160 Subscript[$CellContext`p, 1]^3 
+    Subscript[$CellContext`p, 3]^2 - 14627569664 
+    Subscript[$CellContext`p, 3]^3 - 122255864320 
+    Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 5] - 
+    105546956800 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 3] 
+    Subscript[$CellContext`p, 5] + 
+    93587107840 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 6] + 
+    29001515008 Subscript[$CellContext`p, 3] Subscript[$CellContext`p, 6] - 
+    65246953472 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 7] + 
+    38019448832 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 8] - 
+    14374338560 Subscript[$CellContext`p, 9])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762154936735*^9, 3.6967629127360787`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A genus - simplification (p2=p3=p4=0)", "Subsubsection",
+ CellChangeTimes->{{3.6967618273139963`*^9, 3.6967618307121906`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "0"}], ",", 
+   RowBox[{"i", "<", "10"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"As", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusSimplifiedExceptions", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3", ",", "4"}], "}"}]}], "]"}], "/.", 
+      "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.696761814006235*^9, 3.696761816484377*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "0"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "1"}],
+  SequenceForm[
+   Subscript[$CellContext`As, 0], " = ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967628264261417`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "1"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "1"], "24"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 1], " = ", Rational[-1, 24] 
+   Subscript[$CellContext`p, 1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967628264391427`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "2"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{"7", " ", 
+     SubsuperscriptBox["p", "1", "2"]}], "5760"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 2], " = ", Rational[7, 5760] 
+   Subscript[$CellContext`p, 1]^2],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967628264501433`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "3"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"31", " ", 
+      SubsuperscriptBox["p", "1", "3"]}], "967680"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 3], " = ", Rational[-31, 967680] 
+   Subscript[$CellContext`p, 1]^3],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762826461144*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{"127", " ", 
+     SubsuperscriptBox["p", "1", "4"]}], "154828800"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 4], " = ", Rational[127, 154828800] 
+   Subscript[$CellContext`p, 1]^4],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967628265091467`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "511"}], " ", 
+      SubsuperscriptBox["p", "1", "5"]}], "-", 
+     RowBox[{"256", " ", 
+      SubscriptBox["p", "5"]}]}], "24524881920"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 5], " = ", 
+   Rational[1, 24524881920] ((-511) Subscript[$CellContext`p, 1]^5 - 256 
+    Subscript[$CellContext`p, 5])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967628265681505`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"1414477", " ", 
+      SubsuperscriptBox["p", "1", "6"]}], "+", 
+     RowBox[{"1872384", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"707584", " ", 
+      SubscriptBox["p", "6"]}]}], "2678117105664000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 6], " = ", 
+   Rational[1, 2678117105664000] (1414477 Subscript[$CellContext`p, 1]^6 + 
+    1872384 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 5] - 
+    707584 Subscript[$CellContext`p, 6])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967628267491603`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "860055"}], " ", 
+      SubsuperscriptBox["p", "1", "7"]}], "-", 
+     RowBox[{"1953024", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"1137664", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "6"]}], "-", 
+     RowBox[{"430080", " ", 
+      SubscriptBox["p", "7"]}]}], "64274810535936000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 7], " = ", 
+   Rational[1, 64274810535936000] ((-860055) Subscript[$CellContext`p, 1]^7 - 
+    1953024 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 5] + 
+    1137664 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 6] - 
+    430080 Subscript[$CellContext`p, 7])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967628276042094`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"355554717", " ", 
+      SubsuperscriptBox["p", "1", "8"]}], "+", 
+     RowBox[{"1157818368", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"807047168", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "6"]}], "+", 
+     RowBox[{"470237184", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "7"]}], "-", 
+     RowBox[{"177782784", " ", 
+      SubscriptBox["p", "8"]}]}], "1048964907946475520000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 8], " = ", 
+   Rational[1, 1048964907946475520000] (
+    355554717 Subscript[$CellContext`p, 1]^8 + 
+    1157818368 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 5] - 
+    807047168 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 6] + 
+    470237184 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 7] - 
+    177782784 Subscript[$CellContext`p, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967628332555327`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "28748457785"}], " ", 
+        SubsuperscriptBox["p", "1", "9"]}], "-", 
+       RowBox[{"122255864320", " ", 
+        SubsuperscriptBox["p", "1", "4"], " ", 
+        SubscriptBox["p", "5"]}], "+", 
+       RowBox[{"93587107840", " ", 
+        SubsuperscriptBox["p", "1", "3"], " ", 
+        SubscriptBox["p", "6"]}], "-", 
+       RowBox[{"65246953472", " ", 
+        SubsuperscriptBox["p", "1", "2"], " ", 
+        SubscriptBox["p", "7"]}], "+", 
+       RowBox[{"38019448832", " ", 
+        SubscriptBox["p", "1"], " ", 
+        SubscriptBox["p", "8"]}], "-", 
+       RowBox[{"14374338560", " ", 
+        SubscriptBox["p", "9"]}]}], ")"}], "/", "3348295986165149859840000"}],
+     ")"}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 9], " = ", 
+   Rational[1, 3348295986165149859840000] ((-28748457785) 
+     Subscript[$CellContext`p, 1]^9 - (122255864320 
+     Subscript[$CellContext`p, 1]^4) 
+    Subscript[$CellContext`p, 5] + (93587107840 
+      Subscript[$CellContext`p, 1]^3) Subscript[$CellContext`p, 6] - (
+     65246953472 Subscript[$CellContext`p, 1]^2) 
+    Subscript[$CellContext`p, 7] + (38019448832 Subscript[$CellContext`p, 1]) 
+     Subscript[$CellContext`p, 8] - 14374338560 Subscript[$CellContext`p, 9])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696762870030636*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "PageBreak",
+ PageBreakBelow->True],
+
+Cell[TextData[StyleBox["A genus simplification (p2 =0)  - p_2-structure", \
+"Subsubsection"]], "Text",
+ CellChangeTimes->{{3.6967599065461345`*^9, 3.6967599241491413`*^9}, {
+  3.7008339658183036`*^9, 3.700833976085122*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "0"}], ",", 
+   RowBox[{"i", "<", "10"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"As", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusSimplifiedExceptions", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i", ",", " ", 
+        RowBox[{"{", "2", "}"}]}], "]"}], "/.", "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.696759940058051*^9, 3.696759943275235*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "0"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "1"}],
+  SequenceForm[
+   Subscript[$CellContext`As, 0], " = ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760337578788*^9, 3.6967603816033063`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "1"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "1"], "24"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 1], " = ", Rational[-1, 24] 
+   Subscript[$CellContext`p, 1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760337578788*^9, 3.696760381613307*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "2"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{"7", " ", 
+     SubsuperscriptBox["p", "1", "2"]}], "5760"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 2], " = ", Rational[7, 5760] 
+   Subscript[$CellContext`p, 1]^2],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760337578788*^9, 3.696760381625307*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "3"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "31"}], " ", 
+      SubsuperscriptBox["p", "1", "3"]}], "-", 
+     RowBox[{"16", " ", 
+      SubscriptBox["p", "3"]}]}], "967680"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 3], " = ", 
+   Rational[1, 967680] ((-31) Subscript[$CellContext`p, 1]^3 - 16 
+    Subscript[$CellContext`p, 3])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760337578788*^9, 3.696760381637308*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"381", " ", 
+      SubsuperscriptBox["p", "1", "4"]}], "+", 
+     RowBox[{"512", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "3"]}], "-", 
+     RowBox[{"192", " ", 
+      SubscriptBox["p", "4"]}]}], "464486400"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 4], " = ", 
+   Rational[1, 464486400] (381 Subscript[$CellContext`p, 1]^4 + 
+    512 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 3] - 192 
+    Subscript[$CellContext`p, 4])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760337578788*^9, 3.696760381652309*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "2555"}], " ", 
+      SubsuperscriptBox["p", "1", "5"]}], "-", 
+     RowBox[{"5856", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "3"]}], "+", 
+     RowBox[{"3392", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"1280", " ", 
+      SubscriptBox["p", "5"]}]}], "122624409600"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 5], " = ", 
+   Rational[1, 122624409600] ((-2555) Subscript[$CellContext`p, 1]^5 - 5856 
+    Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 3] + 
+    3392 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 4] - 1280 
+    Subscript[$CellContext`p, 5])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760337578788*^9, 3.696760381726313*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"1414477", " ", 
+      SubsuperscriptBox["p", "1", "6"]}], "+", 
+     RowBox[{"4636288", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "3"]}], "+", 
+     RowBox[{"719872", " ", 
+      SubsuperscriptBox["p", "3", "2"]}], "-", 
+     RowBox[{"3217728", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "4"]}], "+", 
+     RowBox[{"1872384", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"707584", " ", 
+      SubscriptBox["p", "6"]}]}], "2678117105664000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 6], " = ", 
+   Rational[1, 2678117105664000] (1414477 Subscript[$CellContext`p, 1]^6 + 
+    4636288 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 3] + 
+    719872 Subscript[$CellContext`p, 3]^2 - 3217728 
+    Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 4] + 
+    1872384 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 5] - 
+    707584 Subscript[$CellContext`p, 6])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760337578788*^9, 3.696760381884322*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "860055"}], " ", 
+      SubsuperscriptBox["p", "1", "7"]}], "-", 
+     RowBox[{"3675888", " ", 
+      SubsuperscriptBox["p", "1", "4"], " ", 
+      SubscriptBox["p", "3"]}], "-", 
+     RowBox[{"1589248", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubsuperscriptBox["p", "3", "2"]}], "+", 
+     RowBox[{"2804160", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "4"]}], "+", 
+     RowBox[{"869376", " ", 
+      SubscriptBox["p", "3"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"1953024", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"1137664", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "6"]}], "-", 
+     RowBox[{"430080", " ", 
+      SubscriptBox["p", "7"]}]}], "64274810535936000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 7], " = ", 
+   Rational[1, 64274810535936000] ((-860055) Subscript[$CellContext`p, 1]^7 - 
+    3675888 Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 3] - 
+    1589248 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 3]^2 + 
+    2804160 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 4] + 
+    869376 Subscript[$CellContext`p, 3] Subscript[$CellContext`p, 4] - 
+    1953024 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 5] + 
+    1137664 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 6] - 
+    430080 Subscript[$CellContext`p, 7])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760337578788*^9, 3.6967603827103696`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "1048964907946475520000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"355554717", " ", 
+       SubsuperscriptBox["p", "1", "8"]}], "+", 
+      RowBox[{"1874862592", " ", 
+       SubsuperscriptBox["p", "1", "5"], " ", 
+       SubscriptBox["p", "3"]}], "+", 
+      RowBox[{"1471168512", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubsuperscriptBox["p", "3", "2"]}], "-", 
+      RowBox[{"1513483392", " ", 
+       SubsuperscriptBox["p", "1", "4"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"1307017216", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "4"]}], "+", 
+      RowBox[{"178507776", " ", 
+       SubsuperscriptBox["p", "4", "2"]}], "+", 
+      RowBox[{"1157818368", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"358825984", " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "5"]}], "-", 
+      RowBox[{"807047168", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "6"]}], "+", 
+      RowBox[{"470237184", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "7"]}], "-", 
+      RowBox[{"177782784", " ", 
+       SubscriptBox["p", "8"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 8], " = ", 
+   Rational[1, 1048964907946475520000] (
+    355554717 Subscript[$CellContext`p, 1]^8 + 
+    1874862592 Subscript[$CellContext`p, 1]^5 Subscript[$CellContext`p, 3] + 
+    1471168512 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 3]^2 - 
+    1513483392 Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 4] - 
+    1307017216 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 3] 
+    Subscript[$CellContext`p, 4] + 178507776 Subscript[$CellContext`p, 4]^2 + 
+    1157818368 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 5] + 
+    358825984 Subscript[$CellContext`p, 3] Subscript[$CellContext`p, 5] - 
+    807047168 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 6] + 
+    470237184 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 7] - 
+    177782784 Subscript[$CellContext`p, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760337578788*^9, 3.6967603880626755`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "3348295986165149859840000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "28748457785"}], " ", 
+       SubsuperscriptBox["p", "1", "9"]}], "-", 
+      RowBox[{"180333993024", " ", 
+       SubsuperscriptBox["p", "1", "6"], " ", 
+       SubscriptBox["p", "3"]}], "-", 
+      RowBox[{"213159260160", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubsuperscriptBox["p", "3", "2"]}], "-", 
+      RowBox[{"14627569664", " ", 
+       SubsuperscriptBox["p", "3", "3"]}], "+", 
+      RowBox[{"151093924480", " ", 
+       SubsuperscriptBox["p", "1", "5"], " ", 
+       SubscriptBox["p", "4"]}], "+", 
+      RowBox[{"236890066944", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"52563120128", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubsuperscriptBox["p", "4", "2"]}], "-", 
+      RowBox[{"122255864320", " ", 
+       SubsuperscriptBox["p", "1", "4"], " ", 
+       SubscriptBox["p", "5"]}], "-", 
+      RowBox[{"105546956800", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"28821585920", " ", 
+       SubscriptBox["p", "4"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"93587107840", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubscriptBox["p", "6"]}], "+", 
+      RowBox[{"29001515008", " ", 
+       SubscriptBox["p", "3"], " ", 
+       SubscriptBox["p", "6"]}], "-", 
+      RowBox[{"65246953472", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "7"]}], "+", 
+      RowBox[{"38019448832", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "8"]}], "-", 
+      RowBox[{"14374338560", " ", 
+       SubscriptBox["p", "9"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 9], " = ", 
+   Rational[1, 3348295986165149859840000] ((-28748457785) 
+     Subscript[$CellContext`p, 1]^9 - 180333993024 
+    Subscript[$CellContext`p, 1]^6 Subscript[$CellContext`p, 3] - 
+    213159260160 Subscript[$CellContext`p, 1]^3 
+    Subscript[$CellContext`p, 3]^2 - 14627569664 
+    Subscript[$CellContext`p, 3]^3 + 
+    151093924480 Subscript[$CellContext`p, 1]^5 Subscript[$CellContext`p, 4] + 
+    236890066944 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 3] 
+     Subscript[$CellContext`p, 4] - 52563120128 Subscript[$CellContext`p, 1] 
+    Subscript[$CellContext`p, 4]^2 - 122255864320 
+    Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 5] - 
+    105546956800 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 3] 
+    Subscript[$CellContext`p, 5] + 
+    28821585920 Subscript[$CellContext`p, 4] Subscript[$CellContext`p, 5] + 
+    93587107840 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 6] + 
+    29001515008 Subscript[$CellContext`p, 3] Subscript[$CellContext`p, 6] - 
+    65246953472 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 7] + 
+    38019448832 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 8] - 
+    14374338560 Subscript[$CellContext`p, 9])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760337578788*^9, 3.696760424242745*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["A genus simplification (p3 =0) - p_3-structure", \
+"Subsubsection"]], "Subsubsection",
+ CellChangeTimes->{{3.696759932424615*^9, 3.6967599356417985`*^9}, {
+  3.700833979534728*^9, 3.7008339831639347`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "0"}], ",", 
+   RowBox[{"i", "<", "10"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"As", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusSimplifiedExceptions", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i", ",", " ", 
+        RowBox[{"{", "3", "}"}]}], "]"}], "/.", "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "p"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.696759945777378*^9, 3.6967599459493885`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "0"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "1"}],
+  SequenceForm[
+   Subscript[$CellContext`As, 0], " = ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967604244207554`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "1"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["p", "1"], "24"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 1], " = ", Rational[-1, 24] 
+   Subscript[$CellContext`p, 1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967604244307556`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "2"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"7", " ", 
+      SubsuperscriptBox["p", "1", "2"]}], "-", 
+     RowBox[{"4", " ", 
+      SubscriptBox["p", "2"]}]}], "5760"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 2], " = ", 
+   Rational[1, 5760] (7 Subscript[$CellContext`p, 1]^2 - 4 
+    Subscript[$CellContext`p, 2])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760424443756*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "3"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "31"}], " ", 
+      SubsuperscriptBox["p", "1", "3"]}], "+", 
+     RowBox[{"44", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "2"]}]}], "967680"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 3], " = ", 
+   Rational[1, 967680] ((-31) Subscript[$CellContext`p, 1]^3 + 
+    44 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760424450757*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"381", " ", 
+      SubsuperscriptBox["p", "1", "4"]}], "-", 
+     RowBox[{"904", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "2"]}], "+", 
+     RowBox[{"208", " ", 
+      SubsuperscriptBox["p", "2", "2"]}], "-", 
+     RowBox[{"192", " ", 
+      SubscriptBox["p", "4"]}]}], "464486400"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 4], " = ", 
+   Rational[1, 464486400] (381 Subscript[$CellContext`p, 1]^4 - 904 
+    Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 2] + 
+    208 Subscript[$CellContext`p, 2]^2 - 192 Subscript[$CellContext`p, 4])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967604244597573`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "2555"}], " ", 
+      SubsuperscriptBox["p", "1", "5"]}], "+", 
+     RowBox[{"8584", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "2"]}], "-", 
+     RowBox[{"4976", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubsuperscriptBox["p", "2", "2"]}], "+", 
+     RowBox[{"3392", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"1280", " ", 
+      SubscriptBox["p", "5"]}]}], "122624409600"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 5], " = ", 
+   Rational[1, 122624409600] ((-2555) 
+     Subscript[$CellContext`p, 1]^5 + (8584 Subscript[$CellContext`p, 1]^3) 
+     Subscript[$CellContext`p, 2] - (4976 Subscript[$CellContext`p, 1]) 
+    Subscript[$CellContext`p, 2]^2 + (3392 Subscript[$CellContext`p, 1]) 
+     Subscript[$CellContext`p, 4] - 1280 Subscript[$CellContext`p, 5])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967604245187607`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"1414477", " ", 
+      SubsuperscriptBox["p", "1", "6"]}], "-", 
+     RowBox[{"6161812", " ", 
+      SubsuperscriptBox["p", "1", "4"], " ", 
+      SubscriptBox["p", "2"]}], "+", 
+     RowBox[{"6099760", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubsuperscriptBox["p", "2", "2"]}], "-", 
+     RowBox[{"769728", " ", 
+      SubsuperscriptBox["p", "2", "3"]}], "-", 
+     RowBox[{"3217728", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "4"]}], "+", 
+     RowBox[{"1476352", " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "4"]}], "+", 
+     RowBox[{"1872384", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "5"]}], "-", 
+     RowBox[{"707584", " ", 
+      SubscriptBox["p", "6"]}]}], "2678117105664000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 6], " = ", 
+   Rational[1, 2678117105664000] (1414477 Subscript[$CellContext`p, 1]^6 - 
+    6161812 Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 2] + 
+    6099760 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 2]^2 - 
+    769728 Subscript[$CellContext`p, 2]^3 - 3217728 
+    Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 4] + 
+    1476352 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 4] + 
+    1872384 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 5] - 
+    707584 Subscript[$CellContext`p, 6])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967604246917706`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "860055"}], " ", 
+      SubsuperscriptBox["p", "1", "7"]}], "+", 
+     RowBox[{"4605908", " ", 
+      SubsuperscriptBox["p", "1", "5"], " ", 
+      SubscriptBox["p", "2"]}], "-", 
+     RowBox[{"6595920", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubsuperscriptBox["p", "2", "2"]}], "+", 
+     RowBox[{"2141632", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubsuperscriptBox["p", "2", "3"]}], "+", 
+     RowBox[{"2804160", " ", 
+      SubsuperscriptBox["p", "1", "3"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"3241728", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "4"]}], "-", 
+     RowBox[{"1953024", " ", 
+      SubsuperscriptBox["p", "1", "2"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"896000", " ", 
+      SubscriptBox["p", "2"], " ", 
+      SubscriptBox["p", "5"]}], "+", 
+     RowBox[{"1137664", " ", 
+      SubscriptBox["p", "1"], " ", 
+      SubscriptBox["p", "6"]}], "-", 
+     RowBox[{"430080", " ", 
+      SubscriptBox["p", "7"]}]}], "64274810535936000"]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 7], " = ", 
+   Rational[1, 64274810535936000] ((-860055) Subscript[$CellContext`p, 1]^7 + 
+    4605908 Subscript[$CellContext`p, 1]^5 Subscript[$CellContext`p, 2] - 
+    6595920 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 2]^2 + 
+    2141632 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2]^3 + 
+    2804160 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 4] - 
+    3241728 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2] 
+    Subscript[$CellContext`p, 4] - 1953024 Subscript[$CellContext`p, 1]^2 
+    Subscript[$CellContext`p, 5] + 
+    896000 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 5] + 
+    1137664 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 6] - 
+    430080 Subscript[$CellContext`p, 7])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967604254828157`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "1048964907946475520000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"355554717", " ", 
+       SubsuperscriptBox["p", "1", "8"]}], "-", 
+      RowBox[{"2259600336", " ", 
+       SubsuperscriptBox["p", "1", "6"], " ", 
+       SubscriptBox["p", "2"]}], "+", 
+      RowBox[{"4275360992", " ", 
+       SubsuperscriptBox["p", "1", "4"], " ", 
+       SubsuperscriptBox["p", "2", "2"]}], "-", 
+      RowBox[{"2418330880", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubsuperscriptBox["p", "2", "3"]}], "+", 
+      RowBox[{"193445120", " ", 
+       SubsuperscriptBox["p", "2", "4"]}], "-", 
+      RowBox[{"1513483392", " ", 
+       SubsuperscriptBox["p", "1", "4"], " ", 
+       SubscriptBox["p", "4"]}], "+", 
+      RowBox[{"2989286400", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"564414464", " ", 
+       SubsuperscriptBox["p", "2", "2"], " ", 
+       SubscriptBox["p", "4"]}], "+", 
+      RowBox[{"178507776", " ", 
+       SubsuperscriptBox["p", "4", "2"]}], "+", 
+      RowBox[{"1157818368", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubscriptBox["p", "5"]}], "-", 
+      RowBox[{"1338351616", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "5"]}], "-", 
+      RowBox[{"807047168", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "6"]}], "+", 
+      RowBox[{"370245632", " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "6"]}], "+", 
+      RowBox[{"470237184", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "7"]}], "-", 
+      RowBox[{"177782784", " ", 
+       SubscriptBox["p", "8"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 8], " = ", 
+   Rational[1, 1048964907946475520000] (
+    355554717 Subscript[$CellContext`p, 1]^8 - 2259600336 
+    Subscript[$CellContext`p, 1]^6 Subscript[$CellContext`p, 2] + 
+    4275360992 Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 2]^2 - 
+    2418330880 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 2]^3 + 
+    193445120 Subscript[$CellContext`p, 2]^4 - 1513483392 
+    Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 4] + 
+    2989286400 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 2] 
+     Subscript[$CellContext`p, 4] - 564414464 Subscript[$CellContext`p, 2]^2 
+    Subscript[$CellContext`p, 4] + 178507776 Subscript[$CellContext`p, 4]^2 + 
+    1157818368 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 5] - 
+    1338351616 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2] 
+    Subscript[$CellContext`p, 5] - 807047168 Subscript[$CellContext`p, 1]^2 
+    Subscript[$CellContext`p, 6] + 
+    370245632 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 6] + 
+    470237184 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 7] - 
+    177782784 Subscript[$CellContext`p, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.696760430465101*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["As", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "3348295986165149859840000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "28748457785"}], " ", 
+       SubsuperscriptBox["p", "1", "9"]}], "+", 
+      RowBox[{"211447342704", " ", 
+       SubsuperscriptBox["p", "1", "7"], " ", 
+       SubscriptBox["p", "2"]}], "-", 
+      RowBox[{"499635280608", " ", 
+       SubsuperscriptBox["p", "1", "5"], " ", 
+       SubsuperscriptBox["p", "2", "2"]}], "+", 
+      RowBox[{"416000027392", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubsuperscriptBox["p", "2", "3"]}], "-", 
+      RowBox[{"87224115456", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubsuperscriptBox["p", "2", "4"]}], "+", 
+      RowBox[{"151093924480", " ", 
+       SubsuperscriptBox["p", "1", "5"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"431920466944", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "4"]}], "+", 
+      RowBox[{"209924868096", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubsuperscriptBox["p", "2", "2"], " ", 
+       SubscriptBox["p", "4"]}], "-", 
+      RowBox[{"52563120128", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubsuperscriptBox["p", "4", "2"]}], "-", 
+      RowBox[{"122255864320", " ", 
+       SubsuperscriptBox["p", "1", "4"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"241446506496", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "5"]}], "-", 
+      RowBox[{"45584097280", " ", 
+       SubsuperscriptBox["p", "2", "2"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"28821585920", " ", 
+       SubscriptBox["p", "4"], " ", 
+       SubscriptBox["p", "5"]}], "+", 
+      RowBox[{"93587107840", " ", 
+       SubsuperscriptBox["p", "1", "3"], " ", 
+       SubscriptBox["p", "6"]}], "-", 
+      RowBox[{"108177096704", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "6"]}], "-", 
+      RowBox[{"65246953472", " ", 
+       SubsuperscriptBox["p", "1", "2"], " ", 
+       SubscriptBox["p", "7"]}], "+", 
+      RowBox[{"29932912640", " ", 
+       SubscriptBox["p", "2"], " ", 
+       SubscriptBox["p", "7"]}], "+", 
+      RowBox[{"38019448832", " ", 
+       SubscriptBox["p", "1"], " ", 
+       SubscriptBox["p", "8"]}], "-", 
+      RowBox[{"14374338560", " ", 
+       SubscriptBox["p", "9"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`As, 9], " = ", 
+   Rational[1, 3348295986165149859840000] ((-28748457785) 
+     Subscript[$CellContext`p, 1]^9 + 
+    211447342704 Subscript[$CellContext`p, 1]^7 Subscript[$CellContext`p, 2] - 
+    499635280608 Subscript[$CellContext`p, 1]^5 
+    Subscript[$CellContext`p, 2]^2 + 
+    416000027392 Subscript[$CellContext`p, 1]^3 
+     Subscript[$CellContext`p, 2]^3 - 87224115456 
+    Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2]^4 + 
+    151093924480 Subscript[$CellContext`p, 1]^5 Subscript[$CellContext`p, 4] - 
+    431920466944 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 2] 
+    Subscript[$CellContext`p, 4] + 
+    209924868096 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2]^2 
+     Subscript[$CellContext`p, 4] - 52563120128 Subscript[$CellContext`p, 1] 
+    Subscript[$CellContext`p, 4]^2 - 122255864320 
+    Subscript[$CellContext`p, 1]^4 Subscript[$CellContext`p, 5] + 
+    241446506496 Subscript[$CellContext`p, 1]^2 Subscript[$CellContext`p, 2] 
+     Subscript[$CellContext`p, 5] - 45584097280 
+    Subscript[$CellContext`p, 2]^2 Subscript[$CellContext`p, 5] + 
+    28821585920 Subscript[$CellContext`p, 4] Subscript[$CellContext`p, 5] + 
+    93587107840 Subscript[$CellContext`p, 1]^3 Subscript[$CellContext`p, 6] - 
+    108177096704 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 2] 
+    Subscript[$CellContext`p, 6] - 65246953472 Subscript[$CellContext`p, 1]^2 
+    Subscript[$CellContext`p, 7] + 
+    29932912640 Subscript[$CellContext`p, 2] Subscript[$CellContext`p, 7] + 
+    38019448832 Subscript[$CellContext`p, 1] Subscript[$CellContext`p, 8] - 
+    14374338560 Subscript[$CellContext`p, 9])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6967604677102313`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["A genus Complexification", "Subsubsection"]], \
+"Subsubsubsubsection",
+ CellChangeTimes->{{3.697235763680082*^9, 3.6972357689050903`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "0"}], ",", 
+   RowBox[{"i", "<", "9"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"A", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{
+      RowBox[{"genusComplexification", "[", 
+       RowBox[{
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           SqrtBox["#"], "/", "2"}], 
+          RowBox[{"Sinh", "[", 
+           RowBox[{
+            SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i"}], "]"}], "/.", 
+      "\[VeryThinSpace]", 
+      RowBox[{"c", "\[Rule]", "c"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6972351914419937`*^9, 3.6972351922739944`*^9}, {
+  3.6972353163232355`*^9, 3.697235357004322*^9}, {3.697235543732671*^9, 
+  3.697235544082671*^9}, {3.69723597510157*^9, 3.6972359771735725`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "0"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "1"}],
+  SequenceForm[
+   Subscript[$CellContext`A, 0], " = ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6972353108012266`*^9, 3.697235362832331*^9}, 
+   3.6972354820295563`*^9, 3.6972355489096823`*^9, 3.6972359789635754`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "1"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    SubscriptBox["c", "2"], "24"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 1], " = ", Rational[1, 24] 
+   Subscript[$CellContext`c, 2]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6972353108012266`*^9, 3.697235362832331*^9}, 
+   3.6972354820295563`*^9, 3.6972355489096823`*^9, 3.697235978973575*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "2"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"7", " ", 
+      SubsuperscriptBox["c", "2", "2"]}], "-", 
+     RowBox[{"4", " ", 
+      SubscriptBox["c", "4"]}]}], "5760"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 2], " = ", 
+   Rational[1, 5760] (7 Subscript[$CellContext`c, 2]^2 - 4 
+    Subscript[$CellContext`c, 4])],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6972353108012266`*^9, 3.697235362832331*^9}, 
+   3.6972354820295563`*^9, 3.6972355489096823`*^9, 3.697235978983575*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "3"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"31", " ", 
+      SubsuperscriptBox["c", "2", "3"]}], "-", 
+     RowBox[{"44", " ", 
+      SubscriptBox["c", "2"], " ", 
+      SubscriptBox["c", "4"]}], "+", 
+     RowBox[{"16", " ", 
+      SubscriptBox["c", "6"]}]}], "967680"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 3], " = ", 
+   Rational[1, 967680] (
+    31 Subscript[$CellContext`c, 2]^3 - (44 Subscript[$CellContext`c, 2]) 
+    Subscript[$CellContext`c, 4] + 16 Subscript[$CellContext`c, 6])],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6972353108012266`*^9, 3.697235362832331*^9}, 
+   3.6972354820295563`*^9, 3.6972355489096823`*^9, 3.697235978983575*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"381", " ", 
+      SubsuperscriptBox["c", "2", "4"]}], "-", 
+     RowBox[{"904", " ", 
+      SubsuperscriptBox["c", "2", "2"], " ", 
+      SubscriptBox["c", "4"]}], "+", 
+     RowBox[{"208", " ", 
+      SubsuperscriptBox["c", "4", "2"]}], "+", 
+     RowBox[{"512", " ", 
+      SubscriptBox["c", "2"], " ", 
+      SubscriptBox["c", "6"]}], "-", 
+     RowBox[{"192", " ", 
+      SubscriptBox["c", "8"]}]}], "464486400"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 4], " = ", 
+   Rational[1, 464486400] (
+    381 Subscript[$CellContext`c, 2]^4 - (904 Subscript[$CellContext`c, 2]^2) 
+    Subscript[$CellContext`c, 4] + 
+    208 Subscript[$CellContext`c, 4]^2 + (512 Subscript[$CellContext`c, 2]) 
+     Subscript[$CellContext`c, 6] - 192 Subscript[$CellContext`c, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6972353108012266`*^9, 3.697235362832331*^9}, 
+   3.6972354820295563`*^9, 3.6972355489096823`*^9, 3.697235978993575*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"2555", " ", 
+      SubsuperscriptBox["c", "2", "5"]}], "-", 
+     RowBox[{"8584", " ", 
+      SubsuperscriptBox["c", "2", "3"], " ", 
+      SubscriptBox["c", "4"]}], "+", 
+     RowBox[{"4976", " ", 
+      SubscriptBox["c", "2"], " ", 
+      SubsuperscriptBox["c", "4", "2"]}], "+", 
+     RowBox[{"5856", " ", 
+      SubsuperscriptBox["c", "2", "2"], " ", 
+      SubscriptBox["c", "6"]}], "-", 
+     RowBox[{"2688", " ", 
+      SubscriptBox["c", "4"], " ", 
+      SubscriptBox["c", "6"]}], "-", 
+     RowBox[{"3392", " ", 
+      SubscriptBox["c", "2"], " ", 
+      SubscriptBox["c", "8"]}], "+", 
+     RowBox[{"1280", " ", 
+      SubscriptBox["c", "10"]}]}], "122624409600"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 5], " = ", 
+   Rational[1, 122624409600] (
+    2555 Subscript[$CellContext`c, 2]^5 - (8584 
+     Subscript[$CellContext`c, 2]^3) 
+    Subscript[$CellContext`c, 4] + (4976 Subscript[$CellContext`c, 2]) 
+     Subscript[$CellContext`c, 4]^2 + (5856 Subscript[$CellContext`c, 2]^2) 
+     Subscript[$CellContext`c, 6] - (2688 Subscript[$CellContext`c, 4]) 
+    Subscript[$CellContext`c, 6] - (3392 Subscript[$CellContext`c, 2]) 
+    Subscript[$CellContext`c, 8] + 1280 Subscript[$CellContext`c, 10])],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6972353108012266`*^9, 3.697235362832331*^9}, 
+   3.6972354820295563`*^9, 3.6972355489096823`*^9, 3.697235979033575*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "2678117105664000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"1414477", " ", 
+       SubsuperscriptBox["c", "2", "6"]}], "-", 
+      RowBox[{"6161812", " ", 
+       SubsuperscriptBox["c", "2", "4"], " ", 
+       SubscriptBox["c", "4"]}], "+", 
+      RowBox[{"6099760", " ", 
+       SubsuperscriptBox["c", "2", "2"], " ", 
+       SubsuperscriptBox["c", "4", "2"]}], "-", 
+      RowBox[{"769728", " ", 
+       SubsuperscriptBox["c", "4", "3"]}], "+", 
+      RowBox[{"4636288", " ", 
+       SubsuperscriptBox["c", "2", "3"], " ", 
+       SubscriptBox["c", "6"]}], "-", 
+      RowBox[{"5362176", " ", 
+       SubscriptBox["c", "2"], " ", 
+       SubscriptBox["c", "4"], " ", 
+       SubscriptBox["c", "6"]}], "+", 
+      RowBox[{"719872", " ", 
+       SubsuperscriptBox["c", "6", "2"]}], "-", 
+      RowBox[{"3217728", " ", 
+       SubsuperscriptBox["c", "2", "2"], " ", 
+       SubscriptBox["c", "8"]}], "+", 
+      RowBox[{"1476352", " ", 
+       SubscriptBox["c", "4"], " ", 
+       SubscriptBox["c", "8"]}], "+", 
+      RowBox[{"1872384", " ", 
+       SubscriptBox["c", "2"], " ", 
+       SubscriptBox["c", "10"]}], "-", 
+      RowBox[{"707584", " ", 
+       SubscriptBox["c", "12"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 6], " = ", 
+   Rational[1, 2678117105664000] (
+    1414477 Subscript[$CellContext`c, 2]^6 - (6161812 
+     Subscript[$CellContext`c, 2]^4) 
+    Subscript[$CellContext`c, 4] + (6099760 Subscript[$CellContext`c, 2]^2) 
+     Subscript[$CellContext`c, 4]^2 - 769728 
+    Subscript[$CellContext`c, 4]^3 + (4636288 Subscript[$CellContext`c, 2]^3) 
+     Subscript[$CellContext`c, 6] - ((5362176 Subscript[$CellContext`c, 2]) 
+     Subscript[$CellContext`c, 4]) Subscript[$CellContext`c, 6] + 
+    719872 Subscript[$CellContext`c, 6]^2 - (3217728 
+     Subscript[$CellContext`c, 2]^2) 
+    Subscript[$CellContext`c, 8] + (1476352 Subscript[$CellContext`c, 4]) 
+     Subscript[$CellContext`c, 8] + (1872384 Subscript[$CellContext`c, 2]) 
+     Subscript[$CellContext`c, 10] - 707584 Subscript[$CellContext`c, 12])],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6972353108012266`*^9, 3.697235362832331*^9}, 
+   3.6972354820295563`*^9, 3.6972355489096823`*^9, 3.6972359791335754`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "64274810535936000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"860055", " ", 
+       SubsuperscriptBox["c", "2", "7"]}], "-", 
+      RowBox[{"4605908", " ", 
+       SubsuperscriptBox["c", "2", "5"], " ", 
+       SubscriptBox["c", "4"]}], "+", 
+      RowBox[{"6595920", " ", 
+       SubsuperscriptBox["c", "2", "3"], " ", 
+       SubsuperscriptBox["c", "4", "2"]}], "-", 
+      RowBox[{"2141632", " ", 
+       SubscriptBox["c", "2"], " ", 
+       SubsuperscriptBox["c", "4", "3"]}], "+", 
+      RowBox[{"3675888", " ", 
+       SubsuperscriptBox["c", "2", "4"], " ", 
+       SubscriptBox["c", "6"]}], "-", 
+      RowBox[{"7263104", " ", 
+       SubsuperscriptBox["c", "2", "2"], " ", 
+       SubscriptBox["c", "4"], " ", 
+       SubscriptBox["c", "6"]}], "+", 
+      RowBox[{"1371904", " ", 
+       SubsuperscriptBox["c", "4", "2"], " ", 
+       SubscriptBox["c", "6"]}], "+", 
+      RowBox[{"1589248", " ", 
+       SubscriptBox["c", "2"], " ", 
+       SubsuperscriptBox["c", "6", "2"]}], "-", 
+      RowBox[{"2804160", " ", 
+       SubsuperscriptBox["c", "2", "3"], " ", 
+       SubscriptBox["c", "8"]}], "+", 
+      RowBox[{"3241728", " ", 
+       SubscriptBox["c", "2"], " ", 
+       SubscriptBox["c", "4"], " ", 
+       SubscriptBox["c", "8"]}], "-", 
+      RowBox[{"869376", " ", 
+       SubscriptBox["c", "6"], " ", 
+       SubscriptBox["c", "8"]}], "+", 
+      RowBox[{"1953024", " ", 
+       SubsuperscriptBox["c", "2", "2"], " ", 
+       SubscriptBox["c", "10"]}], "-", 
+      RowBox[{"896000", " ", 
+       SubscriptBox["c", "4"], " ", 
+       SubscriptBox["c", "10"]}], "-", 
+      RowBox[{"1137664", " ", 
+       SubscriptBox["c", "2"], " ", 
+       SubscriptBox["c", "12"]}], "+", 
+      RowBox[{"430080", " ", 
+       SubscriptBox["c", "14"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 7], " = ", 
+   Rational[1, 64274810535936000] (
+    860055 Subscript[$CellContext`c, 2]^7 - (4605908 
+     Subscript[$CellContext`c, 2]^5) 
+    Subscript[$CellContext`c, 4] + (6595920 Subscript[$CellContext`c, 2]^3) 
+     Subscript[$CellContext`c, 4]^2 - (2141632 Subscript[$CellContext`c, 2]) 
+    Subscript[$CellContext`c, 4]^3 + (3675888 Subscript[$CellContext`c, 2]^4) 
+     Subscript[$CellContext`c, 6] - ((7263104 Subscript[$CellContext`c, 2]^2) 
+     Subscript[$CellContext`c, 4]) 
+    Subscript[$CellContext`c, 6] + (1371904 Subscript[$CellContext`c, 4]^2) 
+     Subscript[$CellContext`c, 6] + (1589248 Subscript[$CellContext`c, 2]) 
+     Subscript[$CellContext`c, 6]^2 - (2804160 Subscript[$CellContext`c, 2]^3)
+      Subscript[$CellContext`c, 8] + ((3241728 Subscript[$CellContext`c, 2]) 
+      Subscript[$CellContext`c, 4]) Subscript[$CellContext`c, 8] - (869376 
+     Subscript[$CellContext`c, 6]) 
+    Subscript[$CellContext`c, 8] + (1953024 Subscript[$CellContext`c, 2]^2) 
+     Subscript[$CellContext`c, 10] - (896000 Subscript[$CellContext`c, 4]) 
+    Subscript[$CellContext`c, 10] - (1137664 Subscript[$CellContext`c, 2]) 
+    Subscript[$CellContext`c, 12] + 430080 Subscript[$CellContext`c, 14])],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6972353108012266`*^9, 3.697235362832331*^9}, 
+   3.6972354820295563`*^9, 3.6972355489096823`*^9, 3.6972359795845766`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "1048964907946475520000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"355554717", " ", 
+       SubsuperscriptBox["c", "2", "8"]}], "-", 
+      RowBox[{"2259600336", " ", 
+       SubsuperscriptBox["c", "2", "6"], " ", 
+       SubscriptBox["c", "4"]}], "+", 
+      RowBox[{"4275360992", " ", 
+       SubsuperscriptBox["c", "2", "4"], " ", 
+       SubsuperscriptBox["c", "4", "2"]}], "-", 
+      RowBox[{"2418330880", " ", 
+       SubsuperscriptBox["c", "2", "2"], " ", 
+       SubsuperscriptBox["c", "4", "3"]}], "+", 
+      RowBox[{"193445120", " ", 
+       SubsuperscriptBox["c", "4", "4"]}], "+", 
+      RowBox[{"1874862592", " ", 
+       SubsuperscriptBox["c", "2", "5"], " ", 
+       SubscriptBox["c", "6"]}], "-", 
+      RowBox[{"5361225728", " ", 
+       SubsuperscriptBox["c", "2", "3"], " ", 
+       SubscriptBox["c", "4"], " ", 
+       SubscriptBox["c", "6"]}], "+", 
+      RowBox[{"2606571520", " ", 
+       SubscriptBox["c", "2"], " ", 
+       SubsuperscriptBox["c", "4", "2"], " ", 
+       SubscriptBox["c", "6"]}], "+", 
+      RowBox[{"1471168512", " ", 
+       SubsuperscriptBox["c", "2", "2"], " ", 
+       SubsuperscriptBox["c", "6", "2"]}], "-", 
+      RowBox[{"554631168", " ", 
+       SubscriptBox["c", "4"], " ", 
+       SubsuperscriptBox["c", "6", "2"]}], "-", 
+      RowBox[{"1513483392", " ", 
+       SubsuperscriptBox["c", "2", "4"], " ", 
+       SubscriptBox["c", "8"]}], "+", 
+      RowBox[{"2989286400", " ", 
+       SubsuperscriptBox["c", "2", "2"], " ", 
+       SubscriptBox["c", "4"], " ", 
+       SubscriptBox["c", "8"]}], "-", 
+      RowBox[{"564414464", " ", 
+       SubsuperscriptBox["c", "4", "2"], " ", 
+       SubscriptBox["c", "8"]}], "-", 
+      RowBox[{"1307017216", " ", 
+       SubscriptBox["c", "2"], " ", 
+       SubscriptBox["c", "6"], " ", 
+       SubscriptBox["c", "8"]}], "+", 
+      RowBox[{"178507776", " ", 
+       SubsuperscriptBox["c", "8", "2"]}], "+", 
+      RowBox[{"1157818368", " ", 
+       SubsuperscriptBox["c", "2", "3"], " ", 
+       SubscriptBox["c", "10"]}], "-", 
+      RowBox[{"1338351616", " ", 
+       SubscriptBox["c", "2"], " ", 
+       SubscriptBox["c", "4"], " ", 
+       SubscriptBox["c", "10"]}], "+", 
+      RowBox[{"358825984", " ", 
+       SubscriptBox["c", "6"], " ", 
+       SubscriptBox["c", "10"]}], "-", 
+      RowBox[{"807047168", " ", 
+       SubsuperscriptBox["c", "2", "2"], " ", 
+       SubscriptBox["c", "12"]}], "+", 
+      RowBox[{"370245632", " ", 
+       SubscriptBox["c", "4"], " ", 
+       SubscriptBox["c", "12"]}], "+", 
+      RowBox[{"470237184", " ", 
+       SubscriptBox["c", "2"], " ", 
+       SubscriptBox["c", "14"]}], "-", 
+      RowBox[{"177782784", " ", 
+       SubscriptBox["c", "16"]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 8], " = ", 
+   Rational[1, 1048964907946475520000] (
+    355554717 Subscript[$CellContext`c, 2]^8 - (2259600336 
+     Subscript[$CellContext`c, 2]^6) 
+    Subscript[$CellContext`c, 4] + (4275360992 Subscript[$CellContext`c, 2]^4)
+       Subscript[$CellContext`c, 4]^2 - (2418330880 
+     Subscript[$CellContext`c, 2]^2) Subscript[$CellContext`c, 4]^3 + 
+    193445120 
+     Subscript[$CellContext`c, 4]^4 + (1874862592 
+      Subscript[$CellContext`c, 2]^5) 
+     Subscript[$CellContext`c, 6] - ((5361225728 
+      Subscript[$CellContext`c, 2]^3) Subscript[$CellContext`c, 4]) 
+    Subscript[$CellContext`c, 6] + ((2606571520 Subscript[$CellContext`c, 2]) 
+      Subscript[$CellContext`c, 4]^2) 
+     Subscript[$CellContext`c, 6] + (1471168512 
+      Subscript[$CellContext`c, 2]^2) Subscript[$CellContext`c, 6]^2 - (
+     554631168 Subscript[$CellContext`c, 4]) 
+    Subscript[$CellContext`c, 6]^2 - (1513483392 
+     Subscript[$CellContext`c, 2]^4) 
+    Subscript[$CellContext`c, 
+      8] + ((2989286400 Subscript[$CellContext`c, 2]^2) 
+      Subscript[$CellContext`c, 4]) Subscript[$CellContext`c, 8] - (564414464 
+     Subscript[$CellContext`c, 4]^2) 
+    Subscript[$CellContext`c, 8] - ((1307017216 Subscript[$CellContext`c, 2]) 
+     Subscript[$CellContext`c, 6]) Subscript[$CellContext`c, 8] + 
+    178507776 
+     Subscript[$CellContext`c, 8]^2 + (1157818368 
+      Subscript[$CellContext`c, 2]^3) 
+     Subscript[$CellContext`c, 10] - ((1338351616 
+      Subscript[$CellContext`c, 2]) Subscript[$CellContext`c, 4]) 
+    Subscript[$CellContext`c, 10] + (358825984 Subscript[$CellContext`c, 6]) 
+     Subscript[$CellContext`c, 10] - (807047168 
+     Subscript[$CellContext`c, 2]^2) 
+    Subscript[$CellContext`c, 12] + (370245632 Subscript[$CellContext`c, 4]) 
+     Subscript[$CellContext`c, 12] + (470237184 Subscript[$CellContext`c, 2]) 
+     Subscript[$CellContext`c, 14] - 177782784 Subscript[$CellContext`c, 16])],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6972353108012266`*^9, 3.697235362832331*^9}, 
+   3.6972354820295563`*^9, 3.6972355489096823`*^9, 3.697235982711583*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["A genus Complexification with c_2=0", \
+"Subsubsection"]], "Subsubsubsubsection",
+ CellChangeTimes->{{3.697235763680082*^9, 3.6972357689050903`*^9}, {
+  3.701767494247962*^9, 3.7017674972707725`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "0"}], ",", 
+   RowBox[{"i", "<", "9"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"A", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{"Simplify", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"genusComplexification", "[", 
+         RowBox[{
+          RowBox[{
+           FractionBox[
+            RowBox[{
+             SqrtBox["#"], "/", "2"}], 
+            RowBox[{"Sinh", "[", 
+             RowBox[{
+              SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i"}], "]"}], "/.",
+         "\[VeryThinSpace]", 
+        RowBox[{"c", "\[Rule]", "c"}]}], " ", "/.", "\[VeryThinSpace]", 
+       RowBox[{
+        SubscriptBox["c", "2"], "\[Rule]", "0"}]}], "]"}]}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7017673844214287`*^9, 3.701767393600469*^9}, {
+  3.701767729592615*^9, 3.701767736507682*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "0"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "1"}],
+  SequenceForm[
+   Subscript[$CellContext`A, 0], " = ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7017674094005413`*^9, 3.7017677405825*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "1"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", "0"}],
+  SequenceForm[
+   Subscript[$CellContext`A, 1], " = ", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7017674094005413`*^9, 3.7017677406303005`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "2"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SubscriptBox["c", "4"], "1440"]}]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 2], " = ", Rational[-1, 1440] 
+   Subscript[$CellContext`c, 4]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7017674094005413`*^9, 3.7017677406459007`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "3"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    SubscriptBox["c", "6"], "60480"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 3], " = ", Rational[1, 60480] 
+   Subscript[$CellContext`c, 6]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7017674094005413`*^9, 3.7017677406771*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "4"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"13", " ", 
+      SubsuperscriptBox["c", "4", "2"]}], "-", 
+     RowBox[{"12", " ", 
+      SubscriptBox["c", "8"]}]}], "29030400"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 4], " = ", 
+   Rational[1, 29030400] (13 Subscript[$CellContext`c, 4]^2 - 12 
+    Subscript[$CellContext`c, 8])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7017674094005413`*^9, 3.7017677407083006`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "5"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "21"}], " ", 
+      SubscriptBox["c", "4"], " ", 
+      SubscriptBox["c", "6"]}], "+", 
+     RowBox[{"10", " ", 
+      SubscriptBox["c", "10"]}]}], "958003200"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 5], " = ", 
+   Rational[1, 958003200] ((-21) Subscript[$CellContext`c, 4] 
+     Subscript[$CellContext`c, 6] + 10 Subscript[$CellContext`c, 10])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7017674094005413`*^9, 3.7017677408175006`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "6"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "12027"}], " ", 
+      SubsuperscriptBox["c", "4", "3"]}], "+", 
+     RowBox[{"23068", " ", 
+      SubscriptBox["c", "4"], " ", 
+      SubscriptBox["c", "8"]}], "+", 
+     RowBox[{"16", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"703", " ", 
+         SubsuperscriptBox["c", "6", "2"]}], "-", 
+        RowBox[{"691", " ", 
+         SubscriptBox["c", "12"]}]}], ")"}]}]}], "41845579776000"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 6], " = ", 
+   Rational[1, 41845579776000] ((-12027) Subscript[$CellContext`c, 4]^3 + 
+    23068 Subscript[$CellContext`c, 4] Subscript[$CellContext`c, 8] + 
+    16 (703 Subscript[$CellContext`c, 6]^2 - 691 
+      Subscript[$CellContext`c, 12]))],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7017674094005413`*^9, 3.7017677409913034`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "7"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"5359", " ", 
+      SubsuperscriptBox["c", "4", "2"], " ", 
+      SubscriptBox["c", "6"]}], "-", 
+     RowBox[{"3396", " ", 
+      SubscriptBox["c", "6"], " ", 
+      SubscriptBox["c", "8"]}], "-", 
+     RowBox[{"3500", " ", 
+      SubscriptBox["c", "4"], " ", 
+      SubscriptBox["c", "10"]}], "+", 
+     RowBox[{"1680", " ", 
+      SubscriptBox["c", "14"]}]}], "251073478656000"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 7], " = ", 
+   Rational[1, 251073478656000] (
+    5359 Subscript[$CellContext`c, 4]^2 Subscript[$CellContext`c, 6] - 3396 
+    Subscript[$CellContext`c, 6] Subscript[$CellContext`c, 8] - 3500 
+    Subscript[$CellContext`c, 4] Subscript[$CellContext`c, 10] + 
+    1680 Subscript[$CellContext`c, 14])],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7017674094005413`*^9, 3.7017677418291273`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "8"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"755645", " ", 
+      SubsuperscriptBox["c", "4", "4"]}], "-", 
+     RowBox[{"2204744", " ", 
+      SubsuperscriptBox["c", "4", "2"], " ", 
+      SubscriptBox["c", "8"]}], "-", 
+     RowBox[{"128", " ", 
+      SubscriptBox["c", "4"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"16926", " ", 
+         SubsuperscriptBox["c", "6", "2"]}], "-", 
+        RowBox[{"11299", " ", 
+         SubscriptBox["c", "12"]}]}], ")"}]}], "+", 
+     RowBox[{"16", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"43581", " ", 
+         SubsuperscriptBox["c", "8", "2"]}], "+", 
+        RowBox[{"87604", " ", 
+         SubscriptBox["c", "6"], " ", 
+         SubscriptBox["c", "10"]}], "-", 
+        RowBox[{"43404", " ", 
+         SubscriptBox["c", "16"]}]}], ")"}]}]}], "4097519171665920000"]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 8], " = ", 
+   Rational[1, 4097519171665920000] (755645 Subscript[$CellContext`c, 4]^4 - 
+    2204744 Subscript[$CellContext`c, 4]^2 Subscript[$CellContext`c, 8] - 128 
+    Subscript[$CellContext`c, 4] (16926 Subscript[$CellContext`c, 6]^2 - 
+     11299 Subscript[$CellContext`c, 12]) + 
+    16 (43581 Subscript[$CellContext`c, 8]^2 + 
+      87604 Subscript[$CellContext`c, 6] Subscript[$CellContext`c, 10] - 
+      43404 Subscript[$CellContext`c, 16]))],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7017674094005413`*^9, 3.7017677477540083`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "9"}], ",", 
+   RowBox[{"i", "<", "11"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"A", ",", "i"}], "]"}], ",", "\"\< = \>\"", ",", " ", 
+     RowBox[{"Simplify", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"genusComplexification", "[", 
+         RowBox[{
+          RowBox[{
+           FractionBox[
+            RowBox[{
+             SqrtBox["#"], "/", "2"}], 
+            RowBox[{"Sinh", "[", 
+             RowBox[{
+              SqrtBox["#"], "/", "2"}], "]"}]], "&"}], ",", "i"}], "]"}], "/.",
+         "\[VeryThinSpace]", 
+        RowBox[{"c", "\[Rule]", "c"}]}], " ", "/.", "\[VeryThinSpace]", 
+       RowBox[{
+        SubscriptBox["c", "2"], "\[Rule]", "0"}]}], "]"}]}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.701767777762977*^9, 3.7017677823748045`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   SubscriptBox["A", "9"], "\[InvisibleSpace]", "\<\" = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "817455074747351040000"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "15013651"}], " ", 
+       SubsuperscriptBox["c", "4", "3"], " ", 
+       SubscriptBox["c", "6"]}], "+", 
+      RowBox[{"11128930", " ", 
+       SubsuperscriptBox["c", "4", "2"], " ", 
+       SubscriptBox["c", "10"]}], "+", 
+      RowBox[{"4", " ", 
+       SubscriptBox["c", "4"], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"5448831", " ", 
+          SubscriptBox["c", "6"], " ", 
+          SubscriptBox["c", "8"]}], "-", 
+         RowBox[{"1826960", " ", 
+          SubscriptBox["c", "14"]}]}], ")"}]}], "+", 
+      RowBox[{"8", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"446398", " ", 
+          SubsuperscriptBox["c", "6", "3"]}], "-", 
+         RowBox[{"879565", " ", 
+          SubscriptBox["c", "8"], " ", 
+          SubscriptBox["c", "10"]}], "-", 
+         RowBox[{"885056", " ", 
+          SubscriptBox["c", "6"], " ", 
+          SubscriptBox["c", "12"]}], "+", 
+         RowBox[{"438670", " ", 
+          SubscriptBox["c", "18"]}]}], ")"}]}]}], ")"}]}]}],
+  SequenceForm[
+   Subscript[$CellContext`A, 9], " = ", 
+   Rational[1, 817455074747351040000] ((-15013651) 
+     Subscript[$CellContext`c, 4]^3 Subscript[$CellContext`c, 6] + 
+    11128930 Subscript[$CellContext`c, 4]^2 Subscript[$CellContext`c, 10] + 
+    4 Subscript[$CellContext`c, 4] (
+      5448831 Subscript[$CellContext`c, 6] Subscript[$CellContext`c, 8] - 
+      1826960 Subscript[$CellContext`c, 14]) + 
+    8 (446398 Subscript[$CellContext`c, 6]^3 - 879565 
+      Subscript[$CellContext`c, 8] Subscript[$CellContext`c, 10] - 885056 
+      Subscript[$CellContext`c, 6] Subscript[$CellContext`c, 12] + 
+      438670 Subscript[$CellContext`c, 18]))],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.701767822471707*^9}]
+}, {2}]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1366, 686},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{595.1999999999999, 841.68}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 147, 2, 70, "Section"],
+Cell[CellGroupData[{
+Cell[752, 28, 109, 1, 39, "Subsubsection"],
+Cell[864, 31, 2942, 64, 118, "Input",
+ InitializationCell->True],
+Cell[3809, 97, 2972, 63, 99, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6818, 165, 213, 4, 39, "Subsubsection"],
+Cell[7034, 171, 2439, 59, 137, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9510, 235, 371, 7, 69, "Subsubsection"],
+Cell[9884, 244, 1972, 53, 118, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11893, 302, 181, 2, 39, "Subsubsection"],
+Cell[12077, 306, 3271, 71, 118, "Input",
+ InitializationCell->True],
+Cell[15351, 379, 44, 1, 4, "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15432, 385, 105, 1, 39, "Subsubsection"],
+Cell[15540, 388, 116, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[15681, 393, 735, 22, 65, "Input"],
+Cell[CellGroupData[{
+Cell[16441, 419, 273, 8, 22, "Print"],
+Cell[16717, 429, 389, 12, 38, "Print"],
+Cell[17109, 443, 528, 16, 43, "Print"],
+Cell[17640, 461, 730, 21, 43, "Print"],
+Cell[18373, 484, 1016, 27, 43, "Print"],
+Cell[19392, 513, 1486, 37, 43, "Print"],
+Cell[20881, 552, 2182, 51, 43, "Print"],
+Cell[23066, 605, 3251, 75, 62, "Print"],
+Cell[26320, 682, 4793, 106, 81, "Print"],
+Cell[31116, 790, 7115, 162, 121, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38292, 959, 130, 1, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[38447, 964, 862, 24, 65, "Input"],
+Cell[CellGroupData[{
+Cell[39334, 992, 273, 8, 22, "Print"],
+Cell[39610, 1002, 273, 8, 22, "Print"],
+Cell[39886, 1012, 395, 12, 38, "Print"],
+Cell[40284, 1026, 397, 12, 38, "Print"],
+Cell[40684, 1040, 544, 16, 43, "Print"],
+Cell[41231, 1058, 602, 17, 40, "Print"],
+Cell[41836, 1077, 890, 24, 43, "Print"],
+Cell[42729, 1103, 1004, 26, 43, "Print"],
+Cell[43736, 1131, 1553, 40, 27, "Print"],
+Cell[45292, 1173, 1843, 45, 40, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[47162, 1222, 44, 1, 4, "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47243, 1228, 133, 1, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[47401, 1233, 865, 24, 65, "Input"],
+Cell[CellGroupData[{
+Cell[48291, 1261, 416, 12, 38, "Print"],
+Cell[48710, 1275, 422, 12, 38, "Print"],
+Cell[49135, 1289, 424, 12, 38, "Print"],
+Cell[49562, 1303, 579, 16, 43, "Print"],
+Cell[50144, 1321, 635, 17, 40, "Print"],
+Cell[50782, 1340, 777, 21, 43, "Print"],
+Cell[51562, 1363, 989, 25, 43, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52612, 1395, 139, 1, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[52776, 1400, 863, 24, 65, "Input"],
+Cell[CellGroupData[{
+Cell[53664, 1428, 425, 12, 38, "Print"],
+Cell[54092, 1442, 427, 12, 38, "Print"],
+Cell[54522, 1456, 468, 13, 40, "Print"],
+Cell[54993, 1471, 435, 12, 38, "Print"],
+Cell[55431, 1485, 598, 16, 43, "Print"],
+Cell[56032, 1503, 662, 17, 40, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56755, 1527, 221, 4, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[57001, 1535, 810, 23, 65, "Input"],
+Cell[CellGroupData[{
+Cell[57836, 1562, 352, 10, 22, "Print"],
+Cell[58191, 1574, 480, 14, 38, "Print"],
+Cell[58674, 1590, 521, 15, 40, "Print"],
+Cell[59198, 1607, 486, 14, 38, "Print"],
+Cell[59687, 1623, 531, 15, 40, "Print"],
+Cell[60221, 1640, 537, 15, 40, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[60807, 1661, 762, 22, 93, "Input"],
+Cell[61572, 1685, 592, 16, 43, "Print"]
+}, {2}]],
+Cell[62176, 1704, 44, 1, 1, "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[62257, 1710, 180, 2, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[62462, 1716, 821, 23, 65, "Input"],
+Cell[CellGroupData[{
+Cell[63308, 1743, 273, 8, 22, "Print"],
+Cell[63584, 1753, 273, 8, 22, "Print"],
+Cell[63860, 1763, 393, 12, 38, "Print"],
+Cell[64256, 1777, 272, 8, 22, "Print"],
+Cell[64531, 1787, 542, 16, 43, "Print"],
+Cell[65076, 1805, 401, 12, 38, "Print"],
+Cell[65480, 1819, 766, 21, 43, "Print"],
+Cell[66249, 1842, 612, 18, 40, "Print"],
+Cell[66864, 1862, 1068, 27, 43, "Print"],
+Cell[67935, 1891, 1030, 27, 43, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[68992, 1922, 44, 1, 1, "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[69073, 1928, 178, 2, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[69276, 1934, 823, 23, 65, "Input"],
+Cell[CellGroupData[{
+Cell[70124, 1961, 275, 8, 22, "Print"],
+Cell[70402, 1971, 389, 12, 38, "Print"],
+Cell[70794, 1985, 411, 12, 43, "Print"],
+Cell[71208, 1999, 440, 13, 43, "Print"],
+Cell[71651, 2014, 546, 16, 43, "Print"],
+Cell[72200, 2032, 756, 21, 43, "Print"],
+Cell[72959, 2055, 942, 24, 43, "Print"],
+Cell[73904, 2081, 1158, 29, 43, "Print"],
+Cell[75065, 2112, 1497, 36, 27, "Print"],
+Cell[76565, 2150, 2002, 46, 48, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[78594, 2200, 44, 1, 1, "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[78675, 2206, 129, 1, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[78829, 2211, 821, 23, 65, "Input"],
+Cell[CellGroupData[{
+Cell[79675, 2238, 295, 8, 22, "Print"],
+Cell[79973, 2248, 411, 12, 38, "Print"],
+Cell[80387, 2262, 433, 12, 43, "Print"],
+Cell[80823, 2276, 585, 17, 43, "Print"],
+Cell[81411, 2295, 635, 17, 43, "Print"],
+Cell[82049, 2314, 790, 21, 43, "Print"],
+Cell[82842, 2337, 1086, 27, 43, "Print"],
+Cell[83931, 2366, 1369, 33, 27, "Print"],
+Cell[85303, 2401, 1777, 41, 27, "Print"],
+Cell[87083, 2444, 2512, 58, 62, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[89622, 2506, 44, 1, 1, "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[89703, 2512, 132, 1, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[89860, 2517, 836, 24, 65, "Input"],
+Cell[CellGroupData[{
+Cell[90721, 2545, 275, 8, 22, "Print"],
+Cell[90999, 2555, 391, 12, 38, "Print"],
+Cell[91393, 2569, 411, 12, 43, "Print"],
+Cell[91807, 2583, 438, 13, 43, "Print"],
+Cell[92248, 2598, 425, 12, 43, "Print"],
+Cell[92676, 2612, 579, 17, 43, "Print"],
+Cell[93258, 2631, 755, 20, 43, "Print"],
+Cell[94016, 2653, 969, 25, 43, "Print"],
+Cell[94988, 2680, 1174, 29, 27, "Print"],
+Cell[96165, 2711, 1533, 38, 27, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[97725, 2753, 44, 1, 1, "PageBreak",
+ PageBreakBelow->True],
+Cell[97772, 2756, 223, 3, 41, "Text"],
+Cell[CellGroupData[{
+Cell[98020, 2763, 789, 22, 65, "Input"],
+Cell[CellGroupData[{
+Cell[98834, 2789, 297, 8, 22, "Print"],
+Cell[99134, 2799, 411, 12, 38, "Print"],
+Cell[99548, 2813, 431, 12, 43, "Print"],
+Cell[99982, 2827, 585, 17, 43, "Print"],
+Cell[100570, 2846, 739, 20, 43, "Print"],
+Cell[101312, 2868, 959, 25, 43, "Print"],
+Cell[102274, 2895, 1275, 31, 27, "Print"],
+Cell[103552, 2928, 1733, 41, 27, "Print"],
+Cell[105288, 2971, 2427, 55, 62, "Print"],
+Cell[107718, 3028, 3374, 76, 62, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[111119, 3108, 44, 1, 1, "PageBreak",
+ PageBreakBelow->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[111200, 3114, 229, 3, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[111454, 3121, 791, 22, 65, "Input"],
+Cell[CellGroupData[{
+Cell[112270, 3147, 275, 8, 22, "Print"],
+Cell[112548, 3157, 391, 12, 38, "Print"],
+Cell[112942, 3171, 530, 16, 43, "Print"],
+Cell[113475, 3189, 628, 18, 43, "Print"],
+Cell[114106, 3209, 842, 22, 43, "Print"],
+Cell[114951, 3233, 1131, 29, 43, "Print"],
+Cell[116085, 3264, 1633, 39, 27, "Print"],
+Cell[117721, 3305, 2159, 51, 27, "Print"],
+Cell[119883, 3358, 3209, 72, 62, "Print"],
+Cell[123095, 3432, 4387, 98, 81, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[127531, 3536, 162, 2, 39, "Subsubsubsubsection"],
+Cell[CellGroupData[{
+Cell[127718, 3542, 897, 24, 65, "Input"],
+Cell[CellGroupData[{
+Cell[128640, 3570, 373, 9, 22, "Print"],
+Cell[129016, 3581, 465, 12, 38, "Print"],
+Cell[129484, 3595, 628, 17, 43, "Print"],
+Cell[130115, 3614, 805, 21, 43, "Print"],
+Cell[130923, 3637, 1117, 28, 43, "Print"],
+Cell[132043, 3667, 1567, 38, 43, "Print"],
+Cell[133613, 3707, 2397, 56, 40, "Print"],
+Cell[136013, 3765, 3378, 76, 62, "Print"],
+Cell[139394, 3843, 5022, 115, 81, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[144477, 3965, 224, 3, 39, "Subsubsubsubsection"],
+Cell[CellGroupData[{
+Cell[144726, 3972, 977, 28, 65, "Input"],
+Cell[CellGroupData[{
+Cell[145728, 4004, 293, 8, 22, "Print"],
+Cell[146024, 4014, 297, 8, 22, "Print"],
+Cell[146324, 4024, 417, 12, 38, "Print"],
+Cell[146744, 4038, 393, 11, 38, "Print"],
+Cell[147140, 4051, 566, 16, 43, "Print"],
+Cell[147709, 4069, 649, 18, 40, "Print"],
+Cell[148361, 4089, 993, 27, 44, "Print"],
+Cell[149357, 4118, 1004, 26, 43, "Print"],
+Cell[150364, 4146, 1577, 40, 44, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[151990, 4192, 929, 27, 65, "Input"],
+Cell[152922, 4221, 1994, 51, 40, "Print"]
+}, {2}]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

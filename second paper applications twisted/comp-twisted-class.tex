@@ -1,0 +1,1520 @@
+\documentclass{amsart}
+%\documentclass[11pt]{article}
+%\documentclass[pagesize=auto, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in,left=1in]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{amssymb, amsthm, graphics}
+\usepackage{mathabx,epsfig}
+\usepackage{amsmath}
+\usepackage{autobreak}
+\usepackage[mathscr]{euscript}
+\usepackage{tikz}
+\usepackage{pigpen}
+\usepackage{bm}
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix}
+\bibliographystyle{ieeetr}
+
+\usepackage{latexsym}
+%\usepackage[all]{xy}
+%\usepackage{color}
+
+\usepackage{enumitem}
+
+
+
+
+
+
+
+
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{mathrsfs}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{psfrag}
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+%\usepackage{enumerate}
+%\usepackage{soul}
+%\usepackage{subfig}
+%\usepackage[all]{{xy}}
+%\usepackage{euscript}
+%\usepackage{helvet}
+%\usepackage{mathtools}
+%\usepackage{fontspec}
+%\setmainfont{Arial}
+
+\usepackage{tcolorbox}
+
+\theoremstyle{plain}
+
+\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\ch}{\mathrm{ch}}
+\newcommand{\Td}{\mathrm{Td}}
+%\renewcommand{\text{E}}{E}
+%\renewcommand{\text{ch}}{\mathrm{ch}}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\newtheorem{theorem}{Theorem}
+%[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{remark}{Remark}
+\newtheorem{remarks}{Remarks}
+\newtheorem{observation}{Observation}
+\newtheorem{example}{Example}
+
+\numberwithin{equation}{section}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+
+\topmargin -25mm
+\textwidth 16cm
+\textheight 247mm
+\oddsidemargin 0mm
+\evensidemargin 0mm
+
+
+\newtheorem{ex}{Expansion}
+\newtheorem{f}{Function}
+
+\begin{document}
+
+
+
+\title{Twisted characteristic classes and genera: Computational toolkit}
+% students}
+
+ 
+\author{Hisham Sati, Silviu-Marian Udrescu, and Erika Zogla}
+ 
+
+\maketitle
+ 
+\begin{abstract}
+	This paper provides continuation of a previous paper, where we now consider various twisted
+	expressions appearing in index theory and expression from quantum field theory, string theory,
+	 and M-theory. This is based on the undergraduate project of the second 
+	and third authors advised by the first author.  
+	
+\end{abstract} 
+
+ 
+\tableofcontents
+
+
+ 
+%%%%%%%%%%%%%%
+\section{Introduction}
+%%%%%%%%%%%%%%
+
+
+\medskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Twisted genera} \label{sec:twsitedG}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the final results section of this paper we will consider the twisted genera, which arise as 
+combinations of a genus with the Chern character. The twisted structures have applications 
+in physics, where the genera represent \textit{spinors} (the matter), while the Chern 
+character represents \textit{charge}. Hence, by combining the two structures one can
+ study ``matter that is charged''.
+
+\medskip
+One will notice that the twisted structures throughout the section are only in degrees divisible by 4. 
+Firstly, the indexing in this case is different from the previous expansions, since here the notation 
+stands for the \textit{total degree}. The \^{A}-genus $ A_k $ and L-genus $ L_k $ actually have
+ the total degree of $ 4k $. Meanwhile, the Chern character $ c_k $ has the total degree $ 2k $. 
+ Since only elements with the same degree can be combined, then one can only include the even
+  Chern character degrees within the twisted structure (see \textit{Expansion \ref{ex:chChar}}).
+   Additionally, one can only combine Chern classes with Chern classes and Pontrjagin classes 
+   with Pontrjagin classes. Hence, once again we must use the idea encapsulated in the equation
+    \ref{eq:cmplx} in section \ref{ssec:pCl} to write Chern character in terms of the Pontrjagin 
+    classes which causes the even degree classes to vanish. This two way reasoning demonstrates 
+    how the theory aligns with the practical computations. However, we can also invert this 
+    reasoning and write the twisted structures in terms of the Chern classes, which we do.
+
+\medskip
+In the following section all the results adopt the notation that $c_i$ or $p_i$ are the 
+characteristic classes of the bundle $ E $, while $c_i'$ and $p_i'$ are the characteristic 
+classes of the bundle $ F $. The notation $F_r$ indicates that $r$ is the rank of the bundle $ F $.
+
+\medskip
+Section ?? features computations of the twisted genera which are combinations of each of the three genera with the Chern character. Like in the previous cases this section also provides various types of simplifications in the presence of extra structures (complex, Calabi-Yau \cite{Gross-Huybrechts}, String \cite{AHS}, Fivebrane \cite{SSS2}\cite{SSS3}, and Ninebrane \cite{Sati} structures).
+\footnote{We emphasize that we will be working rationally, so that issues about 
+congruence and divisibility in the corresponding cohomology rings can be avoided.}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+\subsection{\bf Twisted \^{A}-genus}
+%%%%%%%%%%%%%%%%%%%%%
+
+The function on the next page is designed to compute the twisted structures of the \^{A}-genus 
+and L-genus. (A separate function for computing twisted Todd is stated later on.) The given function 
+can compute the twisted structures either in terms of the Chern classes or Pontrjagin classes by 
+combining the appropriate expansions of the genera and Chern character. For clarity we show 
+a brief example of how the computation mechanism works.
+
+
+
+\begin{example}
+Let us compute \^{A}-genus combined with the Chern character of complexification written in terms of the Pontrjagin classes $p_i$ for the total degree 4. We need to retrieve \textit{Expansions \ref{ex:aroof}} and \textit{\ref{ex:chCharToP}} and write them out as shown below. Recall that both the \^{A}-genus and the Chern character in terms of the Pontrjagin classes have total degrees $ 4k $. Finally, we multiply out the polynomials and keep only terms with the total degree 4.
+\begin{eqnarray*}
+[\hat{A}\cdot \ch(E_\mathbb{C})]_4 &=& [(1-\tfrac{1}{24}p_1+...)(r+\tfrac{1}{2}p'_1+...)]_4\\
+&=& [\tfrac{1}{2}p_1' - \tfrac{1}{24}p_1r - \tfrac{1}{48}p_1p_1' +...]_4 \\
+&=& \tfrac{1}{2}p_1' - \tfrac{1}{24}p_1r.
+\end{eqnarray*}
+\end{example}
+
+
+%The following function implements computations of the twisted structure according
+% to the same logic as just demonstrated. If one chooses to compute the expansions of 
+% the twisted genus in terms of the Pontrjagin classes, then  
+% \textit{Function \ref{f:twistedGenus}} will make calls to
+%  \textit{Functions \ref{f:genus}} and \textit{\ref{f:chToP}}, whereas for expansions 
+%  in terms of the Chern classes calls will be made to \textit{Functions \ref{f:genusCompl}}
+%   and \textit{\ref{f:chToC}}.
+%
+%
+%\begin{f} \label{f:twistedGenus}
+%Computing the twisted genus as a combination of a genus and the Chern character.
+%\end{f} 
+%\texttt{Q} - the characteristic power series of the genus.
+%
+%\texttt{deg} - the degree $4k$ of the twisted genus.
+%
+%\texttt{r} - a boolean operator that determines whether the genus is express in Pontrjagin (\texttt{True}) or Chern classes (\texttt{False}). The default is Chern classes.
+%\begin{center} 
+%\includegraphics[width=\linewidth]{Formulas/twistedGenus}
+%\end{center}
+
+As in the brief example above we use \textit{Expansions \ref{ex:aroof}} and \textit{\ref{ex:chCharToP}} to obtain the below expansion.
+
+\begin{ex}
+\^{A}-genus combined with the Chern character of complexification written in terms of the Pontrjagin classes $p_i$.
+\end{ex} 
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_AroofCombinedWRealifiedChernChar}
+%\end{center}
+
+ \begin{tcolorbox}[
+ text width=16cm, height=5.3cm,
+title=\^{A}-genus combined with the Chern character  in terms of the Pontrjagin classes]
+{\footnotesize
+\begin{align*} 
+ {[A(E)\ch(F_r)]}_0 = &r
+\\
+ {[A(E)\ch(F_r)]}_4 = &\tfrac{1}{2^1}p'_1 -\tfrac{r}{2^3\cdot 3^1} p_1
+\\
+ {[A(E)\ch(F_r)]}_8 = &\tfrac{r}{2^7\cdot 3^2\cdot 5^1} [7 p_1^2-4 p_2]-
+ \tfrac{1}{2^4\cdot 3^1}p_1  p'_1+\tfrac{1}{2^3\cdot 3^1} [ {p'}_1^2-2 {p'}_2]
+\\
+ {[A(E)\ch(F_r)]}_{12} = &\tfrac{r}{2^{10}\cdot 3^3\cdot 5^1\cdot 7^1}
+  [-31 p_1^3+44 p_1 p_2-16 p_3]
+  +\tfrac{1}{2^8\cdot 3^2\cdot 5^1}(7 p_1^2-4 p_2)  {p'}_1
+  -\tfrac{1}{2^6\cdot 3^2} p_1 ( {p'}_1^2-2 {p'}_2)
+  +\tfrac{1}{2^4\cdot 3^2\cdot 5^1} ( {p'}_1^3- 3  {p'}_1  {p'}_2
+\\
+& \quad
++3 {p'}_3)
+\\
+ {[A(E)\ch(F_r)]}_{16} = &\tfrac{r}{2^{15}\cdot 3^4\cdot 5^2\cdot 7^1}
+  [381 p_1^4+208 p_2^2-904 p_1^2p_2+512 p_1p_3-192 p_4]+
+    \tfrac{1}{2^{11}\cdot 3^3\cdot 5^1\cdot 7^1} [-31 p_1^3+44 p_1 p_2-16 p_3] {p'}_1
+    \\
+    & 
+ +\tfrac{1}{2^{10}\cdot 3^3\cdot 5^1}(7 p_1^2-4 p_2) ( {p'}_1^2-2 {p'}_2)
+  -\tfrac{1}{2^7\cdot 3^3\cdot 5^1}p_1 ( {p'}_1^3- 3  {p'}_1 {p'}_2+3  {p'}_3)
+  +\tfrac{1}{2^7\cdot 3^2\cdot 5^1\cdot 7^1} [{p'}_1^4+2 
+  {p'}_2^2-4  {p'}_1^2  {p'}_2
+\\
+& \quad
++4  {p'}_1  {p'}_3-4 {p'}_4]
+\end{align*}
+}
+\end{tcolorbox}
+
+
+%\begin{ex}
+%Twisted \^{A}-genus in terms of Chern classes of complexification.
+%\end{ex}
+
+
+
+Next we repeat the same combination but in terms of the Chern classes
+ via \textit{Expansions \ref{ex:aroofCplx}} and \textit{\ref{ex:chChar}}. Observe 
+ how the expansion in terms of the Chern classes on the next page is so much more 
+ complex than the expansion in terms of the Pontrjagin classes  above.
+
+
+\begin{ex}
+\^{A}-genus combined with the Chern character written in terms of the Chern 
+classes $c_i$ of complexification.
+\end{ex} 
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_ComplexifiedAroofCombinedWChernChar_01}
+%	
+%\includegraphics[width=\linewidth]{Data_Screenshots/RS_ComplexifiedAroofCombinedWChernChar_02}
+%\end{center}
+
+
+\begin{tcolorbox}[text width=16cm, height=7.6cm,
+title=Twisted \^{A}-genus in terms of Chern classes]
+{\footnotesize
+\begin{align*}
+{[A(E)\ch(F_r)]}_0 = &r
+\\
+ {[A(E)\ch(F_r)]}_4 = &\tfrac{r}{2^3\cdot 3^1} c_2
+ +\tfrac{1}{2^1}[ {c'}_1^2-2 {c'}_2]
+\\
+ {[A(E)\ch(F_r)]}_8 = & \tfrac{r}{2^7\cdot 3^2\cdot 5^1}[7 c_2^2-4 c_4]
+ +\tfrac{1}{2^4\cdot 3^1} c_2 [{c'}_1^2-2 {c'}_2]+
+ \tfrac{1}{2^3\cdot 3^1} [{c'}_1^4+2 {c'}_2^2-4  {c'}_1^2  {c'}_2
+ +4 {c'}_1 {c'}_3-4 {c'}_4]
+\\
+ {[A(E)\ch(F_r)]}_{12} = &
+ \tfrac{r}{2^{10}\cdot 3^3\cdot 5^1\cdot 7^1}[31 c_2^3-44 c_2 c_4+16 c_6]
+  +\tfrac{1}{2^8\cdot 3^2\cdot 5^1}(7 c_2^2-4 c_4)({c'}_1^2-2 {c'}_2)
+    +\tfrac{1}{2^6\cdot 3^2} c_2 [{c'}_1^4+2 {c'}_2^2-4 {c'}_1^2  {c'}_2
+    +4 {c'}_1 {c'}_3
+
+\\
+& \quad
+    -4 {c'}_4]
+        +\tfrac{1}{2^4\cdot 3^2\cdot 5^1} [{c'}_1^6-2 {c'}_2^3+
+ 9  {c'}_1^2  {c'}_2^2+3  {c'}_3^2-6  {c'}_1^4
+   {c'}_2+6  {c'}_1^3 
+ {c'}_3-12 {c'}_1 {c'}_2  {c'}_3-6  {c'}_1^2
+   {c'}_4+6 {c'}_2  {c'}_4+6  {c'}_1
+   {c'}_5
+\\
+& \quad
+-6 {c'}_6]
+\\
+ {[A(E)\ch(F_r)]}_{16} = &\tfrac{r}{2^{15}\cdot 3^4\cdot 5^2\cdot 7^1}
+ [381 c_2^4+208 c_4^2-904 c_2^2c_4+512 c_2 c_6-192 c_8]
+ +
+\tfrac{1}{2^{11}\cdot 3^3\cdot 5^1\cdot 7^1}\left(31 c_2^3-44 c_2 c_4+16 c_6\right) 
+\left( {c'}_1^2-2 c'_2\right)
+\\
+&
++
+\tfrac{1}{2^{10}\cdot 3^3\cdot 5^1}\left(7 c_2^2-4 c_4\right) \left({c'}_1^4+2 {c'}_2^2-
+4 {c'}_1^2 c'_2+4 c'_1 c'_3-4 c'_4\right)
+\\
+&
++
+\tfrac{1}{2^7\cdot 3^3\cdot 5^1}c_2 [{c'}_1^6-2 {c'}_2^3+9 {c'}_1^2 {c'}_2^2+3 
+ {c'}_3^2-6{ c'}_1^4 {c'}_2
+ +6 {c'}_1^3 {c'}_3
+ -12 {c'}_1 {c'}_2
+ {c'}_3-6 {c'}_1^2 
+{c'}_4+6 {c'}_2
+ c'_4+6 \c'_1 
+ c'_5-6 c'_6]
+ \\
+ &
+ +
+\tfrac{1}{2^7\cdot 3^2\cdot 5^1\cdot 7^1}[{c'}_1^8+2{c'}_2^4- 16 {c'}_1^2 
+{c'}_2^3+ 
+20 {c'}_1^4  {c'}_2^2
++ 12 {c'}_1^2  {c'}_3^2
+- 8  {c'}_2  {c'}_3^2+4 
+ {c'}_4^2
+ - 8 {c'}_1^6 
+ {c'}_2+ 8 {c'}_1^5  
+ {c'}_3- 32 {c'}_1^3  c'_2  c'_3
+\\
+& \quad
++ 
+ 24 c'_1  {c'}_2^2  c'_3
+ - 8 {c'}_1^4  
+ c'_4
++ 24 {c'}_1^2 c'_2  c'_4
+- 8  {c'}_2^2  c'_4- 
+ 16 c'_1 c'_3 c'_4 
+ +8 {c'}_1^3
+  c'_5-
+16 c'_1   c'_2  c'_5
++ 8
+    c'_3  c'_5
+    - 8 
+    {c'}_1^2  c'_6+ 8
+   c'_2  c'_6
+\\
+& \quad
++ 8 
+     c'_1 c'_7-8
+      c'_8]
+\end{align*} 
+}
+\end{tcolorbox}
+
+
+
+\begin{ex}
+Twisted \^{A}-genus combined with the Chern character of a $ SU(r) $ bundle ($c_1'=0$).
+\end{ex} 
+
+
+
+
+\begin{tcolorbox}[text width=16cm, height=5.5cm,
+title=\^{A}-genus twisted with $SU(r)$ bundle in terms  of Chern classes ]
+{\footnotesize
+\begin{align*}
+{[A(E)\ch(F_r)]}_0 = &r
+\\
+ {[A(E)\ch(F_r)]}_4 = &\tfrac{r}{2^3\cdot 3^1} c_2
+ - {c'}_2
+\\
+ {[A(E)\ch(F_r)]}_8 = & \tfrac{r}{2^7\cdot 3^2\cdot 5^1}[7 c_2^2-4 c_4]
+ -\tfrac{1}{2^3\cdot 3^1} c_2  {c'}_2+
+ \tfrac{1}{2^2\cdot 3^1} [  {c'}_2^2 -2 {c'}_4]
+\\
+ {[A(E)\ch(F_r)]}_{12} = &
+ \tfrac{r}{2^{10}\cdot 3^3\cdot 5^1\cdot 7^1}[31 c_2^3-44 c_2 c_4+16 c_6]
+  -\tfrac{1}{2^7\cdot 3^2\cdot 5^1}(7 c_2^2-4 c_4) {c'}_2
+    +\tfrac{1}{2^5\cdot 3^2} c_2 [ {c'}_2^2  -2 {c'}_4]
+    \\
+    &
+        +\tfrac{1}{2^4\cdot 3^2\cdot 5^1} [-2 {c'}_2^3+
+ 3  {c'}_3^2+6 {c'}_2  {c'}_4-6 {c'}_6]
+\\
+ {[A(E)\ch(F_r)]}_{16} = &\tfrac{r}{2^{15}\cdot 3^4\cdot 5^2\cdot 7^1}
+ [381 c_2^4+208 c_4^2-904 c_2^2c_4+512 c_2 c_6-192 c_8]
+ -
+\tfrac{1}{2^{10}\cdot 3^3\cdot 5^1\cdot 7^1}\left(31 c_2^3-44 c_2 c_4+16 c_6\right) 
+c'_2
+\\
+&
++
+\tfrac{1}{2^9\cdot 3^3\cdot 5^1}\left(7 c_2^2-4 c_4\right) \left( {c'}_2^2
+-2 c'_4\right)
++
+\tfrac{1}{2^7\cdot 3^3\cdot 5^1}c_2 [-2 {c'}_2^3
++3  {c'_3}^2+6 c'_2 c'_4-6 c'_6]
+\\
+&
++
+\tfrac{1}{2^7\cdot 3^2\cdot 5^1\cdot 7^1}[
+2{c'_2}^4- 8  c'_2  {c'_3}^2+4 {c'_4}^2
+ - 8 {c'_2}^2  c'_4
++ 8c'_3  c'_5
+    + 8   c'_2  c'_6 
+     -8    c'_8]
+
+\end{align*} 
+}
+\end{tcolorbox}
+
+%ABOVE STILL NEEDS CHECKING
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\bf Twisted \^{A}-genus with simplifications}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Sometimes it is useful to consider twisted structures with vanishing classes both in terms of the Pontrjagin and Chern classes. However, one must not think that the vector bundles are equivalent, i.e. that setting $ p_1=0 $ would produce the same effect as $ p_1'=0 $. The twisted structure is a combination of two distinct elements. 
+
+%For all simplifications of the twisted genera in this section we 
+%used the \texttt{ReplaceAll} operator in Mathematica to vanish certain classes.
+
+
+\medskip
+The first simplification is when we take the String structure on 
+the natural bundles itself. 
+
+
+\begin{ex}
+Twisted \^{A}-genus of a String bundle ($p_1=0$) combined with the Chern character of complexification (in terms of $p_i$'s).
+\end{ex} 
+
+
+
+\begin{tcolorbox}[text width=16cm, height=4.5cm,
+title=Twisted A-genus with a String structure]
+{\footnotesize
+\begin{align*} 
+ {[A(E)\ch(F_r)]}_0 = &r
+\\
+ {[A(E)\ch(F_r)]}_4 = &\tfrac{1}{2^1}p'_1  
+\\
+ {[A(E)\ch(F_r)]}_8 = & -\tfrac{r}{2^5\cdot 3^2\cdot 5^1}  p_2
++\tfrac{1}{2^3\cdot 3^1} [ {p'}_1^2-2 {p'}_2]
+\\
+ {[A(E)\ch(F_r)]}_{12} = &-\tfrac{r}{2^6\cdot 3^3\cdot 5^1\cdot 7^1}p_3
+  -\tfrac{1}{2^6\cdot 3^2\cdot 5^1}p_2  {p'}_1
+  +\tfrac{1}{2^4\cdot 3^2\cdot 5^1} [ {p'}_1^3- 3  {p'}_1  {p'}_2+3 {p'}_3]
+\\
+ {[A(E)\ch(F_r)]}_{16} = &\tfrac{r}{2^{15}\cdot 3^4\cdot 5^2\cdot 7^1}
+  [ 208 p_2^2 -192 p_4]-
+    \tfrac{1}{2^7\cdot 3^3\cdot 5^1\cdot 7^1} p_3 {p'}_1
+ -\tfrac{1}{2^8\cdot 3^3\cdot 5^1} p_2 [ {p'}_1^2-2 {p'}_2]
+    \\
+    & 
+   +\tfrac{1}{2^7\cdot 3^2\cdot 5^1\cdot 7^1} [{p'}_1^4+2 
+  {p'}_2^2-4  {p'}_1^2  {p'}_2+4  {p'}_1  {p'}_3-4 {p'}_4]
+\end{align*}
+}
+\end{tcolorbox}
+
+
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_AroofCombinedWRealifiedChernChar_p1}
+%\end{center}
+
+%One simplification is when we take the twisting bundle to have
+%a String structure. 
+%
+%\begin{ex}
+%The twisted \^{A}-genus with $p'_1=0$ for $F_r$ 
+%\end{ex} 
+%
+%\begin{align*}
+%
+% {[A(E)\ch(F_r)]}_0\text{ = }r
+%
+% {[A(E)\ch(F_r)]}_4\text{ = }\tfrac{1}{24} (-r) p_1
+%
+% {[A(E)\ch(F_r)]}_8\text{ = }\tfrac{r \left(7 p_1^2-4 p_2\right)}{5760}-
+% \tfrac{ {p'}_2}{12}
+%
+% {[A(E)\ch(F_r)]}_{12}\text{ = }\tfrac{r \left(-31 p_1^3+\left(44 p_1\right) p_2-16 p_3\right)}{967680}+\tfrac{p_1  {p'}_2}{288}+\tfrac{ {p'}_3}{240}
+%
+%
+%{[A(E)\ch(F_r)]}_{16}\text{ = }\tfrac{r \left(381 p_1^4+208 p_2^2-\left(904 p_1^2\right) p_2+\left(512 p_1\right) p_3-192 p_4\right)}{464486400}-\tfrac{\left(7 p_1^2-4 p_2\right)  {p'}_2}{69120}-\tfrac{p_1  {p'}_3}{5760}+\tfrac{2  {p'}_2^2-4  {p'}_4}{40320}
+%
+%\end{align*}
+
+
+
+
+\begin{ex}
+Twisted \^{A}-genus combined with the Chern character of complexification for a String bundle ($p_1'=0$).
+\end{ex} 
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_AroofCombinedWRealifiedChernChar_pp1}
+%\end{center}
+
+\begin{tcolorbox}[text width=16cm, height=4.5cm,
+title=\^{A}-genus twisted with a String bundle
+]
+{\footnotesize
+\begin{align*} 
+ {[A(E)\ch(F_r)]}_0 = &r
+\\
+ {[A(E)\ch(F_r)]}_4 = &-\tfrac{r}{2^3\cdot 3^1} p_1
+\\
+ {[A(E)\ch(F_r)]}_8 = &\tfrac{r}{2^7\cdot 3^2\cdot 5^1} [7 p_1^2-4 p_2]
+-\tfrac{1}{2^2\cdot 3^1}  {p'}_2
+\\
+ {[A(E)\ch(F_r)]}_{12} = &\tfrac{r}{2^{10}\cdot 3^3\cdot 5^1\cdot 7^1}
+  [-31 p_1^3+44 p_1 p_2-16 p_3]
+  +\tfrac{1}{2^5\cdot 3^2} p_1  {p'}_2
+  +\tfrac{1}{2^4\cdot 3^1\cdot 5^1} {p'}_3
+\\
+ {[A(E)\ch(F_r)]}_{16} = &\tfrac{r}{2^{15}\cdot 3^4\cdot 5^2\cdot 7^1}
+  [381 p_1^4+208 p_2^2-904 p_1^2p_2+512 p_1p_3-192 p_4]
+    \\
+    & 
+ -\tfrac{1}{2^9\cdot 3^3\cdot 5^1}(7 p_1^2-4 p_2)  {p'}_2
+  -\tfrac{1}{2^7\cdot 3^2\cdot 5^1}p_1  {p'}_3
+  +\tfrac{1}{2^6\cdot 3^2\cdot 5^1\cdot 7^1} [   {p'}_2^2- 2 {p'}_4]
+\end{align*}
+}
+\end{tcolorbox}
+
+
+
+
+We can now combine the above two function for when both the 
+natural bundle and the twisting bundle have String structures. 
+
+
+
+\begin{ex}
+Twisted \^{A}-genus of $p_1$-structure or String bundles - the \^{A}-genus of a String bundle ($p_1=0$) combined with the Chern character of complexification for a String bundle ($p_1'=0$).
+\end{ex} 
+
+%\begin{center} \includegraphics[width=0.6\linewidth]{Data_Screenshots/RS_AroofCombinedWRealifiedChernChar_p1pp1}
+%\end{center}
+
+
+
+\begin{tcolorbox}[text width=16cm, height=3.7cm,
+title=Twisted A-genus with both bundles having String structures]
+{\footnotesize
+\begin{align*} 
+ {[A(E)\ch(F_r)]}_0 = &r
+\\
+ {[A(E)\ch(F_r)]}_4 = &0 
+\\
+ {[A(E)\ch(F_r)]}_8 = & -\tfrac{r}{2^5\cdot 3^2\cdot 5^1}  p_2
+-\tfrac{1}{2^2\cdot 3^1}  {p'}_2
+\\
+ {[A(E)\ch(F_r)]}_{12} = &-
+ \tfrac{r}{2^6\cdot 3^3\cdot 5^1\cdot 7^1}p_3
+  +\tfrac{1}{2^4\cdot 3^1\cdot 5^1}  {p'}_3
+\\
+ {[A(E)\ch(F_r)]}_{16} = &
+ \tfrac{r}{2^{15}\cdot 3^4\cdot 5^2\cdot 7^1}
+  [ 208 p_2^2 -192 p_4]
+ +\tfrac{1}{2^7\cdot 3^3\cdot 5^1} p_2  {p'}_2
+   +\tfrac{1}{2^6\cdot 3^2\cdot 5^1\cdot 7^1} [ {p'}_2^2-2 {p'}_4]
+\end{align*}
+}
+\end{tcolorbox}
+
+
+
+
+
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_ComplexifiedAroofCombinedWChernChar_cp1}
+%\end{center}
+
+
+%\begin{align*}
+%
+%{[A(E)ch(F_r)]}_0\text{ = }r
+%
+% {[A(E)\ch(F_r)]}_4\text{ = }\tfrac{r c_2}{24} - c'_2
+%
+% {[A(E)\ch(F_r)]}_8\text{ = }\tfrac{r \left(7 c_2^2-4 c_4\right)}{5760}
+% -\tfrac{1}{24} c_2 c'_2+
+% \tfrac{1}{24} \left( 2 {c'}_2^2 -4 c'_4\right)
+%
+%
+% {[A(E)\ch(F_r)]}_{12}\text{ = }\tfrac{r \left(31 c_2^3-\left(44 c_2\right) c_4+16 c_6\right)}{967680}-\tfrac{\left(7 c_2^2-4 c_4\right) 
+%  c'_2}{5760}+
+%  \tfrac{1}{576} c_2 \left( 2 c'_2^2-4 {c'}_4\right)+
+%  \tfrac{1}{720} \left(-2 c'_2^3
+%  +3  c'_3^2 + 6  c'_2 c'_4-6 c'_6\right)
+%
+% {[A(E)ch(F_r)]}_{16}\text{ = }
+% \tfrac{r \left(381 c_2^4+208 c_4^2-904 c_2^2 c_4+512 c_2 c_6-192 c_8\right)}{464486400}
+% -\tfrac{\left(31 c_2^3- 44 c_2c_4+16 c_6\right) c'_2}{967680}+
+% \tfrac{\left(7 c_2^2-4 c_4\right) \left(2 c'_2^2-4 c'_4\right)}{138240}
+%  +\tfrac{c_2 \left(-2 c'_2^3+
+% 3 c'_3^2 + 6  c'_2 c'_4 -6 c'_6\right)}{17280}
+% +
+%  \tfrac{2c'_2^4- 8  c'_2 c'_3^2
+% -8  c'_2^2 c'_4 + 4c'^2_4
+% +8 c'_3 c'_5+
+%8  c'_2 c'_6 -8
+%      c'_8}{40320}
+%
+%\end{align*} 
+
+
+
+
+%\begin{ex}
+%Twisted \^{A}-genus with String structure $p_1=0$ for $E$.
+%\end{ex}
+
+%\begin{align*}
+%
+% {[A(E)\ch(F_r)]}_0\text{ = }r
+%
+% {[A(E)\ch(F_r)]}_4\text{ = }\tfrac{p'_1}{2}
+%
+% {[A(E)\ch(F_r)]}_8\text{ = }\tfrac{1}{24} \left(p"_1^2-2 
+%p'_2\right)-\tfrac{r p_2}{1440}
+%
+% {[A(E)\ch(F_r)]}_{12}\text{ = }-\tfrac{r p_3}{60480}-
+% \tfrac{p_2 p'_1}{2880}+\tfrac{1}{720} \left(p'_1^3-\left(3 
+% p'_1\right) p'_2+3 p'_3\right)
+%
+% {[A(E)\ch(F_r)]}_{16}\text{ = }\tfrac{r \left(208 p_2^2-192 p_4\right)}{464486400}-\tfrac{p_3 p'_1}{120960}-
+% \tfrac{p_2 \left(p'_1^2-2 \p'_2\right)}{34560}+
+% \tfrac{p'_1^4+2 p'_2^2-\left(4 p'_1^2\right) p'_2+
+% \left(4 p'_1\right) p'_3-4 \p'_4}{40320}
+%
+%\end{align*}
+
+
+%\begin{ex}
+%Twisted \^{A}-genus with $p_1=p'_1=0$
+%\end{ex}
+
+%\begin{align*}
+% {[A(E)\ch(F_r)]}_0\text{ = }r
+%
+% {[A(E)\ch(F_r)]}_4\text{ = }0
+%
+% {[A(E)\ch(F_r)]}_8\text{ = }-\tfrac{r p_2}{1440}-\tfrac{p'_2}{12}
+%
+% {[A(E)\ch(F_r)]}_{12}\text{ = }\tfrac{p'_3}{240}-\tfrac{r p_3}{60480}
+%
+% {[A(E)\ch(F_r)]}_{16}\text{ = }\tfrac{r \left(208 p_2^2-192 p_4\right)}{464486400}+\tfrac{p_2 p'_2}{17280}+\tfrac{2 p'_2^2
+% -4 p'_4}{40320}
+%
+%\end{align*}
+%
+
+
+
+
+\medskip
+%%%%%%%%%%%%%%%%%%%%
+\subsection{\bf Twisted L-genus}
+%%%%%%%%%%%%%%%%%%%%%
+
+The twisted L-genus was computed using exactly the same method as for the twisted \^{A}-genus, which was described at the beginning of the section. 
+%Here we are once again using \textit{Function \ref{f:twistedGenus}}.
+The first expansion of the twisted L-genus combines \textit{Expansions \ref{ex:l}} and \textit{\ref{ex:chCharToP}}.
+
+\begin{ex}
+Twisted L-genus combined with the Chern character of complexification written in terms of the Pontrjagin classes.
+\end{ex} 
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_LCombinedWRealifiedChernChar}
+%\end{center}
+
+\begin{tcolorbox}[text width=16cm, height=4.6cm,
+title=Twisted L-genus  in terms of the Pontrjagin classes]
+{\footnotesize
+\begin{align*} 
+ {[L(E)\ch(F_r)]}_0 =&r
+\\
+ {[L(E)\ch(F_r)]}_4 = &\tfrac{r}{3^1} p_1 +\tfrac{1}{2^1}p'_1
+\\
+ {[L(E)\ch(F_r)]}_8 = &
+ \tfrac{r}{3^2\cdot 5^1}  [7 p_2-p_1^2]
+ +\tfrac{1}{2^1\cdot 3^1}p_1 {p'}_1
+ +\tfrac{1}{2^3\cdot 3^1}[{p'}_1^2-2 p'_2]
+\\
+ {[L(E)\ch(F_r)]}_{12}= &
+ \tfrac{r}{3^3\cdot 5^1\cdot 7^1}  [2 p_1^3- 13 p_1 p_2+62 p_3]
++ \tfrac{1}{2^1\cdot 3^2\cdot 5^1}[7 p_2-p_1^2]  p'_1
++\tfrac{1}{2^3\cdot 3^2} p_1 [{p'}_1^2-2 p'_2]
++\tfrac{1}{2^4\cdot 3^2\cdot 5^1}[{p'}_1^3- 3 p'_1 p'_2+3 p'_3]
+\\
+ {[L(E)\ch(F_r)]}_{16}= &
+ \tfrac{r}{3^4\cdot 5^2\cdot 7^1}[-3 p_1^4-19 p_2^2+ 22 p_1^2 p_2 - 71 p_1 p_3+381 p_4]
+ +\tfrac{1}{2^1\cdot 3^3\cdot 5^1\cdot 7^1}[2 p_1^3- 13 p_1 p_2+62 p_3] p'_1 
+\\
+& 
++\tfrac{1}{2^3\cdot 3^3\cdot 5^1}(7 p_2-p_1^2) ({p'}_1^2-2 p'_2)
++\tfrac{1}{2^4\cdot 3^3\cdot 5^1}p_1 [{p'}_1^3- 3 p'_1p'_2+3 p'_3]
++\tfrac{1}{2^7\cdot 3^2\cdot 5^1\cdot 7^1}[{p'}_1^4+2 {p'}_2^2-
+ 4 {p'}_1^2  p'_2+ 4 p'_1  p'_3
+\\
+& \quad
+-
+4 {p'}_4]
+\end{align*}
+}
+\end{tcolorbox}
+
+For the twisted L-genus expansion in terms of the Chern classes one must use \textit{Expansions \ref{ex:lComplx}} and \textit{\ref{ex:chChar}}.
+
+\begin{ex}
+Twisted  L-genus combined with the Chern character written in terms of the Chern classes of complexification.
+\end{ex} 
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_ComplexifiedLCombinedWChernChar}
+%\end{center}
+
+
+
+\begin{tcolorbox}[text width=16cm, height=7cm,
+title=Twisted  L-genus  in terms of the Chern classes]
+{\footnotesize
+\begin{align*} 
+{[L(E)\ch(F_r)]}_0 = &r
+\\
+{[L(E)\ch(F_r)]}_4 = &
+-\tfrac{r}{3^1} c_2 
++\tfrac{1}{2^1}[{c'}_1^2-2 c'_2]
+\\
+{[L(E)\ch(F_r)]}_8 = &
+\tfrac{1}{3^2\cdot 5^1} r [7 c_4-c_2^2]
+-\tfrac{1}{2^1\cdot 3^1} c_2[{c'}_1^2-2 c'_2]
++\tfrac{1}{2^3\cdot 3^1}[ {c'}_1^4+
+2 {c'}_2^2- 4 {c'}_1^2 c'_2+ 4 c'_1
+c'_3-4 c'_4]
+\\
+{[L(E)\ch(F_r)]}_{12} = & 
+\tfrac{1}{3^3\cdot 5^1\cdot 7^1} r[-2 c_2^3+ 13 c_2 c_4-62 c_6]
++\tfrac{1}{2^1\cdot 3^2\cdot 5^1}(7 c_4-c_2^2)({c'}_1^2-2 c'_2)
+-\tfrac{1}{2^3\cdot 3^2} c_2[{c'}_1^4+2 {c'}_2^2- 4 {c'}_1^2 {c'}_2+ 4 c'_1  c'_3-4 c'_4]
+\\
+&
++\tfrac{1}{2^4\cdot 3^2\cdot 5^1}[{c'}_1^6-2 {c'}_2^3+
+ 9 {c'}_1^2  {c'}_2^2+3 {c'}_3^2- 6 {c'}_1^4 
+ c'_2+ 6 {c'}_1^3  c'_3- 12 c'_1 
+ c'_2  c'_3- 6 {c'}_1^2 c'_4+
+  6 c'_2  c'_4+ 6 c'_1  c'_5-
+ 6 c'_6]
+ \\
+{[L(E)\ch(F_r)]}_{16}=&
+\tfrac{1}{3^4\cdot 5^2\cdot 7^1} r \left(-3 c_2^4-19 c_4^2+ 22 c_2^2 
+ c_4- 71 c_2  c_6+381 c_8\right)+
+\tfrac{1}{2^1\cdot 3^3\cdot 5^1\cdot 7^1}\left(-2 c_2^3+ 13 c_2  c_4-62 c_6\right) \left({c'}_1^2-2 c'_2\right)
+\\
+&
++\tfrac{1}{2^3\cdot 3^3\cdot 5^1}\left(7 c_4-c_2^2\right) 
+\left({c'}_1^4+2 {c'}_2^2- 4 {c'}_1^2  c'_2+
+ 4 c'_1 c'_3-4 c'_4\right) 
+ \\
+ &
+ -
+\tfrac{1}{2^4\cdot 3^3\cdot 5^1}[c_2( {c'}_1^6-2 {c'}_2^3+9 {c'}_1^2 {c'}_2^2+
+3 {c'}_3^2-6 {c'}_1^4 c'_2
++6 {c'}_1^3c'_3 -12 c'_1 c'_2 c'_3-
+6 {c'}_1^2 c'_4+6 c'_2 c'_4+
+6 c'_1c'_5-6 c'_6)]
+\\
+&
++
+\tfrac{1}{2^7\cdot 3^2\cdot 5^1\cdot 7^1}[{c'}_1^8+
+2 {c'}_2^4-16 {c'}_1^2 {c'}_2^3+20 {c'}_1^4
+{c'}_2^2+12 {c'}_1^2 {c'}_3^2
+-8 c'_2
+{c'}_3^2+4 {c'}_4^2
+-8 {c'}_1^6 c'_2+
+8 {c'}_1^5 c'_3-32 {c'}_1^3 c'_2
+c'_3 
+\\
+& \quad
++24 c'_1 {c'}_2^2 c'_3-8 {c'}_1^4c'_4+24 {c'}_1^2
+c'_2 c'_4- 8 {c'}_2^2 c'_4-
+ 16 c'_1  c'_3  c'_4
++ 8 {c'}_1^3 
+c'_5-16 c'_1 c'_2 c'_5+
+8 c'_3c'_5
+-8 {c'}_1^2 c'_6+
+8 c'_2c'_6
+\\
+& \quad
++8 c'_1 
+c'_7
+-8 c'_8]
+\end{align*}
+}
+\end{tcolorbox}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\bf Twisted L-genus with simplifications}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+All the simplifications were done using \texttt{ReplaceAll} operator on the two expansion of the twisted L-genus above.
+
+ 
+\begin{ex}
+Twisted L-genus of a String bundle ($p_1=0$) combined with the Chern character of complexification (in terms of $p_i$'s).
+\end{ex} 
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_LCombinedWRealifiedChernChar_p1}
+%\end{center}
+%
+%\begin{align*} 
+%
+% {[L(E)\ch(F_r)]}_0\text{ = }r
+%
+% {[L(E)\ch(F_r)]}_4\text{ = } \tfrac{p'_1}{2}
+%
+% {[L(E)\ch(F$\_$r)]}_8\text{ = }\tfrac{7}{45} r  p_2
+% +
+% \tfrac{1}{24} \left(p'_1^2-2 p'_2\right)
+%
+%
+% {[L(E)\ch(F_r)]}_{12}\text{ = }\tfrac{62}{945} r  p_3
+% +\tfrac{7}{90} p_2 p'_1+\tfrac{1}{720} 
+% \left(p'_1^3- 3 p'_1 p'_2+3 p'_3\right)
+%
+% {[L(E)\ch(F_r)]}_{16}\text{ = }\tfrac{r \left(-19 p_2^2 +381 p_4\right)}{14175}+
+% \tfrac{31}{945} p_3 p'_1
+%   +\tfrac{7 p_2\left(p'_1^2-2
+% p'_2\right)}{1080}+
+% \tfrac{p'_1^4+2 p'_2^2-
+% 4 p'_1^2  p'_2+ 4 p'_1  p'_3-
+%4 p'_4}{40320}
+%
+%\end{align*}
+
+
+\begin{tcolorbox}[text width=16cm, height=4.2cm,
+title=Twisted L-genus of String bundle]
+{\footnotesize
+\begin{align*} 
+ {[L(E)\ch(F_r)]}_0 =&r
+\\
+ {[L(E)\ch(F_r)]}_4 = &\tfrac{1}{2^1}{p'}_1
+\\
+ {[L(E)\ch(F_r)]}_8 = &
+ \tfrac{7r}{3^2\cdot 5^1}  p_2
+ +\tfrac{1}{2^3\cdot 3^1}[{p'}_1^2-2 p'_2]
+\\
+ {[L(E)\ch(F_r)]}_{12}= &
+ \tfrac{62r}{3^3\cdot 5^1\cdot 7^1} p_3
++ \tfrac{7}{2^1\cdot 3^2\cdot 5^1}p_2  p'_1
++\tfrac{1}{2^4\cdot 3^2\cdot 5^1}[{p'}_1^3- 3 p'_1 p'_2+3 p'_3]
+\\
+ {[L(E)\ch(F_r)]}_{16}= &
+ \tfrac{r}{3^4\cdot 5^2\cdot 7^1}[-19 p_2^2+381 p_4]
+ +\tfrac{31}{3^3\cdot 5^1\cdot 7^1} p_3 p'_1 
++\tfrac{7}{2^3\cdot 3^3\cdot 5^1} p_2 [{p'}_1^2-2 p'_2]
+\\
+& 
++\tfrac{1}{2^7\cdot 3^2\cdot 5^1\cdot 7^1}[{p'}_1^4+2 {p'}_2^2-
+ 4 {p'}_1^2  p'_2+ 4 p'_1  p'_3-4 p'_4]
+\end{align*}
+}
+\end{tcolorbox}
+
+
+
+
+\begin{ex}
+Twisted L-genus combined with the Chern character of complexification for a String bundle ($p_1'=0$).
+\end{ex} 
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_LCombinedWRealifiedChernChar_pp1}
+%\end{center}
+%
+%\begin{align*} 
+%
+% {[L(E)\ch(F_r)]}_0\text{ = }r
+%
+% {[L(E)\ch(F_r)]}_4\text{ = }\tfrac{r p_1}{3}
+%
+% {[L(E)\ch(F$\_$r)]}_8\text{ = }\tfrac{1}{45} r \left(7 p_2-p_1^2\right)
+% - \tfrac{1}{12} p'_2 
+%
+%
+% {[L(E)\ch(F_r)]}_{12}\text{ = }\tfrac{1}{945} r \left(2 p_1^3- 13 p_1 p_2+62 p_3\right)+  \tfrac{1}{36} p_1 p'_2
+% +\tfrac{1}{240} p'_3  (1/36 \text{term seems wrong minus})
+%
+% {[L(E)\ch(F_r)]}_{16}\text{ = }\tfrac{r \left(-3 p_1^4-19 p_2^2+ 22 p_1^2 p_2
+% - 71 p_1 p_3+381 p_4\right)}{14175}
+% +\tfrac{\left(7 p_2-p_1^2\right)  p'_2}{540}+
+%  \tfrac{p_1 p'_3}{720}+
+%  \tfrac{2 p'_2^2-
+%4 p'_4}{40320}
+%
+%\end{align*}
+
+
+\begin{tcolorbox}[text width=16cm, height=4.2cm,
+title=Twisted L-genus twisted by a String bundle]
+{\footnotesize
+\begin{align*} 
+ {[L(E)\ch(F_r)]}_0 =&r
+\\
+ {[L(E)\ch(F_r)]}_4 = &\tfrac{r}{3^1} p_1 
+\\
+ {[L(E)\ch(F_r)]}_8 = &
+ \tfrac{r}{3^2\cdot 5^1}  [7 p_2-p_1^2]
+ -\tfrac{1}{2^2\cdot 3^1} p'_2
+\\
+ {[L(E)\ch(F_r)]}_{12}= &
+ \tfrac{r}{3^3\cdot 5^1\cdot 7^1}  [2 p_1^3- 13 p_1 p_2+62 p_3]
+-\tfrac{1}{2^2\cdot 3^2} p_1  p'_2
++\tfrac{1}{2^4\cdot 3^1\cdot 5^1} p'_3
+\\
+ {[L(E)\ch(F_r)]}_{16}= &
+ \tfrac{r}{3^4\cdot 5^2\cdot 7^1}[-3 p_1^4-19 p_2^2+ 22 p_1^2 p_2 - 71 p_1 p_3+381 p_4]
+\\
+& 
+-\tfrac{1}{2^2\cdot 3^3\cdot 5^1}(7 p_2-p_1^2)  p'_2
++\tfrac{1}{2^4\cdot 3^2\cdot 5^1}p_1  p'_3
++\tfrac{1}{2^6\cdot 3^2\cdot 5^1\cdot 7^1}[{p'}_2^2 -2 p'_4]
+\end{align*}
+}
+\end{tcolorbox}
+
+Observe how significantly simpler the 
+expansions below are as compared to their initial form presented above. 
+
+\begin{ex}
+Twisted L-genus of $p_1$-structure or String bundles - the L-genus of a String bundle ($p_1=0$) combined with the Chern character of complexification for a String bundle ($p_1'=0$).
+\end{ex} 
+
+%\begin{center} \includegraphics[width=0.7\linewidth]{Data_Screenshots/RS_LCombinedWRealifiedChernChar_p1pp1}
+%\end{center}
+%
+%\begin{align*} 
+%
+% {[L(E)\ch(F_r)]}_0\text{ = }r
+%
+% {[L(E)\ch(F_r)]}_4\text{ = } 0
+%
+% {[L(E)\ch(F$\_$r)]}_8\text{ = }\tfrac{7}{45} r   p_2 
+% -\tfrac{1}{12}  p'_2
+%
+%
+% {[L(E)\ch(F_r)]}_{12}\text{ = }\tfrac{62}{945} r  p_3
+% +\tfrac{1}{240}  p'_3
+%
+% {[L(E)\ch(F_r)]}_{16}\text{ = }
+% \tfrac{r \left(-19 p_2^2+381 p_4\right)}{14175}
+% -\tfrac{7}{540}
+% p_2 p'_2
+% +
+%  \tfrac{2 p'_2^2-
+%4 p'_4}{40320}
+%
+%\end{align*}
+
+
+\begin{tcolorbox}[text width=16cm, height=3.6cm,
+title=Twisted L-genus of  String bundles twisted by String bundles]
+{\footnotesize
+\begin{align*} 
+ {[L(E)\ch(F_r)]}_0 =&r
+\\
+ {[L(E)\ch(F_r)]}_4 = &0 
+\\
+ {[L(E)\ch(F_r)]}_8 = &
+ \tfrac{7r}{3^2\cdot 5^1} p_2
+ -\tfrac{1}{2^2\cdot 3^1} p'_2
+\\
+ {[L(E)\ch(F_r)]}_{12}= &
+ \tfrac{62r}{3^3\cdot 5^1\cdot 7^1} p_3
++\tfrac{1}{2^4\cdot 3^1\cdot 5^1} p'_3
+\\
+ {[L(E)\ch(F_r)]}_{16}= &
+ \tfrac{r}{3^4\cdot 5^2\cdot 7^1}[-19 p_2^2+381 p_4]
+-\tfrac{7}{2^2\cdot 3^3\cdot 5^1}p_2  p'_2
++\tfrac{1}{2^6\cdot 3^2\cdot 5^1\cdot 7^1}[{p'}_2^2 -2 p'_4]
+\end{align*}
+}
+\end{tcolorbox}
+
+
+
+
+
+\begin{ex}
+Twisted L-genus combined with the Chern character of a $ SU(r) $ bundle ($c_1'=0$).
+\end{ex} 
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_ComplexifiedLCombinedWChernChar_cp1}
+%\end{center}
+
+\begin{tcolorbox}[text width=16cm, height=5.5cm,
+title=L-genus twisted by $SU(r)$ bundle]
+{\footnotesize
+\begin{align*} 
+{[L(E)\ch(F_r)]}_0= & r
+\\
+{[L(E)\ch(F_r)]}_4 =  & -\tfrac{r}{3^1} c_2 - c'_2
+\\
+{[L(E)\ch(F_r)]}_8 = &
+\tfrac{1}{3^2\cdot 5^1} r [7 c_4-c_2^2]
++\tfrac{1}{3^1} c_2  c'_2+
+\tfrac{1}{2^2\cdot 3^1}[ {c'}_2^2-2 c'_4]
+\\
+{[L(E)\ch(F_r)]}_{12} = &
+\tfrac{r}{3^3\cdot 5^1\cdot 7^1}[-2 c_2^3+ 13 c_2 c_4-62 c_6]
+-\tfrac{1}{3^2\cdot 5^1}[7 c_4-c_2^2] c'_2
+-\tfrac{1}{2^3\cdot 3^2} c_2 [2 {c'}_2^2-4 c'_4]
+\\
+&
++\tfrac{1}{2^4\cdot 3^2\cdot 5^1}[-2 {c'}_2^3+
+ 3 {c'}_3^2+  6 c'_2  c'_4-  6 c'_6]
+ \\
+{[L(E)\ch(F_r)]}_{16} = &
+\tfrac{1}{3^4\cdot 5^2\cdot 7^1} r 
+[-3 c_2^4-19 c_4^2+ 22 c_2^2 
+ c_4- 71 c_2  c_6+381 c_8]
+-\tfrac{1}{3^3\cdot 5^1\cdot 7^1}[-2 c_2^3+ 13 c_2  c_4-62 c_6] c'_2
+\\
+&
++\tfrac{1}{2^2\cdot 3^3\cdot 5^1}\left(7 c_4-c_2^2\right) 
+\left(  {c'}_2^2-2 c'_4\right) 
+ -
+\tfrac{1}{2^4\cdot 3^3\cdot 5^1}[-2 {c'}_2^3
++3 {c'}_3^2
++6 c'_2 c'_4
+-6 c'_6]
+\\
+&
++
+\tfrac{1}{2^7\cdot 3^2\cdot 5^1\cdot 7^1}[
+2 {c'}_2^4
+-8 c'_2{c'}_3^2
++4 {c'}_4^2
+- 8 {c'}_2^2 c'_4
++8 c'_3c'_5
++8 c'_2c'_6
+-8 c'_8]
+\end{align*}
+}
+\end{tcolorbox}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+\subsection{\bf Twisted Todd genus}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+The method for computing the twisted Todd genus is the same in the previous two cases with the \^{A}-genus and L-genus. However, we wrote a separate Mathematica function for computing the twisted Todd, due to the fact that originally the Todd genus is written in terms of the Chern classes as opposed to the \^{A} and L genera that are written in terms of Pontrjagin classes. Therefore, it was technically a better solution to introduce separate formulas for each of the two cases. Since both Todd genus and Chern character are in terms of Chern classes then no further conversions are necessary.
+
+%\begin{f} \label{f:twistedGenusTodd}
+%Computing the twisted Todd genus as a combination of the genus and Chern character.
+%\end{f} 
+%\texttt{Q} - the characteristic power series of the genus.
+%
+%\texttt{deg} - the degree $4k$ of the twisted genus.
+
+%\begin{center} 
+%\includegraphics[width=\linewidth]{Formulas/twistedGenusTodd}
+%\end{center}
+
+One should use \textit{Expansions \ref{ex:todd}} and \textit{\ref{ex:chChar}} to obtain the following expansion.
+
+\begin{ex}
+Todd genus combined with the Chern character in terms of the Chern classes.
+\end{ex} 
+
+%\begin{center} 			\includegraphics[width=\linewidth]{Data_Screenshots/RS_ToddWChernCh_01}
+%\end{center}
+%
+%\begin{center} 
+%\includegraphics[width=\linewidth]{Data_Screenshots/RS_ToddWChernCh_02}
+%\includegraphics[width=\linewidth]{Data_Screenshots/RS_ToddWChernCh_2}
+%\end{center}
+
+
+\begin{tcolorbox}[text width=16cm, height=6.5cm,
+title= Twisted Todd genus  in terms of the Chern classes]
+{\footnotesize
+\begin{align*} 
+{[\Td(E)\ch(F_r)]}_0= & r
+\\
+{[\Td(E)\ch(F_r)]}_4 = &
+\tfrac{1}{2^2\cdot 3^1} r \left(c_1^2+c_2\right)
++\tfrac{1}{2^1}c_1 c'_1
++\tfrac{1}{2^1} \left({c'}_1^2-2 c'_2\right)
+\\
+{[\Td(E)\ch(F_r)]}_8 = &
+\tfrac{1}{2^4\cdot 3^2\cdot 5^1} r \left(-c_1^4+c_3 c_1+3 c_2^2+ 4 c_1^2 c_2-c_4\right)
++\tfrac{1}{2^3\cdot 3^1}  c_1 c_2  c'_1
++ \tfrac{1}{2^3\cdot 3^1} \left(c_1^2+c_2\right) \left({c'}_1^2-2 c'_2\right)
+\\
+&
++
+\tfrac{1}{2^2\cdot 3^1} c_1 \left({c'}_1^3- 3 c'_1 c'_2
++3 c'_3\right)+\tfrac{1}{2^3\cdot 3^1} \left({c'}_1^4+2 {c'}_2^2- 4 
+{c'}_1^2 c'_2+ 4 c'_1 c'_3-4 c'_4\right)
+\\
+{[\Td(E)\ch(F_r)]}_{12} = &
+\tfrac{r}{2^6\cdot 3^3\cdot 5^1\cdot 7^1} [2 c_1^6+10 c_2^3+ 11 c_1^2  c_2^2-c_3^2- 12 c_1^4 c_2
++5 c_1^3c_3+ 11 c_1  c_2  c_3- 5 c_1^2  c_4- 9 c_2  c_4- 2 c_1
+ c_5+2 c_6]
+ \\
+ &
+ +
+ \tfrac{1}{2^5\cdot 3^2\cdot 5^1}[c_3 c_1^2-c_4 c_1+ 3 c_1  c_2^2-c_1^3 c_2] c'_1
+ +
+ \tfrac{1}{2^5\cdot 3^2\cdot 5^1}[-c_1^4+c_3 c_1+3 c_2^2+ 4 c_1^2  c_2-c_4]
+ \left({c'}_1^2-2 c'_2\right)
+ \\
+ &
+ +
+ \tfrac{1}{2^4\cdot 3^2} c_1 c_2 [{c'}_1^3-3 c'_1 c'_2+3 c'_3]
+ +
+ \tfrac{1}{2^5\cdot 3^2} \left(c_1^2+c_2\right)[{c'}_1^4+2 {c'}_2^2-
+ 4 {c'}_1^2 c'_2+4 c'_1 c'_3- 4 c'_4]
+ \\
+ &
+ +
+ \tfrac{1}{2^4\cdot 3^1\cdot 5^1} c_1 [{c'}_1^5+5 
+c'_1 {c'}_2^2- 5 {c'}_1^3 c'_2+
+5 {c'}_1^2 c'_3- 5 c'_2 c'_3-
+5 c'_1 c'_4+5 c'_5]
+\\
+&
++
+\tfrac{1}{2^4\cdot 3^2\cdot 5^1} 
+[{c'}_1^6-2 {c'}_2^3+ 9 {c'}_1^2 {c'}_2^2+3 {c'}_3^2-
+6 {c'}_1^4c'_2+ 6 {c'}_1^3 c'_3-
+12 c'_1  c'_2  c'_3-
+6 {c'}_1^2  c'_4+ 6 c'_2  c'_4+
+6 c'_1 c'_5-6 c'_6]
+\end{align*}
+}
+\end{tcolorbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{\bf Twisted Todd genus with simplifications}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The simplifications were implemented via the \texttt{ReplaceAll} function in Mathematica. Although one could argue that the simplified expansions are still quite elaborate, it is definitely a drastic reduction from the standard twisted Todd listed above. 
+
+\begin{ex}
+Todd genus of a complex  bundle ($c_1=0$) combined with the Chern character.
+\end{ex} 
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_ToddWChernCh_c1_01}
+%	
+%\includegraphics[width=\linewidth]{Data_Screenshots/RS_ToddWChernCh_c1_02}
+%\end{center}
+%
+%\begin{align*} 
+%
+%{[\Td(E)\ch(F_r)]}_0\text{ = }r
+%
+%{[\Td(E)\ch(F_r)]}_4\text{ = }\tfrac{1}{12} r c_2
+%+\tfrac{1}{2} \left(c'_1^2-2 c'_2\right)
+%
+%{[\Td(E)\ch(F_r)]}_8\text{ = }
+%\tfrac{1}{720} r \left( 3 c_2^2 -c_4\right)+
+%\tfrac{1}{24}  c_2  \left(c'_1^2-2 c'_2\right)+
+%\tfrac{1}{24} \left(c'_1^4+2 c'_2^2- 4 
+%c'_1^2 c'_2+ 4 c'_1 c'_3-4 c'_4\right)
+%
+%{[\Td(E)\ch(F_r)]}_{12}\text{ = }
+%\tfrac{r \left(10 c_2^3 -c_3^2 - 9 c_2  c_4 +2 c_6\right)}{60480}
+%+ \tfrac{\left(3 c_2^2 -c_4\right)\left(c'_1^2-2 c'_2\right)}{1440}
+% +\tfrac{1}{288} c_2\left(c'_1^4+2 c'_2^2-
+% 4 c'_1^2 c'_2+4 c'_1 c'_3- 4 c'_4\right)
+%+ \tfrac{1}{720} 
+%\left(c'_1^6-2 c'_2^3+ 9 c'_1^2 c'_2^2+3 c'_3^2-
+%6 c'_1^4c'_2+ 6 c'_1^3 c'_3-
+%12 c'_1  c'_2  c'_3-
+%6 c'_1^2  c'_4+ 6 c'_2  c'_4+
+%6 c'_1 c'_5-6 c'_6\right)
+%
+%
+%\end{align*}
+
+\begin{tcolorbox}[width=17cm, height=4.2cm,
+title=Twisted Todd genus of a complex  bundle $c_1$ zero]
+{\footnotesize
+\begin{align*} 
+{[\Td(E)\ch(F_r)]}_0= & r
+\\
+{[\Td(E)\ch(F_r)]}_4 = &
+\tfrac{1}{2^2\cdot 3^1} r c_2
++\tfrac{1}{2^1} [{c'}_1^2-2 c'_2]
+\\
+{[\Td(E)\ch(F_r)]}_8 = &
+\tfrac{1}{2^4\cdot 3^2\cdot 5^1} r [3 c_2^2-c_4]
++ \tfrac{1}{2^3\cdot 3^1} c_2 [{c'}_1^2-2 c'_2]
++\tfrac{1}{2^3\cdot 3^1}[{c'}_1^4+2 {c'}_2^2- 4 
+{c'}_1^2 c'_2+ 4 c'_1 c'_3-4 c'_4]
+\\
+{[\Td(E)\ch(F_r)]}_{12} = &
+\tfrac{r}{2^6\cdot 3^3\cdot 5^1\cdot 7^1} [10c_2^3-c_3^2- 9 c_2  c_4+2 c_6]
+ +
+ \tfrac{1}{2^5\cdot 3^2\cdot 5^1}(3 c_2^2-c_4)
+ ({c'}_1^2-2 c'_2)
+ +
+ \tfrac{1}{2^5\cdot 3^2} c_2[{c'}_1^4+2 {c'}_2^2-
+ 4 {c'}_1^2 c'_2+4 c'_1 c'_3
+\\
+& \quad
+- 4 c'_4]+\tfrac{1}{2^4\cdot 3^2\cdot 5^1} 
+[{c'}_1^6-2 {c'}_2^3+ 9 {c'}_1^2 {c'}_2^2+3 {c'}_3^2-
+6 {c'}_1^4c'_2+ 6 {c'}_1^3 c'_3-
+12 c'_1  c'_2  c'_3-
+6 {c'}_1^2  c'_4+ 6 c'_2  c'_4+
+6 c'_1 c'_5
+\\
+& \quad
+-6 c'_6]
+\end{align*}
+}
+\end{tcolorbox}
+
+
+
+
+One might notice that vanishing $ c_1=0 $ simplified the twisted Todd more than vanishing of $c_1'=0  $, which emphasizes the earlier point on how the twisted structure is created out of two indeed distinct elements.
+
+\begin{ex}
+Todd genus combined with the Chern character of a $ SU(r) $-bundle ($c_1'=0$).
+\end{ex} 	
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_ToddWChernCh_cp1}
+%\end{center}
+%
+%
+%
+%\begin{align*} 
+%
+%{[\Td(E)\ch(F_r)]}_0\text{ = }r
+%
+%{[\Td(E)\ch(F_r)]}_4\text{ = }\tfrac{1}{12} r \left(c_1^2+c_2\right)
+%- c'_2
+%
+%{[\Td(E)\ch(F_r)]}_8\text{ = }
+%\tfrac{1}{720} r \left(-c_1^4+c_3 c_1+3 c_2^2+ 4 c_1^2 c_2-c_4\right) -
+%\tfrac{1}{12} \left(c_1^2+c_2\right)  c'_2
+%+
+%\tfrac{1}{4} c_1 c'_3+
+%\tfrac{1}{24} \left( 2 c'_2^2 -4 c'_4\right)
+%
+%{[\Td(E)\ch(F_r)]}_{12}\text{ = }
+%\tfrac{r \left(2 c_1^6+10 c_2^3+ 11 c_1^2  c_2^2-c_3^2- 12 c_1^4 c_2
+%+5 c_1^3c_3+ 11 c_1  c_2  c_3- 5 c_1^2  c_4- 9 c_2  c_4- 2 c_1
+% c_5+2 c_6\right)}{60480}
+% - \tfrac{\left(-c_1^4+c_3 c_1+3 c_2^2+ 4 c_1^2  c_2-c_4\right)
+% c'_2}{720}+
+% \tfrac{1}{48} c_1 c_2  c'_3
+% +\tfrac{1}{288} \left(c_1^2+c_2\right) \left(2 c'_2^2 - 4 c'_4\right)
+% +\tfrac{1}{240} c_1 \left(- 5 c'_2 c'_3 +5 c'_5\right)+
+%\tfrac{1}{720} 
+%\left(-2 c'_2^3 +3 c'_3^2 + 6 c'_2  c'_4-6 c'_6\right)
+%
+%
+%\end{align*}
+
+
+
+\begin{tcolorbox}[text width=16cm, height=4.5cm,
+title=Twisted Todd genus with a twist by an SU bundle $c_1'$ zero]
+{\footnotesize
+\begin{align*} 
+{[\Td(E)\ch(F_r)]}_0= & r
+\\
+{[\Td(E)\ch(F_r)]}_4 = &
+\tfrac{1}{2^2\cdot 3^1} r \left(c_1^2+c_2\right)
+- c'_2
+\\
+{[\Td(E)\ch(F_r)]}_8 = &
+\tfrac{1}{2^4\cdot 3^2\cdot 5^1} r \left(-c_1^4+c_3 c_1+3 c_2^2+ 4 c_1^2 c_2-c_4\right)
+- \tfrac{1}{2^2\cdot 3^1} \left(c_1^2+c_2\right)  c'_2
++
+\tfrac{1}{2^2} c_1  c'_3
++\tfrac{1}{2^2\cdot 3^1} \left({c'}_2^2-2 c'_4\right)
+\\
+{[\Td(E)\ch(F_r)]}_{12} = &
+\tfrac{r}{2^6\cdot 3^3\cdot 5^1\cdot 7^1} [2 c_1^6+10 c_2^3+ 11 c_1^2  c_2^2-c_3^2- 12 c_1^4 c_2
++5 c_1^3c_3+ 11 c_1  c_2  c_3- 5 c_1^2  c_4- 9 c_2  c_4- 2 c_1
+ c_5+2 c_6]
+ \\
+ &
+- \tfrac{1}{2^4\cdot 3^2\cdot 5^1}[-c_1^4+c_3 c_1+3 c_2^2+ 4 c_1^2  c_2-c_4]
+  c'_2
+ +
+ \tfrac{1}{2^4\cdot 3^1} c_1 c_2  c'_3
+ +
+ \tfrac{1}{2^4\cdot 3^2} \left(c_1^2+c_2\right)[{c'}_2^2- 2 c'_4]
+ \\
+ &
+ +
+ \tfrac{1}{2^4\cdot 3^1} c_1 [-  c'_2 c'_3+ c'_5]
++
+\tfrac{1}{2^4\cdot 3^2\cdot 5^1} 
+[-2 {c'}_2^3+3 {c'}_3^2
++ 6 c'_2  c'_4-6 c'_6]
+\end{align*}
+}
+\end{tcolorbox}
+
+
+
+
+\begin{ex}
+Twisted Todd genus of complex bundles - the Todd genus of a  $ SU $-bundle ($c_1=0$) combined with the Chern character of a  $ SU(r) $-bundle ($c_1'=0$).
+\end{ex} 
+
+%\begin{center} \includegraphics[width=\linewidth]{Data_Screenshots/RS_ToddWChernCh_c1cp1}
+%\end{center}
+%
+%\begin{align*} 
+%
+%{[\Td(E)\ch(F_r)]}_0\text{ = }r
+%
+%{[\Td(E)\ch(F_r)]}_4\text{ = }\tfrac{1}{12} r c_2 
+%- c'_2
+%
+%{[\Td(E)\ch(F_r)]}_8\text{ = }
+%\tfrac{1}{720} r \left(3 c_2^2-c_4\right) -
+%\tfrac{1}{12} c_2 c'_2
+%+
+%\tfrac{1}{24} \left( 2 c'_2^2 -4 c'_4\right)
+%
+%{[\Td(E)\ch(F_r)]}_{12}\text{ = }
+%\tfrac{r \left(10 c_2^3 -c_3^2- 9 c_2  c_4+2 c_6\right)}{60480}
+% - \tfrac{\left(3 c_2^2-c_4\right)
+% c'_2}{720}
+% +\tfrac{1}{288} c_2\left(2 c'_2^2 - 4 c'_4\right)
+% +
+%\tfrac{1}{720} 
+%\left(-2 c'_2^3 +3 c'_3^2 + 6 c'_2  c'_4-6 c'_6\right)
+%
+%
+%\end{align*}
+
+
+
+\begin{tcolorbox}[text width=16cm, height=4cm,
+title=Twisted Todd genus of complex bundles $c_1$ $c_1'$ zero]
+{\footnotesize
+\begin{align*} 
+{[\Td(E)\ch(F_r)]}_0= & r
+\\
+{[\Td(E)\ch(F_r)]}_4 = &
+\tfrac{1}{2^2\cdot 3^1} r c_2 - c'_2
+\\
+{[\Td(E)\ch(F_r)]}_8 = &
+\tfrac{1}{2^4\cdot 3^2\cdot 5^1} r \left(3 c_2^2-c_4\right)
+- \tfrac{1}{2^2\cdot 3^1} c_2 c'_2
++\tfrac{1}{2^2\cdot 3^1} \left({c'}_2^2-2 c'_4\right)
+\\
+{[\Td(E)\ch(F_r)]}_{12} = &
+\tfrac{r}{2^6\cdot 3^3\cdot 5^1\cdot 7^1} [10 c_2^3-c_3^2 - 9 c_2  c_4+2 c_6]
+- \tfrac{1}{2^4\cdot 3^2\cdot 5^1}[3 c_2^2-c_4]c'_2
+ +
+ \tfrac{1}{2^4\cdot 3^2} c_2[{c'}_2^2- 2 c'_4]
+ \\
+ &
++
+\tfrac{1}{2^4\cdot 3^2\cdot 5^1} 
+[-2 {c'}_2^3+3 {c'}_3^2
++ 6 c'_2  c'_4-6 c'_6]
+\end{align*}
+}
+\end{tcolorbox}
+
+
+
+
+
+
+\medskip
+With this final result we conclude the twisted genera section as well as the result part of the paper more broadly.
+
+%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{99}
+%%%%%%%%%%%%%%%%%%
+
+\bibitem{AHS}
+M.  Ando, M. J. Hopkins, and N. P. Strickland, {\it Elliptic spectra, the Witten genus and the theorem of the cube},
+ Invent. Math. {\bf 146} (2001), no. 3, 595-687. 
+
+
+\bibitem{Bertlmann} R. Bertlmann,
+\emph{Anomalies in Quantum Field Theory}, Clarendon Press, UK, 1996.
+
+\bibitem{Borel} A. Borel,
+\textit{Topology of Lie groups and characteristic classes},
+Bulletin of the American Mathematical Society, {61}, 297-432, 1955.
+
+\bibitem{BH1} A. Borel, F. Hirzebruch, {\it Characteristic classes and homogeneous spaces, I}, 
+Amer. J. Math.  80, 458-538, 1958.
+
+\bibitem{BH2}	A. Borel, F. Hirzebruch, {\it Characteristic classes and homogeneous spaces, II}, 
+Amer. J. Math. 81, 315-382, 1959.
+
+\bibitem{BH3}	A. Borel, F. Hirzebruch, {\it Characteristic classes and homogeneous spaces, III}, 
+Amer. J. Math.  82, 491-504, 1960.
+
+\bibitem{Bott-Tu} R. Bott, L. W. Tu, \textit{Differential Forms in Algebraic Topology}, New York: Springer-Verlag, 1982.
+
+\bibitem{Ch}
+S.-S. Chern, {\it Complex manifolds without potential theory},
+ Springer-Verlag, Berlin, 1995. 
+
+\bibitem{Gallier} J. Gallier, S. S. Shatz, \textit{Complex Algebraic Geometry}, University of Pennsylvania, 2007, retrieved from ftp://ftp.cis.upenn.edu/pub/cis610/public\_html/calg5.pdf
+
+\bibitem{Gilkey-Ivanova-Nikcevic} P. Gilkey, R. Ivanova, S. Nikcevic, {\it  Characteristic Classes},  Encyclopedia 
+of Mathematical Physics (Elsevier Academic) eds. J.-P. Francoise, G.L. Naber and 
+Tsou S. T.,  volume 1,  page 488-495, Oxford: Elsevier, 2006.
+
+\bibitem{Gross-Huybrechts}  M. Gross, D. Huybrechts, D. Joyce, \textit{Calabi-Yau manifolds and related geometries}, Universitext, Berlin, New York: Springer-Verlag, 2003. 
+
+\bibitem{Hirzebruch} F. Hirzebruch,
+\emph{Topological Methods in Algebraic Geometry},
+Springer-Verlag Berlin Heidelberg, 1978.
+
+\bibitem{HK}
+F. Hirzebruch and M. Kreck, 
+{\it On the concept of genus in topology and complex analysis},
+Notices Amer. Math. Soc. {\bf 56} (2009), no. 6, 713-719. 
+
+\bibitem{Hopkins} M. Hopkins, \emph{The \^{A} class}, Harvard University, 2015, retrieved from	\newline http://www.math.harvard.edu/archive/272b\_spring\_05/handouts/A-roof/A-roof.pdf
+
+\bibitem{Hubsch} T. H\"ubsch, \textit{Calabi-Yau Manifolds: a Bestiary for Physicists}, Singapore, New York: World Scientific, 1994.
+
+\bibitem{Husemoller} D. Husemoller, \textit{Fibre Bundles},  McGraw-Hill, 1966.
+
+\bibitem{Iena} O. Iena,
+\emph{On Symbolic Computations with Chern Classes: Remarks on the Library CHERN.LIB for SINGULAR},
+Mathematics Subject Classification, 2010, retrieved from http://orbilu.uni.lu/bitstream/10993/22395/1/ChernLib.pdf
+
+\bibitem{Iena2} O. Iena, \textit{On Different Approaches to Compute the Chern Classes of a tensor Product of Two Vector Bundles}, 2016, http://orbilu.uni.lu/bitstream/10993/27418/1/ChernProd.pdf
+
+\bibitem{Lascoux} A. Lascoux, \textit{Classes de Chern d'un produit tensoriel}, C. R. Acad. Sci. Paris Ser, A-B, 286(8):A385-A387, 1978.
+
+\bibitem{Singularities} Q. Lu, S. S.-T. Yau, A. Libgober, \textit{Singularities and Complex Geometry}, American Mathematical Society / International Press, 1997.
+
+
+\bibitem{LM}
+G. Luke and A. Mishchenko, 
+{\it Vector bundles and their applications},
+Kluwer Academic Publishers, Dordrecht, 1998. 
+
+
+\bibitem{Manivel} L. Manivel,
+\emph{Chern Classes of Tensor Products}, Int. J. Math., 27, 1650079, 2016, arXiv:1012.0014v1.
+
+\bibitem{Macdonald} I. G. Macdonald, \textit{Symmetric  functions and Hall  polynomials}, reprint of the 1998 2nd edition, Oxford University Press, reprint of the 1998 2nd edition edition, 2015.
+
+\bibitem{MT}
+ I. Madsen and J. Tornehave, {\it From calculus to cohomology: de Rham cohomology
+and characteristic classes}, Cambridge University Press, 1997.
+
+\bibitem{McTague} C. McTague,
+\emph{Computing Hirzebruch L-Polynomials}, Blog: Carl McTague, Jan 2014, retrieved from \newline
+https://www.mctague.org/carl/blog/2014/01/05/computing-L-polynomials/
+
+\bibitem{Milnor} J. Milnor and J.D. Stasheff, \emph{Characteristic classes},
+Annals of Math. Studies, Princeton University Press, Princeton, 1974.
+
+\bibitem{Mor}
+S. Morita, {\it Geometry of characteristic classes},
+Amer. Math. Soc., Providence, RI, 2001. 
+
+\bibitem{Nakahara} M. Nakahara, \emph{Geometry, Topology and Physics}, Institute of Physics Publishing, Bristol and Philadelphia, 2003.
+
+\bibitem{Sati} H. Sati, \emph{Ninebrane structures}, Int. J. Geom. Methods Mod. Phys. 12 1550041, 2015, arXiv:1405.7686v2.
+
+\bibitem{SSS2} H. Sati, U. Schreiber, J. Stasheff, \emph{Fivebrane structures}, Rev. Math. Phys. 21:1197-1240, 2009, arXiv:0805.0564v3.
+
+\bibitem{SSS3} H. Sati, U. Schreiber, J. Stasheff, \emph{Twisted differential String and Fivebrane structures}, Commun. Math. Phys. 315, 169-213, 2012, arXiv:0910.4001v2.
+
+\bibitem{Teitler} Z. Teitler,
+\emph{An Informal Introduction to Computing with Chern Classes in Algebraic Geometry},
+Boise State University, March 31, 2014.
+
+\bibitem{Wiki}
+Wikipedia \url{ https://en.wikipedia.org/wiki/Genus_of_a_multiplicative_sequence}
+
+\bibitem{Zhang} Y. Zhang, \textit{A brief introduction to characteristic classes from the differential viewpoint}, Cornell University, April 24, 2011.
+
+
+\end{thebibliography}
+
+
+\end{document}
+

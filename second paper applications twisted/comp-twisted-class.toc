@@ -1,0 +1,9 @@
+\contentsline {section}{\tocsection {}{1}{Introduction}}{1}
+\contentsline {section}{\tocsection {}{2}{Twisted genera}}{1}
+\contentsline {subsection}{\tocsubsection {}{2.1}{\bf Twisted \^{A}-genus}}{1}
+\contentsline {subsection}{\tocsubsection {}{}{\bf Twisted \^{A}-genus with simplifications}}{3}
+\contentsline {subsection}{\tocsubsection {}{2.2}{\bf Twisted L-genus}}{4}
+\contentsline {subsection}{\tocsubsection {}{}{\bf Twisted L-genus with simplifications}}{4}
+\contentsline {subsection}{\tocsubsection {}{2.3}{\bf Twisted Todd genus}}{5}
+\contentsline {subsection}{\tocsubsection {}{}{\bf Twisted Todd genus with simplifications}}{6}
+\contentsline {section}{\tocsection {}{}{References}}{7}
