@@ -1,0 +1,834 @@
+%% AMS-LaTeX Created with the Wolfram Language : www.wolfram.com
+
+\documentclass{article}
+\usepackage{amsmath, amssymb, graphics, setspace}
+
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}[1]{{}}
+
+\newcounter{mathematicapage}
+\begin{document}
+
+\text{NotebookEvaluate}[\text{T:$\backslash \backslash $5183$\backslash \backslash $capstone$\backslash \backslash $Computational-Characterstic-Classes$\backslash
+\backslash $characteristic classes background$\backslash \backslash $[part-5]Todd$\_$genus$\_$full.nb},\text{EvaluationElements}\to \text{Automatic}];
+
+\text{NotebookEvaluate}[\text{T:$\backslash \backslash $5183$\backslash \backslash $capstone$\backslash \backslash $Computational-Characterstic-Classes$\backslash
+\backslash $characteristic classes background$\backslash \backslash $[part-1]Pontryagen$\_$Chern$\_$Class$\_$Chern$\_$Character.nb},\text{EvaluationElements}\to
+\text{Automatic}];
+
+\subsection*{TODD GENUS - Pontryagin}
+
+\text{twistedGenusToddP}[\text{Q$\_$},\text{deg$\_$Integer}]\text{/;} \deg \text{==}0 \text{:=} \text{chernCh}[0];\\
+\text{twistedGenusToddP}[\text{Q$\_$}, \text{deg$\_$Integer} ]\text{:=} \text{Module}[\{\text{genusTable}, \text{chernCharTable} \},\\
+\quad \text{genusTable}= \text{Table}[(\text{toddCompl}[i]*t{}^{\wedge}(2*i) \text{/.}c\to p),\{i,0,\deg /2\}];\\
+\quad \text{chernCharTable}=\text{Table}[(\text{chernChToP}[m]*t{}^{\wedge}(2*m)\text{/.}\, p\to \text{p$\unicode{02bc}$}),\{m,0,2*\deg /2\}];\\
+\quad \text{If}[\text{Divisible}[\deg ,2],\\
+\quad \quad \text{Total}[\text{Coefficient}[\text{Flatten}[\text{Outer}[\text{Times},\text{genusTable},\text{chernCharTable}]],t{}^{\wedge}(\deg
+)]],\\
+\quad \quad \text{Print}[\text{Error: Input degree must be divisible by 2.}]\\
+\quad ]\\
+]
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}[i=0,i<17,i\text{+=}2, \text{Print}[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusToddP}[\#/(1-\text{Exp}[-\#])\&,i]]]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }-\frac{r p_1}{12}+\frac{\text{p$\unicode{02bc}$}_1}{2}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{1}{720} r \left(3 p_1^2-p_2\right)-\frac{p_1 \text{p$\unicode{02bc}$}_1}{24}+\frac{1}{24} \left(\text{p$\unicode{02bc}$}_1^2-2
+\text{p$\unicode{02bc}$}_2\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(-10 p_1^3+9 p_1 p_2-2 p_3\right)}{60480}+\frac{\left(3 p_1^2-p_2\right) \text{p$\unicode{02bc}$}_1}{1440}-\frac{1}{288}
+p_1 \left(\text{p$\unicode{02bc}$}_1^2-2 \text{p$\unicode{02bc}$}_2\right)+\frac{1}{720} \left(\text{p$\unicode{02bc}$}_1^3-3 \text{p$\unicode{02bc}$}_1
+\text{p$\unicode{02bc}$}_2+3 \text{p$\unicode{02bc}$}_3\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(21 p_1^4-34 p_1^2 p_2+5 p_2^2+13 p_1 p_3-3 p_4\right)}{3628800}+\frac{\left(-10 p_1^3+9
+p_1 p_2-2 p_3\right) \text{p$\unicode{02bc}$}_1}{120960}+\frac{\left(3 p_1^2-p_2\right) \left(\text{p$\unicode{02bc}$}_1^2-2 \text{p$\unicode{02bc}$}_2\right)}{17280}-\frac{p_1
+\left(\text{p$\unicode{02bc}$}_1^3-3 \text{p$\unicode{02bc}$}_1 \text{p$\unicode{02bc}$}_2+3 \text{p$\unicode{02bc}$}_3\right)}{8640}+\frac{\text{p$\unicode{02bc}$}_1^4-4
+\text{p$\unicode{02bc}$}_1^2 \text{p$\unicode{02bc}$}_2+2 \text{p$\unicode{02bc}$}_2^2+4 \text{p$\unicode{02bc}$}_1 \text{p$\unicode{02bc}$}_3-4
+\text{p$\unicode{02bc}$}_4}{40320}\)
+
+\subsubsection*{p$\_$ 1 = 0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusToddP}[\#/(1-\text{Exp}[-\#])\&,i]\text{/.}p_1\to
+0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }\frac{\text{p$\unicode{02bc}$}_1}{2}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }-\frac{r p_2}{720}+\frac{1}{24} \left(\text{p$\unicode{02bc}$}_1^2-2 \text{p$\unicode{02bc}$}_2\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }-\frac{r p_3}{30240}-\frac{p_2 \text{p$\unicode{02bc}$}_1}{1440}+\frac{1}{720} \left(\text{p$\unicode{02bc}$}_1^3-3
+\text{p$\unicode{02bc}$}_1 \text{p$\unicode{02bc}$}_2+3 \text{p$\unicode{02bc}$}_3\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(5 p_2^2-3 p_4\right)}{3628800}-\frac{p_3 \text{p$\unicode{02bc}$}_1}{60480}-\frac{p_2
+\left(\text{p$\unicode{02bc}$}_1^2-2 \text{p$\unicode{02bc}$}_2\right)}{17280}+\frac{\text{p$\unicode{02bc}$}_1^4-4 \text{p$\unicode{02bc}$}_1^2
+\text{p$\unicode{02bc}$}_2+2 \text{p$\unicode{02bc}$}_2^2+4 \text{p$\unicode{02bc}$}_1 \text{p$\unicode{02bc}$}_3-4 \text{p$\unicode{02bc}$}_4}{40320}\)
+
+\subsubsection*{p{'}$\_$1=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusToddP}[\#/(1-\text{Exp}[-\#])\&,i]\text{/.}\text{p$\unicode{02bc}$}_1\to
+0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }-\frac{r p_1}{12}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{1}{720} r \left(3 p_1^2-p_2\right)-\frac{\text{p$\unicode{02bc}$}_2}{12}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(-10 p_1^3+9 p_1 p_2-2 p_3\right)}{60480}+\frac{p_1 \text{p$\unicode{02bc}$}_2}{144}+\frac{\text{p$\unicode{02bc}$}_3}{240}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(21 p_1^4-34 p_1^2 p_2+5 p_2^2+13 p_1 p_3-3 p_4\right)}{3628800}-\frac{\left(3 p_1^2-p_2\right)
+\text{p$\unicode{02bc}$}_2}{8640}-\frac{p_1 \text{p$\unicode{02bc}$}_3}{2880}+\frac{2 \text{p$\unicode{02bc}$}_2^2-4 \text{p$\unicode{02bc}$}_4}{40320}\)
+
+\subsubsection*{p$\_$1=p{'}$\_$1 = 0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusToddP}[\#/(1-\text{Exp}[-\#])\&,i]\text{/.}p_1\to
+0\text{/.}\text{p$\unicode{02bc}$}_1\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }-\frac{r p_2}{720}-\frac{\text{p$\unicode{02bc}$}_2}{12}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }-\frac{r p_3}{30240}+\frac{\text{p$\unicode{02bc}$}_3}{240}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(5 p_2^2-3 p_4\right)}{3628800}+\frac{p_2 \text{p$\unicode{02bc}$}_2}{8640}+\frac{2
+\text{p$\unicode{02bc}$}_2^2-4 \text{p$\unicode{02bc}$}_4}{40320}\)
+
+\subsubsection*{p$\_$2 = 0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusToddP}[\#/(1-\text{Exp}[-\#])\&,i]\text{/.}p_2\to
+0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }-\frac{r p_1}{12}+\frac{\text{p$\unicode{02bc}$}_1}{2}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{r p_1^2}{240}-\frac{p_1 \text{p$\unicode{02bc}$}_1}{24}+\frac{1}{24} \left(\text{p$\unicode{02bc}$}_1^2-2
+\text{p$\unicode{02bc}$}_2\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(-10 p_1^3-2 p_3\right)}{60480}+\frac{1}{480} p_1^2 \text{p$\unicode{02bc}$}_1-\frac{1}{288}
+p_1 \left(\text{p$\unicode{02bc}$}_1^2-2 \text{p$\unicode{02bc}$}_2\right)+\frac{1}{720} \left(\text{p$\unicode{02bc}$}_1^3-3 \text{p$\unicode{02bc}$}_1
+\text{p$\unicode{02bc}$}_2+3 \text{p$\unicode{02bc}$}_3\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(21 p_1^4+13 p_1 p_3-3 p_4\right)}{3628800}+\frac{\left(-10 p_1^3-2 p_3\right) \text{p$\unicode{02bc}$}_1}{120960}+\frac{p_1^2
+\left(\text{p$\unicode{02bc}$}_1^2-2 \text{p$\unicode{02bc}$}_2\right)}{5760}-\frac{p_1 \left(\text{p$\unicode{02bc}$}_1^3-3 \text{p$\unicode{02bc}$}_1
+\text{p$\unicode{02bc}$}_2+3 \text{p$\unicode{02bc}$}_3\right)}{8640}+\frac{\text{p$\unicode{02bc}$}_1^4-4 \text{p$\unicode{02bc}$}_1^2 \text{p$\unicode{02bc}$}_2+2
+\text{p$\unicode{02bc}$}_2^2+4 \text{p$\unicode{02bc}$}_1 \text{p$\unicode{02bc}$}_3-4 \text{p$\unicode{02bc}$}_4}{40320}\)
+
+\subsubsection*{p{'}$\_$2=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusToddP}[\#/(1-\text{Exp}[-\#])\&,i]\text{/.}\text{p$\unicode{02bc}$}_2\to
+0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }-\frac{r p_1}{12}+\frac{\text{p$\unicode{02bc}$}_1}{2}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{1}{720} r \left(3 p_1^2-p_2\right)-\frac{p_1 \text{p$\unicode{02bc}$}_1}{24}+\frac{\text{p$\unicode{02bc}$}_1^2}{24}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(-10 p_1^3+9 p_1 p_2-2 p_3\right)}{60480}+\frac{\left(3 p_1^2-p_2\right) \text{p$\unicode{02bc}$}_1}{1440}-\frac{1}{288}
+p_1 \text{p$\unicode{02bc}$}_1^2+\frac{1}{720} \left(\text{p$\unicode{02bc}$}_1^3+3 \text{p$\unicode{02bc}$}_3\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(21 p_1^4-34 p_1^2 p_2+5 p_2^2+13 p_1 p_3-3 p_4\right)}{3628800}+\frac{\left(-10 p_1^3+9
+p_1 p_2-2 p_3\right) \text{p$\unicode{02bc}$}_1}{120960}+\frac{\left(3 p_1^2-p_2\right) \text{p$\unicode{02bc}$}_1^2}{17280}-\frac{p_1 \left(\text{p$\unicode{02bc}$}_1^3+3
+\text{p$\unicode{02bc}$}_3\right)}{8640}+\frac{\text{p$\unicode{02bc}$}_1^4+4 \text{p$\unicode{02bc}$}_1 \text{p$\unicode{02bc}$}_3-4 \text{p$\unicode{02bc}$}_4}{40320}\)
+
+\subsubsection*{p$\_$2=p{'}$\_$2=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusToddP}[\#/(1-\text{Exp}[-\#])\&,i]\text{/.}p_2\to
+0\text{/.}\text{p$\unicode{02bc}$}_2\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }-\frac{r p_1}{12}+\frac{\text{p$\unicode{02bc}$}_1}{2}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{r p_1^2}{240}-\frac{p_1 \text{p$\unicode{02bc}$}_1}{24}+\frac{\text{p$\unicode{02bc}$}_1^2}{24}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(-10 p_1^3-2 p_3\right)}{60480}+\frac{1}{480} p_1^2 \text{p$\unicode{02bc}$}_1-\frac{1}{288}
+p_1 \text{p$\unicode{02bc}$}_1^2+\frac{1}{720} \left(\text{p$\unicode{02bc}$}_1^3+3 \text{p$\unicode{02bc}$}_3\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(21 p_1^4+13 p_1 p_3-3 p_4\right)}{3628800}+\frac{\left(-10 p_1^3-2 p_3\right) \text{p$\unicode{02bc}$}_1}{120960}+\frac{p_1^2
+\text{p$\unicode{02bc}$}_1^2}{5760}-\frac{p_1 \left(\text{p$\unicode{02bc}$}_1^3+3 \text{p$\unicode{02bc}$}_3\right)}{8640}+\frac{\text{p$\unicode{02bc}$}_1^4+4
+\text{p$\unicode{02bc}$}_1 \text{p$\unicode{02bc}$}_3-4 \text{p$\unicode{02bc}$}_4}{40320}\)
+
+\subsubsection*{p$\_$1=p{'}$\_$1=p$\_$2=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusToddP}[\#/(1-\text{Exp}[-\#])\&,i]\text{/.}p_1\to
+0\text{/.}\text{p$\unicode{02bc}$}_1\to 0\text{/.}p_2\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }-\frac{\text{p$\unicode{02bc}$}_2}{12}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }-\frac{r p_3}{30240}+\frac{\text{p$\unicode{02bc}$}_3}{240}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }-\frac{r p_4}{1209600}+\frac{2 \text{p$\unicode{02bc}$}_2^2-4 \text{p$\unicode{02bc}$}_4}{40320}\)
+
+\subsubsection*{p$\_$1=p{'}$\_$1=p{'}$\_$2=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusToddP}[\#/(1-\text{Exp}[-\#])\&,i]\text{/.}p_1\to
+0\text{/.}\text{p$\unicode{02bc}$}_1\to 0\text{/.}\text{p$\unicode{02bc}$}_2\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }-\frac{r p_2}{720}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }-\frac{r p_3}{30240}+\frac{\text{p$\unicode{02bc}$}_3}{240}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(5 p_2^2-3 p_4\right)}{3628800}-\frac{\text{p$\unicode{02bc}$}_4}{10080}\)
+
+\subsubsection*{p$\_$1=p{'}$\_$1=p$\_$2=p{'}$\_$2=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusToddP}[\#/(1-\text{Exp}[-\#])\&,i]\text{/.}p_1\to
+0\text{/.}\text{p$\unicode{02bc}$}_1\to 0\text{/.}p_2\to 0\text{/.}\text{p$\unicode{02bc}$}_2\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }-\frac{r p_3}{30240}+\frac{\text{p$\unicode{02bc}$}_3}{240}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }-\frac{r p_4}{1209600}-\frac{\text{p$\unicode{02bc}$}_4}{10080}\)
+
+\subsection*{TODD GENUS - Chern }
+
+\text{NotebookEvaluate}[\text{T:$\backslash \backslash $5183$\backslash \backslash $capstone$\backslash \backslash $Computational-Characterstic-Classes$\backslash
+\backslash $characteristic classes background$\backslash \backslash $[part-3]Aroof$\_$genus$\_$full.nb},\text{EvaluationElements}\to \text{Automatic}];
+
+\text{twistedGenusTodd}[\text{Q$\_$},\text{deg$\_$Integer}]\text{/;} \deg \text{==}0 \text{:=} \text{chernCh}[0];\\
+\text{twistedGenusTodd}[\text{Q$\_$}, \text{deg$\_$Integer} ]\text{:=} \text{Module}[\{\text{genusTable}, \text{chernCharTable} \},\\
+\quad \text{genusTable}= \text{Table}[(\text{genus}[Q, i]*t{}^{\wedge}(2*i) \text{/.}c\to c),\{i,0,\deg /2\}];\\
+\quad \text{chernCharTable}=\text{Table}[(\text{chernCh}[m]*t{}^{\wedge}(2*m)\text{/.}\, c\to \text{c$\unicode{02bc}$}),\{m,0,2*\deg /2\}];\\
+\quad \text{If}[\text{Divisible}[\deg ,2],\\
+\quad \quad \text{Total}[\text{Coefficient}[\text{Flatten}[\text{Outer}[\text{Times},\text{genusTable},\text{chernCharTable}]],t{}^{\wedge}(\deg
+)]],\\
+\quad \quad \text{Print}[\text{Error: Input degree must be divisible by 2.}]\\
+\quad ]\\
+]
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}[i=0,i<17,i\text{+=}2, \text{Print}[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusTodd}[\#/(1-\text{Exp}[-\#])\&,i]]]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }\frac{r c_1}{2}+\text{c$\unicode{02bc}$}_1\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }\frac{1}{12} r \left(c_1^2+c_2\right)+\frac{c_1 \text{c$\unicode{02bc}$}_1}{2}+\frac{1}{2} \left(\text{c$\unicode{02bc}$}_1^2-2
+\text{c$\unicode{02bc}$}_2\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }\frac{1}{24} r c_1 c_2+\frac{1}{12} \left(c_1^2+c_2\right) \text{c$\unicode{02bc}$}_1+\frac{1}{4}
+c_1 \left(\text{c$\unicode{02bc}$}_1^2-2 \text{c$\unicode{02bc}$}_2\right)+\frac{1}{6} \left(\text{c$\unicode{02bc}$}_1^3-3 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_2+3 \text{c$\unicode{02bc}$}_3\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{1}{720} r \left(-c_1^4+4 c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right)+\frac{1}{24} c_1 c_2 \text{c$\unicode{02bc}$}_1+\frac{1}{24}
+\left(c_1^2+c_2\right) \left(\text{c$\unicode{02bc}$}_1^2-2 \text{c$\unicode{02bc}$}_2\right)+\frac{1}{12} c_1 \left(\text{c$\unicode{02bc}$}_1^3-3
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2+3 \text{c$\unicode{02bc}$}_3\right)+\frac{1}{24} \left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }\frac{r \left(-c_1^3 c_2+3 c_1 c_2^2+c_1^2 c_3-c_1 c_4\right)}{1440}+\frac{1}{720} \left(-c_1^4+4
+c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right) \text{c$\unicode{02bc}$}_1+\frac{1}{48} c_1 c_2 \left(\text{c$\unicode{02bc}$}_1^2-2 \text{c$\unicode{02bc}$}_2\right)+\frac{1}{72}
+\left(c_1^2+c_2\right) \left(\text{c$\unicode{02bc}$}_1^3-3 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2+3 \text{c$\unicode{02bc}$}_3\right)+\frac{1}{48}
+c_1 \left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)+\frac{1}{120} \left(\text{c$\unicode{02bc}$}_1^5-5 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2+5
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2+5 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3-5
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5 \text{c$\unicode{02bc}$}_5\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(2 c_1^6-12 c_1^4 c_2+11 c_1^2 c_2^2+10 c_2^3+5 c_1^3 c_3+11 c_1 c_2 c_3-c_3^2-5 c_1^2
+c_4-9 c_2 c_4-2 c_1 c_5+2 c_6\right)}{60480}+\frac{\left(-c_1^3 c_2+3 c_1 c_2^2+c_1^2 c_3-c_1 c_4\right) \text{c$\unicode{02bc}$}_1}{1440}+\frac{\left(-c_1^4+4
+c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right) \left(\text{c$\unicode{02bc}$}_1^2-2 \text{c$\unicode{02bc}$}_2\right)}{1440}+\frac{1}{144} c_1 c_2 \left(\text{c$\unicode{02bc}$}_1^3-3
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2+3 \text{c$\unicode{02bc}$}_3\right)+\frac{1}{288} \left(c_1^2+c_2\right) \left(\text{c$\unicode{02bc}$}_1^4-4
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3-4
+\text{c$\unicode{02bc}$}_4\right)+\frac{1}{240} c_1 \left(\text{c$\unicode{02bc}$}_1^5-5 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2+5
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2+5 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3-5
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5 \text{c$\unicode{02bc}$}_5\right)+\frac{1}{720} \left(\text{c$\unicode{02bc}$}_1^6-6 \text{c$\unicode{02bc}$}_1^4
+\text{c$\unicode{02bc}$}_2+9 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^2-2 \text{c$\unicode{02bc}$}_2^3+6 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_3-12 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+3 \text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }\frac{r \left(2 c_1^5 c_2-10 c_1^3 c_2^2+10 c_1 c_2^3-2 c_1^4 c_3+11 c_1^2 c_2 c_3-c_1 c_3^2+2
+c_1^3 c_4-9 c_1 c_2 c_4-2 c_1^2 c_5+2 c_1 c_6\right)}{120960}+\frac{\left(2 c_1^6-12 c_1^4 c_2+11 c_1^2 c_2^2+10 c_2^3+5 c_1^3 c_3+11 c_1 c_2 c_3-c_3^2-5
+c_1^2 c_4-9 c_2 c_4-2 c_1 c_5+2 c_6\right) \text{c$\unicode{02bc}$}_1}{60480}+\frac{\left(-c_1^3 c_2+3 c_1 c_2^2+c_1^2 c_3-c_1 c_4\right) \left(\text{c$\unicode{02bc}$}_1^2-2
+\text{c$\unicode{02bc}$}_2\right)}{2880}+\frac{\left(-c_1^4+4 c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right) \left(\text{c$\unicode{02bc}$}_1^3-3 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_2+3 \text{c$\unicode{02bc}$}_3\right)}{4320}+\frac{1}{576} c_1 c_2 \left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)+\frac{\left(c_1^2+c_2\right)
+\left(\text{c$\unicode{02bc}$}_1^5-5 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2+5 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2+5
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5
+\text{c$\unicode{02bc}$}_5\right)}{1440}+\frac{c_1 \left(\text{c$\unicode{02bc}$}_1^6-6 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_2+9
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^2-2 \text{c$\unicode{02bc}$}_2^3+6 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_3-12
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+3 \text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_4+6
+\text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)}{1440}+\frac{\text{c$\unicode{02bc}$}_1^7-7
+\text{c$\unicode{02bc}$}_1^5 \text{c$\unicode{02bc}$}_2+14 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2^2-7 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_2^3+7 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_3-21 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2
+\text{c$\unicode{02bc}$}_3+7 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3+7 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3^2-7
+\text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_4+14 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-7 \text{c$\unicode{02bc}$}_3
+\text{c$\unicode{02bc}$}_4+7 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_6+7 \text{c$\unicode{02bc}$}_7}{5040}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(-3 c_1^8+24 c_1^6 c_2-50 c_1^4 c_2^2+8 c_1^2 c_2^3+21 c_2^4-14 c_1^5 c_3+26 c_1^3
+c_2 c_3+50 c_1 c_2^2 c_3+3 c_1^2 c_3^2-8 c_2 c_3^2+14 c_1^4 c_4-19 c_1^2 c_2 c_4-34 c_2^2 c_4-13 c_1 c_3 c_4+5 c_4^2-7 c_1^3 c_5-16 c_1 c_2 c_5+3
+c_3 c_5+7 c_1^2 c_6+13 c_2 c_6+3 c_1 c_7-3 c_8\right)}{3628800}+\frac{\left(2 c_1^5 c_2-10 c_1^3 c_2^2+10 c_1 c_2^3-2 c_1^4 c_3+11 c_1^2 c_2 c_3-c_1
+c_3^2+2 c_1^3 c_4-9 c_1 c_2 c_4-2 c_1^2 c_5+2 c_1 c_6\right) \text{c$\unicode{02bc}$}_1}{120960}+\frac{\left(2 c_1^6-12 c_1^4 c_2+11 c_1^2 c_2^2+10
+c_2^3+5 c_1^3 c_3+11 c_1 c_2 c_3-c_3^2-5 c_1^2 c_4-9 c_2 c_4-2 c_1 c_5+2 c_6\right) \left(\text{c$\unicode{02bc}$}_1^2-2 \text{c$\unicode{02bc}$}_2\right)}{120960}+\frac{\left(-c_1^3
+c_2+3 c_1 c_2^2+c_1^2 c_3-c_1 c_4\right) \left(\text{c$\unicode{02bc}$}_1^3-3 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2+3 \text{c$\unicode{02bc}$}_3\right)}{8640}+\frac{\left(-c_1^4+4
+c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right) \left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)}{17280}+\frac{c_1 c_2 \left(\text{c$\unicode{02bc}$}_1^5-5
+\text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2+5 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2+5 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5 \text{c$\unicode{02bc}$}_5\right)}{2880}+\frac{\left(c_1^2+c_2\right)
+\left(\text{c$\unicode{02bc}$}_1^6-6 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_2+9 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^2-2
+\text{c$\unicode{02bc}$}_2^3+6 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_3-12 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+3
+\text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4+6
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)}{8640}+\frac{c_1 \left(\text{c$\unicode{02bc}$}_1^7-7 \text{c$\unicode{02bc}$}_1^5
+\text{c$\unicode{02bc}$}_2+14 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2^2-7 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^3+7
+\text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_3-21 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+7 \text{c$\unicode{02bc}$}_2^2
+\text{c$\unicode{02bc}$}_3+7 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3^2-7 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_4+14
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-7 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+7 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_6+7 \text{c$\unicode{02bc}$}_7\right)}{10080}+\frac{\text{c$\unicode{02bc}$}_1^8-8
+\text{c$\unicode{02bc}$}_1^6 \text{c$\unicode{02bc}$}_2+20 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_2^2-16 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_2^3+2 \text{c$\unicode{02bc}$}_2^4+8 \text{c$\unicode{02bc}$}_1^5 \text{c$\unicode{02bc}$}_3-32 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+24 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3+12 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_4+24
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-8 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_4-16 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+4 \text{c$\unicode{02bc}$}_4^2+8 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_5-16
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_5+8 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5-8 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_6+8 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_6+8 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_7-8 \text{c$\unicode{02bc}$}_8}{40320}\)
+
+\subsubsection*{c$\_$1 = 0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusTodd}[\#/(1-\text{Exp}[-\#])\&,i]
+\text{/.}c_1\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }\frac{r c_2}{12}+\frac{1}{2} \left(\text{c$\unicode{02bc}$}_1^2-2 \text{c$\unicode{02bc}$}_2\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{1}{720} r \left(3 c_2^2-c_4\right)+\frac{1}{24} c_2 \left(\text{c$\unicode{02bc}$}_1^2-2 \text{c$\unicode{02bc}$}_2\right)+\frac{1}{24}
+\left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(10 c_2^3-c_3^2-9 c_2 c_4+2 c_6\right)}{60480}+\frac{\left(3 c_2^2-c_4\right) \left(\text{c$\unicode{02bc}$}_1^2-2
+\text{c$\unicode{02bc}$}_2\right)}{1440}+\frac{1}{288} c_2 \left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2+2
+\text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)+\frac{1}{720} \left(\text{c$\unicode{02bc}$}_1^6-6
+\text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_2+9 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^2-2 \text{c$\unicode{02bc}$}_2^3+6
+\text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_3-12 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+3 \text{c$\unicode{02bc}$}_3^2-6
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6
+\text{c$\unicode{02bc}$}_6\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(21 c_2^4-8 c_2 c_3^2-34 c_2^2 c_4+5 c_4^2+3 c_3 c_5+13 c_2 c_6-3 c_8\right)}{3628800}+\frac{\left(10
+c_2^3-c_3^2-9 c_2 c_4+2 c_6\right) \left(\text{c$\unicode{02bc}$}_1^2-2 \text{c$\unicode{02bc}$}_2\right)}{120960}+\frac{\left(3 c_2^2-c_4\right)
+\left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)}{17280}+\frac{c_2 \left(\text{c$\unicode{02bc}$}_1^6-6 \text{c$\unicode{02bc}$}_1^4
+\text{c$\unicode{02bc}$}_2+9 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^2-2 \text{c$\unicode{02bc}$}_2^3+6 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_3-12 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+3 \text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)}{8640}+\frac{\text{c$\unicode{02bc}$}_1^8-8
+\text{c$\unicode{02bc}$}_1^6 \text{c$\unicode{02bc}$}_2+20 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_2^2-16 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_2^3+2 \text{c$\unicode{02bc}$}_2^4+8 \text{c$\unicode{02bc}$}_1^5 \text{c$\unicode{02bc}$}_3-32 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+24 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3+12 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_4+24
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-8 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_4-16 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+4 \text{c$\unicode{02bc}$}_4^2+8 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_5-16
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_5+8 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5-8 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_6+8 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_6+8 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_7-8 \text{c$\unicode{02bc}$}_8}{40320}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{20}\text{ = }\frac{r \left(90 c_2^5-81 c_2^2 c_3^2-219 c_2^3 c_4+21 c_3^2 c_4+87 c_2 c_4^2+53 c_2 c_3 c_5-5
+c_5^2+109 c_2^2 c_6-32 c_4 c_6-10 c_3 c_7-43 c_2 c_8+10 c_{10}\right)}{479001600}+\frac{\left(21 c_2^4-8 c_2 c_3^2-34 c_2^2 c_4+5 c_4^2+3 c_3 c_5+13
+c_2 c_6-3 c_8\right) \left(\text{c$\unicode{02bc}$}_1^2-2 \text{c$\unicode{02bc}$}_2\right)}{7257600}+\frac{\left(10 c_2^3-c_3^2-9 c_2 c_4+2 c_6\right)
+\left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)}{1451520}+\frac{\left(3 c_2^2-c_4\right) \left(\text{c$\unicode{02bc}$}_1^6-6 \text{c$\unicode{02bc}$}_1^4
+\text{c$\unicode{02bc}$}_2+9 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^2-2 \text{c$\unicode{02bc}$}_2^3+6 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_3-12 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+3 \text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)}{518400}+\frac{c_2
+\left(\text{c$\unicode{02bc}$}_1^8-8 \text{c$\unicode{02bc}$}_1^6 \text{c$\unicode{02bc}$}_2+20 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_2^2-16
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^3+2 \text{c$\unicode{02bc}$}_2^4+8 \text{c$\unicode{02bc}$}_1^5 \text{c$\unicode{02bc}$}_3-32
+\text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+24 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3+12
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_1^4
+\text{c$\unicode{02bc}$}_4+24 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-8 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_4-16
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+4 \text{c$\unicode{02bc}$}_4^2+8 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_5-16
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_5+8 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5-8 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_6+8 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_6+8 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_7-8 \text{c$\unicode{02bc}$}_8\right)}{483840}+\frac{1}{3628800}\left(\text{c$\unicode{02bc}$}_1^{10}-10
+\text{c$\unicode{02bc}$}_1^8 \text{c$\unicode{02bc}$}_2+35 \text{c$\unicode{02bc}$}_1^6 \text{c$\unicode{02bc}$}_2^2-50 \text{c$\unicode{02bc}$}_1^4
+\text{c$\unicode{02bc}$}_2^3+25 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^4-2 \text{c$\unicode{02bc}$}_2^5+10 \text{c$\unicode{02bc}$}_1^7
+\text{c$\unicode{02bc}$}_3-60 \text{c$\unicode{02bc}$}_1^5 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+100 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3-40 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^3 \text{c$\unicode{02bc}$}_3+25
+\text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_3^2-60 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3^2+15
+\text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3^2+10 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3^3-10 \text{c$\unicode{02bc}$}_1^6
+\text{c$\unicode{02bc}$}_4+50 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-60 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_4+10 \text{c$\unicode{02bc}$}_2^3 \text{c$\unicode{02bc}$}_4-40 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+60 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4-10
+\text{c$\unicode{02bc}$}_3^2 \text{c$\unicode{02bc}$}_4+15 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_4^2-10 \text{c$\unicode{02bc}$}_2
+\text{c$\unicode{02bc}$}_4^2+10 \text{c$\unicode{02bc}$}_1^5 \text{c$\unicode{02bc}$}_5-40 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2
+\text{c$\unicode{02bc}$}_5+30 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_5+30 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5-20 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5-20 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_4 \text{c$\unicode{02bc}$}_5+5 \text{c$\unicode{02bc}$}_5^2-10 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_6+30
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_6-10 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_6-20
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_6+10 \text{c$\unicode{02bc}$}_4 \text{c$\unicode{02bc}$}_6+10 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_7-20 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_7+10 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_7-10
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_8+10 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_8+10 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_9-10
+\text{c$\unicode{02bc}$}_{10}\right)\)
+
+\subsubsection*{c{'}$\_$1=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusTodd}[\#/(1-\text{Exp}[-\#])\&,i]\text{/.}\text{c$\unicode{02bc}$}_1\to
+0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }\frac{1}{12} r \left(c_1^2+c_2\right)-\text{c$\unicode{02bc}$}_2\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{1}{720} r \left(-c_1^4+4 c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right)-\frac{1}{12} \left(c_1^2+c_2\right)
+\text{c$\unicode{02bc}$}_2+\frac{c_1 \text{c$\unicode{02bc}$}_3}{4}+\frac{1}{24} \left(2 \text{c$\unicode{02bc}$}_2^2-4 \text{c$\unicode{02bc}$}_4\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(2 c_1^6-12 c_1^4 c_2+11 c_1^2 c_2^2+10 c_2^3+5 c_1^3 c_3+11 c_1 c_2 c_3-c_3^2-5 c_1^2
+c_4-9 c_2 c_4-2 c_1 c_5+2 c_6\right)}{60480}-\frac{1}{720} \left(-c_1^4+4 c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right) \text{c$\unicode{02bc}$}_2+\frac{1}{48}
+c_1 c_2 \text{c$\unicode{02bc}$}_3+\frac{1}{288} \left(c_1^2+c_2\right) \left(2 \text{c$\unicode{02bc}$}_2^2-4 \text{c$\unicode{02bc}$}_4\right)+\frac{1}{240}
+c_1 \left(-5 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+5 \text{c$\unicode{02bc}$}_5\right)+\frac{1}{720} \left(-2 \text{c$\unicode{02bc}$}_2^3+3
+\text{c$\unicode{02bc}$}_3^2+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-6 \text{c$\unicode{02bc}$}_6\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(-3 c_1^8+24 c_1^6 c_2-50 c_1^4 c_2^2+8 c_1^2 c_2^3+21 c_2^4-14 c_1^5 c_3+26 c_1^3
+c_2 c_3+50 c_1 c_2^2 c_3+3 c_1^2 c_3^2-8 c_2 c_3^2+14 c_1^4 c_4-19 c_1^2 c_2 c_4-34 c_2^2 c_4-13 c_1 c_3 c_4+5 c_4^2-7 c_1^3 c_5-16 c_1 c_2 c_5+3
+c_3 c_5+7 c_1^2 c_6+13 c_2 c_6+3 c_1 c_7-3 c_8\right)}{3628800}-\frac{\left(2 c_1^6-12 c_1^4 c_2+11 c_1^2 c_2^2+10 c_2^3+5 c_1^3 c_3+11 c_1 c_2 c_3-c_3^2-5
+c_1^2 c_4-9 c_2 c_4-2 c_1 c_5+2 c_6\right) \text{c$\unicode{02bc}$}_2}{60480}+\frac{\left(-c_1^3 c_2+3 c_1 c_2^2+c_1^2 c_3-c_1 c_4\right) \text{c$\unicode{02bc}$}_3}{2880}+\frac{\left(-c_1^4+4
+c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right) \left(2 \text{c$\unicode{02bc}$}_2^2-4 \text{c$\unicode{02bc}$}_4\right)}{17280}+\frac{c_1 c_2 \left(-5 \text{c$\unicode{02bc}$}_2
+\text{c$\unicode{02bc}$}_3+5 \text{c$\unicode{02bc}$}_5\right)}{2880}+\frac{\left(c_1^2+c_2\right) \left(-2 \text{c$\unicode{02bc}$}_2^3+3 \text{c$\unicode{02bc}$}_3^2+6
+\text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-6 \text{c$\unicode{02bc}$}_6\right)}{8640}+\frac{c_1 \left(7 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3-7
+\text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4-7 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_5+7 \text{c$\unicode{02bc}$}_7\right)}{10080}+\frac{2
+\text{c$\unicode{02bc}$}_2^4-8 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_4+4
+\text{c$\unicode{02bc}$}_4^2+8 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5+8 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_6-8 \text{c$\unicode{02bc}$}_8}{40320}\)
+
+\subsubsection*{c$\_$1=c{'}$\_$1=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusTodd}[\#/(1-\text{Exp}[-\#])\&,i]
+\text{/.}c_1\to 0\text{/.}\text{c$\unicode{02bc}$}_1\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }\frac{r c_2}{12}-\text{c$\unicode{02bc}$}_2\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }\frac{\text{c$\unicode{02bc}$}_3}{2}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{1}{720} r \left(3 c_2^2-c_4\right)-\frac{c_2 \text{c$\unicode{02bc}$}_2}{12}+\frac{1}{24} \left(2
+\text{c$\unicode{02bc}$}_2^2-4 \text{c$\unicode{02bc}$}_4\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }\frac{c_2 \text{c$\unicode{02bc}$}_3}{24}+\frac{1}{120} \left(-5 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+5
+\text{c$\unicode{02bc}$}_5\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(10 c_2^3-c_3^2-9 c_2 c_4+2 c_6\right)}{60480}-\frac{1}{720} \left(3 c_2^2-c_4\right)
+\text{c$\unicode{02bc}$}_2+\frac{1}{288} c_2 \left(2 \text{c$\unicode{02bc}$}_2^2-4 \text{c$\unicode{02bc}$}_4\right)+\frac{1}{720} \left(-2 \text{c$\unicode{02bc}$}_2^3+3
+\text{c$\unicode{02bc}$}_3^2+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-6 \text{c$\unicode{02bc}$}_6\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }\frac{\left(3 c_2^2-c_4\right) \text{c$\unicode{02bc}$}_3}{1440}+\frac{c_2 \left(-5 \text{c$\unicode{02bc}$}_2
+\text{c$\unicode{02bc}$}_3+5 \text{c$\unicode{02bc}$}_5\right)}{1440}+\frac{7 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3-7 \text{c$\unicode{02bc}$}_3
+\text{c$\unicode{02bc}$}_4-7 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_5+7 \text{c$\unicode{02bc}$}_7}{5040}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(21 c_2^4-8 c_2 c_3^2-34 c_2^2 c_4+5 c_4^2+3 c_3 c_5+13 c_2 c_6-3 c_8\right)}{3628800}-\frac{\left(10
+c_2^3-c_3^2-9 c_2 c_4+2 c_6\right) \text{c$\unicode{02bc}$}_2}{60480}+\frac{\left(3 c_2^2-c_4\right) \left(2 \text{c$\unicode{02bc}$}_2^2-4 \text{c$\unicode{02bc}$}_4\right)}{17280}+\frac{c_2
+\left(-2 \text{c$\unicode{02bc}$}_2^3+3 \text{c$\unicode{02bc}$}_3^2+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-6 \text{c$\unicode{02bc}$}_6\right)}{8640}+\frac{2
+\text{c$\unicode{02bc}$}_2^4-8 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_4+4
+\text{c$\unicode{02bc}$}_4^2+8 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5+8 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_6-8 \text{c$\unicode{02bc}$}_8}{40320}\)
+
+\subsubsection*{c$\_$ 2 = 0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusTodd}[\#/(1-\text{Exp}[-\#])\&,i]
+\text{/.}c_2\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }\frac{r c_1}{2}+\text{c$\unicode{02bc}$}_1\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }\frac{r c_1^2}{12}+\frac{c_1 \text{c$\unicode{02bc}$}_1}{2}+\frac{1}{2} \left(\text{c$\unicode{02bc}$}_1^2-2
+\text{c$\unicode{02bc}$}_2\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }\frac{1}{12} c_1^2 \text{c$\unicode{02bc}$}_1+\frac{1}{4} c_1 \left(\text{c$\unicode{02bc}$}_1^2-2
+\text{c$\unicode{02bc}$}_2\right)+\frac{1}{6} \left(\text{c$\unicode{02bc}$}_1^3-3 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2+3 \text{c$\unicode{02bc}$}_3\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{1}{720} r \left(-c_1^4+c_1 c_3-c_4\right)+\frac{1}{24} c_1^2 \left(\text{c$\unicode{02bc}$}_1^2-2
+\text{c$\unicode{02bc}$}_2\right)+\frac{1}{12} c_1 \left(\text{c$\unicode{02bc}$}_1^3-3 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2+3 \text{c$\unicode{02bc}$}_3\right)+\frac{1}{24}
+\left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }\frac{r \left(c_1^2 c_3-c_1 c_4\right)}{1440}+\frac{1}{720} \left(-c_1^4+c_1 c_3-c_4\right) \text{c$\unicode{02bc}$}_1+\frac{1}{72}
+c_1^2 \left(\text{c$\unicode{02bc}$}_1^3-3 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2+3 \text{c$\unicode{02bc}$}_3\right)+\frac{1}{48}
+c_1 \left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)+\frac{1}{120} \left(\text{c$\unicode{02bc}$}_1^5-5 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2+5
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2+5 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3-5
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5 \text{c$\unicode{02bc}$}_5\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(2 c_1^6+5 c_1^3 c_3-c_3^2-5 c_1^2 c_4-2 c_1 c_5+2 c_6\right)}{60480}+\frac{\left(c_1^2
+c_3-c_1 c_4\right) \text{c$\unicode{02bc}$}_1}{1440}+\frac{\left(-c_1^4+c_1 c_3-c_4\right) \left(\text{c$\unicode{02bc}$}_1^2-2 \text{c$\unicode{02bc}$}_2\right)}{1440}+\frac{1}{288}
+c_1^2 \left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)+\frac{1}{240} c_1 \left(\text{c$\unicode{02bc}$}_1^5-5 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_2+5 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2+5 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5
+\text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5 \text{c$\unicode{02bc}$}_5\right)+\frac{1}{720}
+\left(\text{c$\unicode{02bc}$}_1^6-6 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_2+9 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^2-2
+\text{c$\unicode{02bc}$}_2^3+6 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_3-12 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+3
+\text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4+6
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }\frac{r \left(-2 c_1^4 c_3-c_1 c_3^2+2 c_1^3 c_4-2 c_1^2 c_5+2 c_1 c_6\right)}{120960}+\frac{\left(2
+c_1^6+5 c_1^3 c_3-c_3^2-5 c_1^2 c_4-2 c_1 c_5+2 c_6\right) \text{c$\unicode{02bc}$}_1}{60480}+\frac{\left(c_1^2 c_3-c_1 c_4\right) \left(\text{c$\unicode{02bc}$}_1^2-2
+\text{c$\unicode{02bc}$}_2\right)}{2880}+\frac{\left(-c_1^4+c_1 c_3-c_4\right) \left(\text{c$\unicode{02bc}$}_1^3-3 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2+3
+\text{c$\unicode{02bc}$}_3\right)}{4320}+\frac{c_1^2 \left(\text{c$\unicode{02bc}$}_1^5-5 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2+5
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2+5 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3-5
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5 \text{c$\unicode{02bc}$}_5\right)}{1440}+\frac{c_1 \left(\text{c$\unicode{02bc}$}_1^6-6 \text{c$\unicode{02bc}$}_1^4
+\text{c$\unicode{02bc}$}_2+9 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^2-2 \text{c$\unicode{02bc}$}_2^3+6 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_3-12 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+3 \text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)}{1440}+\frac{\text{c$\unicode{02bc}$}_1^7-7
+\text{c$\unicode{02bc}$}_1^5 \text{c$\unicode{02bc}$}_2+14 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2^2-7 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_2^3+7 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_3-21 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2
+\text{c$\unicode{02bc}$}_3+7 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3+7 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3^2-7
+\text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_4+14 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-7 \text{c$\unicode{02bc}$}_3
+\text{c$\unicode{02bc}$}_4+7 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_6+7 \text{c$\unicode{02bc}$}_7}{5040}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(-3 c_1^8-14 c_1^5 c_3+3 c_1^2 c_3^2+14 c_1^4 c_4-13 c_1 c_3 c_4+5 c_4^2-7 c_1^3 c_5+3
+c_3 c_5+7 c_1^2 c_6+3 c_1 c_7-3 c_8\right)}{3628800}+\frac{\left(-2 c_1^4 c_3-c_1 c_3^2+2 c_1^3 c_4-2 c_1^2 c_5+2 c_1 c_6\right) \text{c$\unicode{02bc}$}_1}{120960}+\frac{\left(2
+c_1^6+5 c_1^3 c_3-c_3^2-5 c_1^2 c_4-2 c_1 c_5+2 c_6\right) \left(\text{c$\unicode{02bc}$}_1^2-2 \text{c$\unicode{02bc}$}_2\right)}{120960}+\frac{\left(c_1^2
+c_3-c_1 c_4\right) \left(\text{c$\unicode{02bc}$}_1^3-3 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2+3 \text{c$\unicode{02bc}$}_3\right)}{8640}+\frac{\left(-c_1^4+c_1
+c_3-c_4\right) \left(\text{c$\unicode{02bc}$}_1^4-4 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2+2 \text{c$\unicode{02bc}$}_2^2+4 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)}{17280}+\frac{c_1^2 \left(\text{c$\unicode{02bc}$}_1^6-6 \text{c$\unicode{02bc}$}_1^4
+\text{c$\unicode{02bc}$}_2+9 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^2-2 \text{c$\unicode{02bc}$}_2^3+6 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_3-12 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+3 \text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)}{8640}+\frac{c_1
+\left(\text{c$\unicode{02bc}$}_1^7-7 \text{c$\unicode{02bc}$}_1^5 \text{c$\unicode{02bc}$}_2+14 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2^2-7
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^3+7 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_3-21 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+7 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3+7 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3^2-7
+\text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_4+14 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-7 \text{c$\unicode{02bc}$}_3
+\text{c$\unicode{02bc}$}_4+7 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_6+7 \text{c$\unicode{02bc}$}_7\right)}{10080}+\frac{\text{c$\unicode{02bc}$}_1^8-8 \text{c$\unicode{02bc}$}_1^6 \text{c$\unicode{02bc}$}_2+20
+\text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_2^2-16 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_2^3+2 \text{c$\unicode{02bc}$}_2^4+8
+\text{c$\unicode{02bc}$}_1^5 \text{c$\unicode{02bc}$}_3-32 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+24
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3+12 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3^2-8
+\text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_4+24 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-8 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_4-16 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3
+\text{c$\unicode{02bc}$}_4+4 \text{c$\unicode{02bc}$}_4^2+8 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_5-16 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_5+8 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5-8 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_6+8
+\text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_6+8 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_7-8 \text{c$\unicode{02bc}$}_8}{40320}\)
+
+\subsubsection*{c{'}$\_$2=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusTodd}[\#/(1-\text{Exp}[-\#])\&,i]
+\text{/.}\text{c$\unicode{02bc}$}_2\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }\frac{r c_1}{2}+\text{c$\unicode{02bc}$}_1\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }\frac{1}{12} r \left(c_1^2+c_2\right)+\frac{c_1 \text{c$\unicode{02bc}$}_1}{2}+\frac{\text{c$\unicode{02bc}$}_1^2}{2}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }\frac{1}{24} r c_1 c_2+\frac{1}{12} \left(c_1^2+c_2\right) \text{c$\unicode{02bc}$}_1+\frac{1}{4}
+c_1 \text{c$\unicode{02bc}$}_1^2+\frac{1}{6} \left(\text{c$\unicode{02bc}$}_1^3+3 \text{c$\unicode{02bc}$}_3\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{1}{720} r \left(-c_1^4+4 c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right)+\frac{1}{24} c_1 c_2 \text{c$\unicode{02bc}$}_1+\frac{1}{24}
+\left(c_1^2+c_2\right) \text{c$\unicode{02bc}$}_1^2+\frac{1}{12} c_1 \left(\text{c$\unicode{02bc}$}_1^3+3 \text{c$\unicode{02bc}$}_3\right)+\frac{1}{24}
+\left(\text{c$\unicode{02bc}$}_1^4+4 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }\frac{r \left(-c_1^3 c_2+3 c_1 c_2^2+c_1^2 c_3-c_1 c_4\right)}{1440}+\frac{1}{720} \left(-c_1^4+4
+c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right) \text{c$\unicode{02bc}$}_1+\frac{1}{48} c_1 c_2 \text{c$\unicode{02bc}$}_1^2+\frac{1}{72} \left(c_1^2+c_2\right)
+\left(\text{c$\unicode{02bc}$}_1^3+3 \text{c$\unicode{02bc}$}_3\right)+\frac{1}{48} c_1 \left(\text{c$\unicode{02bc}$}_1^4+4 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)+\frac{1}{120} \left(\text{c$\unicode{02bc}$}_1^5+5 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5 \text{c$\unicode{02bc}$}_5\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(2 c_1^6-12 c_1^4 c_2+11 c_1^2 c_2^2+10 c_2^3+5 c_1^3 c_3+11 c_1 c_2 c_3-c_3^2-5 c_1^2
+c_4-9 c_2 c_4-2 c_1 c_5+2 c_6\right)}{60480}+\frac{\left(-c_1^3 c_2+3 c_1 c_2^2+c_1^2 c_3-c_1 c_4\right) \text{c$\unicode{02bc}$}_1}{1440}+\frac{\left(-c_1^4+4
+c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right) \text{c$\unicode{02bc}$}_1^2}{1440}+\frac{1}{144} c_1 c_2 \left(\text{c$\unicode{02bc}$}_1^3+3 \text{c$\unicode{02bc}$}_3\right)+\frac{1}{288}
+\left(c_1^2+c_2\right) \left(\text{c$\unicode{02bc}$}_1^4+4 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)+\frac{1}{240}
+c_1 \left(\text{c$\unicode{02bc}$}_1^5+5 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5
+\text{c$\unicode{02bc}$}_5\right)+\frac{1}{720} \left(\text{c$\unicode{02bc}$}_1^6+6 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_3+3 \text{c$\unicode{02bc}$}_3^2-6
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }\frac{r \left(2 c_1^5 c_2-10 c_1^3 c_2^2+10 c_1 c_2^3-2 c_1^4 c_3+11 c_1^2 c_2 c_3-c_1 c_3^2+2
+c_1^3 c_4-9 c_1 c_2 c_4-2 c_1^2 c_5+2 c_1 c_6\right)}{120960}+\frac{\left(2 c_1^6-12 c_1^4 c_2+11 c_1^2 c_2^2+10 c_2^3+5 c_1^3 c_3+11 c_1 c_2 c_3-c_3^2-5
+c_1^2 c_4-9 c_2 c_4-2 c_1 c_5+2 c_6\right) \text{c$\unicode{02bc}$}_1}{60480}+\frac{\left(-c_1^3 c_2+3 c_1 c_2^2+c_1^2 c_3-c_1 c_4\right) \text{c$\unicode{02bc}$}_1^2}{2880}+\frac{\left(-c_1^4+4
+c_1^2 c_2+3 c_2^2+c_1 c_3-c_4\right) \left(\text{c$\unicode{02bc}$}_1^3+3 \text{c$\unicode{02bc}$}_3\right)}{4320}+\frac{1}{576} c_1 c_2 \left(\text{c$\unicode{02bc}$}_1^4+4
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)+\frac{\left(c_1^2+c_2\right) \left(\text{c$\unicode{02bc}$}_1^5+5
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5 \text{c$\unicode{02bc}$}_5\right)}{1440}+\frac{c_1
+\left(\text{c$\unicode{02bc}$}_1^6+6 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_3+3 \text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)}{1440}+\frac{\text{c$\unicode{02bc}$}_1^7+7
+\text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_3+7 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3^2-7 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_4-7 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+7 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_6+7 \text{c$\unicode{02bc}$}_7}{5040}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(-3 c_1^8+24 c_1^6 c_2-50 c_1^4 c_2^2+8 c_1^2 c_2^3+21 c_2^4-14 c_1^5 c_3+26 c_1^3
+c_2 c_3+50 c_1 c_2^2 c_3+3 c_1^2 c_3^2-8 c_2 c_3^2+14 c_1^4 c_4-19 c_1^2 c_2 c_4-34 c_2^2 c_4-13 c_1 c_3 c_4+5 c_4^2-7 c_1^3 c_5-16 c_1 c_2 c_5+3
+c_3 c_5+7 c_1^2 c_6+13 c_2 c_6+3 c_1 c_7-3 c_8\right)}{3628800}+\frac{\left(2 c_1^5 c_2-10 c_1^3 c_2^2+10 c_1 c_2^3-2 c_1^4 c_3+11 c_1^2 c_2 c_3-c_1
+c_3^2+2 c_1^3 c_4-9 c_1 c_2 c_4-2 c_1^2 c_5+2 c_1 c_6\right) \text{c$\unicode{02bc}$}_1}{120960}+\frac{\left(2 c_1^6-12 c_1^4 c_2+11 c_1^2 c_2^2+10
+c_2^3+5 c_1^3 c_3+11 c_1 c_2 c_3-c_3^2-5 c_1^2 c_4-9 c_2 c_4-2 c_1 c_5+2 c_6\right) \text{c$\unicode{02bc}$}_1^2}{120960}+\frac{\left(-c_1^3 c_2+3
+c_1 c_2^2+c_1^2 c_3-c_1 c_4\right) \left(\text{c$\unicode{02bc}$}_1^3+3 \text{c$\unicode{02bc}$}_3\right)}{8640}+\frac{\left(-c_1^4+4 c_1^2 c_2+3
+c_2^2+c_1 c_3-c_4\right) \left(\text{c$\unicode{02bc}$}_1^4+4 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)}{17280}+\frac{c_1
+c_2 \left(\text{c$\unicode{02bc}$}_1^5+5 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5
+\text{c$\unicode{02bc}$}_5\right)}{2880}+\frac{\left(c_1^2+c_2\right) \left(\text{c$\unicode{02bc}$}_1^6+6 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_3+3
+\text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6
+\text{c$\unicode{02bc}$}_6\right)}{8640}+\frac{c_1 \left(\text{c$\unicode{02bc}$}_1^7+7 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_3+7
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3^2-7 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_4-7 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+7
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_6+7 \text{c$\unicode{02bc}$}_7\right)}{10080}+\frac{\text{c$\unicode{02bc}$}_1^8+8
+\text{c$\unicode{02bc}$}_1^5 \text{c$\unicode{02bc}$}_3+12 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_1^4
+\text{c$\unicode{02bc}$}_4-16 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+4 \text{c$\unicode{02bc}$}_4^2+8 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_5+8 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5-8 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_6+8 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_7-8 \text{c$\unicode{02bc}$}_8}{40320}\)
+
+\subsubsection*{c$\_$2=c{'}$\_$2=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusTodd}[\#/(1-\text{Exp}[-\#])\&,i]
+\text{/.}c_2\to 0\text{/.}\text{c$\unicode{02bc}$}_2\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }\frac{r c_1}{2}+\text{c$\unicode{02bc}$}_1\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }\frac{r c_1^2}{12}+\frac{c_1 \text{c$\unicode{02bc}$}_1}{2}+\frac{\text{c$\unicode{02bc}$}_1^2}{2}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }\frac{1}{12} c_1^2 \text{c$\unicode{02bc}$}_1+\frac{1}{4} c_1 \text{c$\unicode{02bc}$}_1^2+\frac{1}{6}
+\left(\text{c$\unicode{02bc}$}_1^3+3 \text{c$\unicode{02bc}$}_3\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{1}{720} r \left(-c_1^4+c_1 c_3-c_4\right)+\frac{1}{24} c_1^2 \text{c$\unicode{02bc}$}_1^2+\frac{1}{12}
+c_1 \left(\text{c$\unicode{02bc}$}_1^3+3 \text{c$\unicode{02bc}$}_3\right)+\frac{1}{24} \left(\text{c$\unicode{02bc}$}_1^4+4 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }\frac{r \left(c_1^2 c_3-c_1 c_4\right)}{1440}+\frac{1}{720} \left(-c_1^4+c_1 c_3-c_4\right) \text{c$\unicode{02bc}$}_1+\frac{1}{72}
+c_1^2 \left(\text{c$\unicode{02bc}$}_1^3+3 \text{c$\unicode{02bc}$}_3\right)+\frac{1}{48} c_1 \left(\text{c$\unicode{02bc}$}_1^4+4 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)+\frac{1}{120} \left(\text{c$\unicode{02bc}$}_1^5+5 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5 \text{c$\unicode{02bc}$}_5\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(2 c_1^6+5 c_1^3 c_3-c_3^2-5 c_1^2 c_4-2 c_1 c_5+2 c_6\right)}{60480}+\frac{\left(c_1^2
+c_3-c_1 c_4\right) \text{c$\unicode{02bc}$}_1}{1440}+\frac{\left(-c_1^4+c_1 c_3-c_4\right) \text{c$\unicode{02bc}$}_1^2}{1440}+\frac{1}{288} c_1^2
+\left(\text{c$\unicode{02bc}$}_1^4+4 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3-4 \text{c$\unicode{02bc}$}_4\right)+\frac{1}{240} c_1
+\left(\text{c$\unicode{02bc}$}_1^5+5 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5
+\text{c$\unicode{02bc}$}_5\right)+\frac{1}{720} \left(\text{c$\unicode{02bc}$}_1^6+6 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_3+3 \text{c$\unicode{02bc}$}_3^2-6
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }\frac{r \left(-2 c_1^4 c_3-c_1 c_3^2+2 c_1^3 c_4-2 c_1^2 c_5+2 c_1 c_6\right)}{120960}+\frac{\left(2
+c_1^6+5 c_1^3 c_3-c_3^2-5 c_1^2 c_4-2 c_1 c_5+2 c_6\right) \text{c$\unicode{02bc}$}_1}{60480}+\frac{\left(c_1^2 c_3-c_1 c_4\right) \text{c$\unicode{02bc}$}_1^2}{2880}+\frac{\left(-c_1^4+c_1
+c_3-c_4\right) \left(\text{c$\unicode{02bc}$}_1^3+3 \text{c$\unicode{02bc}$}_3\right)}{4320}+\frac{c_1^2 \left(\text{c$\unicode{02bc}$}_1^5+5 \text{c$\unicode{02bc}$}_1^2
+\text{c$\unicode{02bc}$}_3-5 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_4+5 \text{c$\unicode{02bc}$}_5\right)}{1440}+\frac{c_1 \left(\text{c$\unicode{02bc}$}_1^6+6
+\text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_3+3 \text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_4+6
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6 \text{c$\unicode{02bc}$}_6\right)}{1440}+\frac{\text{c$\unicode{02bc}$}_1^7+7 \text{c$\unicode{02bc}$}_1^4
+\text{c$\unicode{02bc}$}_3+7 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3^2-7 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_4-7
+\text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+7 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_6+7
+\text{c$\unicode{02bc}$}_7}{5040}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(-3 c_1^8-14 c_1^5 c_3+3 c_1^2 c_3^2+14 c_1^4 c_4-13 c_1 c_3 c_4+5 c_4^2-7 c_1^3 c_5+3
+c_3 c_5+7 c_1^2 c_6+3 c_1 c_7-3 c_8\right)}{3628800}+\frac{\left(-2 c_1^4 c_3-c_1 c_3^2+2 c_1^3 c_4-2 c_1^2 c_5+2 c_1 c_6\right) \text{c$\unicode{02bc}$}_1}{120960}+\frac{\left(2
+c_1^6+5 c_1^3 c_3-c_3^2-5 c_1^2 c_4-2 c_1 c_5+2 c_6\right) \text{c$\unicode{02bc}$}_1^2}{120960}+\frac{\left(c_1^2 c_3-c_1 c_4\right) \left(\text{c$\unicode{02bc}$}_1^3+3
+\text{c$\unicode{02bc}$}_3\right)}{8640}+\frac{\left(-c_1^4+c_1 c_3-c_4\right) \left(\text{c$\unicode{02bc}$}_1^4+4 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3-4
+\text{c$\unicode{02bc}$}_4\right)}{17280}+\frac{c_1^2 \left(\text{c$\unicode{02bc}$}_1^6+6 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_3+3
+\text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_4+6 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_5-6
+\text{c$\unicode{02bc}$}_6\right)}{8640}+\frac{c_1 \left(\text{c$\unicode{02bc}$}_1^7+7 \text{c$\unicode{02bc}$}_1^4 \text{c$\unicode{02bc}$}_3+7
+\text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3^2-7 \text{c$\unicode{02bc}$}_1^3 \text{c$\unicode{02bc}$}_4-7 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+7
+\text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_5-7 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_6+7 \text{c$\unicode{02bc}$}_7\right)}{10080}+\frac{\text{c$\unicode{02bc}$}_1^8+8
+\text{c$\unicode{02bc}$}_1^5 \text{c$\unicode{02bc}$}_3+12 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_1^4
+\text{c$\unicode{02bc}$}_4-16 \text{c$\unicode{02bc}$}_1 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+4 \text{c$\unicode{02bc}$}_4^2+8 \text{c$\unicode{02bc}$}_1^3
+\text{c$\unicode{02bc}$}_5+8 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5-8 \text{c$\unicode{02bc}$}_1^2 \text{c$\unicode{02bc}$}_6+8 \text{c$\unicode{02bc}$}_1
+\text{c$\unicode{02bc}$}_7-8 \text{c$\unicode{02bc}$}_8}{40320}\)
+
+\subsubsection*{c$\_$1=c{'}$\_$1=c$\_$2=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusTodd}[\#/(1-\text{Exp}[-\#])\&,i]
+\text{/.}c_1\to 0\text{/.}\text{c$\unicode{02bc}$}_1\to 0\text{/.}c_2\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }-\text{c$\unicode{02bc}$}_2\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }\frac{\text{c$\unicode{02bc}$}_3}{2}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }-\frac{r c_4}{720}+\frac{1}{24} \left(2 \text{c$\unicode{02bc}$}_2^2-4 \text{c$\unicode{02bc}$}_4\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }\frac{1}{120} \left(-5 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_3+5 \text{c$\unicode{02bc}$}_5\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(-c_3^2+2 c_6\right)}{60480}+\frac{c_4 \text{c$\unicode{02bc}$}_2}{720}+\frac{1}{720}
+\left(-2 \text{c$\unicode{02bc}$}_2^3+3 \text{c$\unicode{02bc}$}_3^2+6 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_4-6 \text{c$\unicode{02bc}$}_6\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }-\frac{c_4 \text{c$\unicode{02bc}$}_3}{1440}+\frac{7 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_3-7
+\text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4-7 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_5+7 \text{c$\unicode{02bc}$}_7}{5040}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(5 c_4^2+3 c_3 c_5-3 c_8\right)}{3628800}-\frac{\left(-c_3^2+2 c_6\right) \text{c$\unicode{02bc}$}_2}{60480}-\frac{c_4
+\left(2 \text{c$\unicode{02bc}$}_2^2-4 \text{c$\unicode{02bc}$}_4\right)}{17280}+\frac{2 \text{c$\unicode{02bc}$}_2^4-8 \text{c$\unicode{02bc}$}_2
+\text{c$\unicode{02bc}$}_3^2-8 \text{c$\unicode{02bc}$}_2^2 \text{c$\unicode{02bc}$}_4+4 \text{c$\unicode{02bc}$}_4^2+8 \text{c$\unicode{02bc}$}_3
+\text{c$\unicode{02bc}$}_5+8 \text{c$\unicode{02bc}$}_2 \text{c$\unicode{02bc}$}_6-8 \text{c$\unicode{02bc}$}_8}{40320}\)
+
+\subsubsection*{c$\_$1=c{'}$\_$1=c{'}$\_$2=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusTodd}[\#/(1-\text{Exp}[-\#])\&,i]
+\text{/.}c_1\to 0\text{/.}\text{c$\unicode{02bc}$}_1\to 0\text{/.}\text{c$\unicode{02bc}$}_2\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }\frac{r c_2}{12}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }\frac{\text{c$\unicode{02bc}$}_3}{2}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }\frac{1}{720} r \left(3 c_2^2-c_4\right)-\frac{\text{c$\unicode{02bc}$}_4}{6}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }\frac{c_2 \text{c$\unicode{02bc}$}_3}{24}+\frac{\text{c$\unicode{02bc}$}_5}{24}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(10 c_2^3-c_3^2-9 c_2 c_4+2 c_6\right)}{60480}-\frac{c_2 \text{c$\unicode{02bc}$}_4}{72}+\frac{1}{720}
+\left(3 \text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_6\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }\frac{\left(3 c_2^2-c_4\right) \text{c$\unicode{02bc}$}_3}{1440}+\frac{c_2 \text{c$\unicode{02bc}$}_5}{288}+\frac{-7
+\text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+7 \text{c$\unicode{02bc}$}_7}{5040}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(21 c_2^4-8 c_2 c_3^2-34 c_2^2 c_4+5 c_4^2+3 c_3 c_5+13 c_2 c_6-3 c_8\right)}{3628800}-\frac{\left(3
+c_2^2-c_4\right) \text{c$\unicode{02bc}$}_4}{4320}+\frac{c_2 \left(3 \text{c$\unicode{02bc}$}_3^2-6 \text{c$\unicode{02bc}$}_6\right)}{8640}+\frac{4
+\text{c$\unicode{02bc}$}_4^2+8 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5-8 \text{c$\unicode{02bc}$}_8}{40320}\)
+
+\subsubsection*{c$\_$1=c{'}$\_$1=c$\_$2=c{'}$\_$2=0}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{For}\left[i=0,i<17,i\text{+=}2, \text{Print}\left[\text{Subscript}[\text{{``}[Td(E)ch(F$\_$r)]{''}},i],\text{{``} = {''}},\text{twistedGenusTodd}[\#/(1-\text{Exp}[-\#])\&,i]
+\text{/.}c_1\to 0\text{/.}\text{c$\unicode{02bc}$}_1\to 0\text{/.}c_2\to 0\text{/.}\text{c$\unicode{02bc}$}_2\to 0\right]\right]}\)
+\end{doublespace}
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_0\text{ = }r\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_2\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_4\text{ = }0\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_6\text{ = }\frac{\text{c$\unicode{02bc}$}_3}{2}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_8\text{ = }-\frac{r c_4}{720}-\frac{\text{c$\unicode{02bc}$}_4}{6}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{10}\text{ = }\frac{\text{c$\unicode{02bc}$}_5}{24}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{12}\text{ = }\frac{r \left(-c_3^2+2 c_6\right)}{60480}+\frac{1}{720} \left(3 \text{c$\unicode{02bc}$}_3^2-6
+\text{c$\unicode{02bc}$}_6\right)\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{14}\text{ = }-\frac{c_4 \text{c$\unicode{02bc}$}_3}{1440}+\frac{-7 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_4+7
+\text{c$\unicode{02bc}$}_7}{5040}\)
+
+\noindent\(\text{[Td(E)ch(F$\_$r)]}_{16}\text{ = }\frac{r \left(5 c_4^2+3 c_3 c_5-3 c_8\right)}{3628800}+\frac{c_4 \text{c$\unicode{02bc}$}_4}{4320}+\frac{4
+\text{c$\unicode{02bc}$}_4^2+8 \text{c$\unicode{02bc}$}_3 \text{c$\unicode{02bc}$}_5-8 \text{c$\unicode{02bc}$}_8}{40320}\)
+
+\end{document}
